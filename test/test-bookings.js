@@ -1,7 +1,10 @@
 import chai from 'chai';
 const expect = chai.expect;
+// let chaiDateSring = require('chai-date-string');
+
 
 import Booking from '../classes/Booking';
+// import Customer from '../classes/Customer';
 import {bookingsData} from '../sample-data/test-bookings';
 
 describe.only('Booking', () => {
@@ -24,37 +27,46 @@ describe.only('Booking', () => {
     expect(booking2).to.be.an.instanceOf(Booking);
   });
 
-  it('Should have booking number', () => {
+  it('Should have booking id number', () => {
     expect(booking1).to.have.a.property('id');
-    expect(booking1.number).to.be.within(1, 25, 'Booking number options are 1 through 25.');
+    expect(booking1.id).to.be.a('string');
+    expect(booking1.id).to.include('5fwrgu4i7k55hl', 'Every booking id starts with the same 14 characters.');
+    expect(booking1.id).to.have.lengthOf(17);
+  });
+
+  it('Should keep track of the user id of the user who booked the room', () => {
+    expect(booking1).to.have.a.property('userID');
+    expect(booking1.userID).to.be.a('number');
+    expect(booking1.userID).to.be.at.least(1);
   });
 
   it('Should have a booking type', () => {
-    expect(booking1).to.have.a.property('bookingType');
-    expect(['suite', 'residential suite', 'single booking', 'junior suite'], 'Invalid booking type.').to.include(booking1.bookingType);
+    expect(booking1).to.have.a.property('date');
+    console.log(booking1.date)
+    expect(booking1.date).to.be.a.dateString();
   });
-
-  it('Should have a bidet or not have a bidet', () => {
-    expect(booking1).to.have.a.property('hasBidet');
-    expect(booking1.hasBidet).to.be.true;
-    expect(booking2.hasBidet).to.be.false;
-  });
-
-  it('Should have a bed size', () => {
-    expect(booking1).to.have.a.property('bedSize');
-    expect(['twin', 'full', 'queen', 'king'], 'Invalid bed size.').to.include(booking1.bedSize);
-    expect(['twin', 'full', 'queen', 'king'], 'Invalid bed size.').to.include(booking2.bedSize);
-  });
-
-  it('Should have 1 to 2 beds', () => {
-    expect(booking1).to.have.a.property('numBeds');
-    expect(booking1.numBeds).to.be.at.least(1, 'Each booking should have at least 1 bed.');
-    expect(booking2.numBeds).to.be.at.most(2, 'Each booking should have no more than 2 beds.');
-  });
-
-  it('Should have a nightly rate', () => {
-    expect(booking1).to.have.a.property('costPerNight');
-    expect(booking1.costPerNight).to.be.at.greaterThanOrEqual(172.09, 'The lowest nightly rate available is 172.09.');
-    expect(booking2.costPerNight).to.be.at.lessThanOrEqual(497.64, 'The highest nightly rate available is 497.64.');
-  });
+  //
+  // it('Should have a bidet or not have a bidet', () => {
+  //   expect(booking1).to.have.a.property('hasBidet');
+  //   expect(booking1.hasBidet).to.be.true;
+  //   expect(booking2.hasBidet).to.be.false;
+  // });
+  //
+  // it('Should have a bed size', () => {
+  //   expect(booking1).to.have.a.property('bedSize');
+  //   expect(['twin', 'full', 'queen', 'king'], 'Invalid bed size.').to.include(booking1.bedSize);
+  //   expect(['twin', 'full', 'queen', 'king'], 'Invalid bed size.').to.include(booking2.bedSize);
+  // });
+  //
+  // it('Should have 1 to 2 beds', () => {
+  //   expect(booking1).to.have.a.property('numBeds');
+  //   expect(booking1.numBeds).to.be.at.least(1, 'Each booking should have at least 1 bed.');
+  //   expect(booking2.numBeds).to.be.at.most(2, 'Each booking should have no more than 2 beds.');
+  // });
+  //
+  // it('Should have a nightly rate', () => {
+  //   expect(booking1).to.have.a.property('costPerNight');
+  //   expect(booking1.costPerNight).to.be.at.greaterThanOrEqual(172.09, 'The lowest nightly rate available is 172.09.');
+  //   expect(booking2.costPerNight).to.be.at.lessThanOrEqual(497.64, 'The highest nightly rate available is 497.64.');
+  // });
 });
