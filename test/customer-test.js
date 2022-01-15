@@ -2,13 +2,14 @@ import chai from 'chai';
 const expect = chai.expect;
 
 import Customer from '../classes/Customer';
+import Room from '../classes/Room';
 
 import {customerData} from '../sample-data/test-customers';
 import {bookingsData} from '../sample-data/test-bookings';
 import {roomsData} from '../sample-data/test-rooms';
 
 describe('Customer', () => {
-  let customer1, customer2, booking1, booking2;
+  let customer1, customer2, room1, room2, booking1, booking2;
 
   beforeEach(() => {
     customer1 = new Customer(customerData[0]);

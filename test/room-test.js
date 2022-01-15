@@ -2,10 +2,9 @@ import chai from 'chai';
 const expect = chai.expect;
 
 import Room from '../classes/Room';
-
 import {roomsData} from '../sample-data/test-rooms';
 
-describe.only('Room', () => {
+describe('Room', () => {
   let room1, room2;
 
   beforeEach(() => {
