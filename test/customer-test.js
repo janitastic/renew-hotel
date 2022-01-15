@@ -3,10 +3,12 @@ const expect = chai.expect;
 
 import Customer from '../classes/Customer';
 
-import {customerData, bookingsData roomsData} from '../sample-data/test-customers';
+import {customerData} from '../sample-data/test-customers';
+import {bookingsData} from '../sample-data/test-bookings';
+import {roomsData} from '../sample-data/test-rooms';
 
-describe.only('Customer', () => {
-  let customer1, customer2, booking1, bookin2;
+describe('Customer', () => {
+  let customer1, customer2, booking1, booking2;
 
   beforeEach(() => {
     customer1 = new Customer(customerData[0]);
@@ -23,19 +25,17 @@ describe.only('Customer', () => {
 
   it('Should have an id and a name', () => {
     expect(customer1).to.have.a.property('id');
-      //should the expect below be 1?
-    expect(customer1.id).to.equal(customerData[0].id);
+    expect(customer1.id).to.equal(1);
     expect(customer1).to.have.a.property('name');
-      //should the expect below be 'Leatha Ullrich'
-    expect(customer1.name).to.equal(customerData[0].name);
+    expect(customer1.name).to.equal('Leatha Ullrich');
   });
 
   it('Should be able to instantiate a different customer', () => {
     expect(customer2).to.be.an.instanceOf(Customer);
     expect(customer2).to.have.a.property('id');
-    expect(customer2.id).to.equal(customerData[1].id);
+    expect(customer2.id).to.equal(2);
     expect(customer2).to.have.a.property('name');
-    expect(customer2.name).to.equal(customerData[1].name);
+    expect(customer2.name).to.equal('Rocio Schuster');
   });
 
   it('Should start out with no bookings', () => {
