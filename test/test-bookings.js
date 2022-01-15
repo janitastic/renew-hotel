@@ -1,6 +1,6 @@
 import chai from 'chai';
 const expect = chai.expect;
-// let chaiDateSring = require('chai-date-string');
+chai.use(require('chai-date-string'));
 
 
 import Booking from '../classes/Booking';
@@ -30,6 +30,7 @@ describe.only('Booking', () => {
   it('Should have booking id number', () => {
     expect(booking1).to.have.a.property('id');
     expect(booking1.id).to.be.a('string');
+    //will I need the tests below? Or do these change with date.now bookings?
     expect(booking1.id).to.include('5fwrgu4i7k55hl', 'Every booking id starts with the same 14 characters.');
     expect(booking1.id).to.have.lengthOf(17);
   });
@@ -40,33 +41,19 @@ describe.only('Booking', () => {
     expect(booking1.userID).to.be.at.least(1);
   });
 
-  it('Should have a booking type', () => {
+  it('Should have a date string formatted by YYYY/MM/DD', () => {
     expect(booking1).to.have.a.property('date');
-    console.log(booking1.date)
     expect(booking1.date).to.be.a.dateString();
   });
-  //
-  // it('Should have a bidet or not have a bidet', () => {
-  //   expect(booking1).to.have.a.property('hasBidet');
-  //   expect(booking1.hasBidet).to.be.true;
-  //   expect(booking2.hasBidet).to.be.false;
-  // });
-  //
-  // it('Should have a bed size', () => {
-  //   expect(booking1).to.have.a.property('bedSize');
-  //   expect(['twin', 'full', 'queen', 'king'], 'Invalid bed size.').to.include(booking1.bedSize);
-  //   expect(['twin', 'full', 'queen', 'king'], 'Invalid bed size.').to.include(booking2.bedSize);
-  // });
-  //
-  // it('Should have 1 to 2 beds', () => {
-  //   expect(booking1).to.have.a.property('numBeds');
-  //   expect(booking1.numBeds).to.be.at.least(1, 'Each booking should have at least 1 bed.');
-  //   expect(booking2.numBeds).to.be.at.most(2, 'Each booking should have no more than 2 beds.');
-  // });
-  //
-  // it('Should have a nightly rate', () => {
-  //   expect(booking1).to.have.a.property('costPerNight');
-  //   expect(booking1.costPerNight).to.be.at.greaterThanOrEqual(172.09, 'The lowest nightly rate available is 172.09.');
-  //   expect(booking2.costPerNight).to.be.at.lessThanOrEqual(497.64, 'The highest nightly rate available is 497.64.');
-  // });
+
+  it('Should have a room number', () => {
+    expect(booking1).to.have.a.property('roomNumber');
+    expect(booking1.roomNumber).to.be.a('number');
+    expect(booking1.roomNumber).to.be.at.least(1);
+  });
+
+  it('Should start out with no room service charges', () => {
+    expect(booking1).to.have.a.property('roomServiceCharges');
+    expect(booking1.roomServiceCharges).to.deep.equal([]);
+  });
 });
