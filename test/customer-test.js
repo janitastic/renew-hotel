@@ -65,8 +65,8 @@ describe('Customer', () => {
   });
   
   it('Should be able to calculate the total amount each customer has spent', () => {
-    const bookingsList = customer1.listAllUserBookings(hotel);
-    const totalSpent = customer1.addTotalSpent(hotel);
+    customer1.listAllUserBookings(hotel);
+    customer1.addTotalSpent(hotel);
     expect(customer1.totalSpent).to.be.a('number');
     expect(customer1.totalSpent).to.deep.equal(172.09);
   });
@@ -77,22 +77,18 @@ describe('Customer', () => {
     expect(customer2.bookings.length).to.deep.equal(0);
     expect(customer2.bookings).to.deep.equal(bookingsList);
 
-    const totalSpent = customer2.addTotalSpent(hotel);
+    customer2.addTotalSpent(hotel);
     expect(customer2.totalSpent).to.deep.equal(0);
   });
 
   it.only('Should be able to filter room availability by date', () => {
     const selectedDate = '2022/01/10';
 
-    const availableRooms = customer1.filterRoomsByDate(hotel, selectedDate);
-    console.log('available rooms >>>', availableRooms);
-    
-    // const availableRooms = customer1.filterRoomsByDate(hotel, selectedDate);
-    
+    const filteredRooms = customer1.filterRoomsByDate(hotel, selectedDate);  
+    // console.log(filteredRooms);
     expect(selectedDate).to.be.a.dateString();
-    // const bookingsList = customer1.listAllUserBookings(hotel);
-    // const totalSpent = customer1.addTotalSpent(hotel);
-    // expect(customer1.totalSpent).to.be.a('number');
-    // expect(customer1.totalSpent).to.deep.equal(172.09);
+    expect(filteredRooms).to.be.an('array');
+    expect(filteredRooms.length).to.deep.equal(24);
+    // expect(filteredRooms).to.deep.equal()
   });
 });
