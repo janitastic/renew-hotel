@@ -4,16 +4,16 @@ const expect = chai.expect;
 import Customer from '../classes/Customer';
 import Room from '../classes/Room';
 
-import {customerData} from '../sample-data/customersData';
-import {bookingsData} from '../sample-data/bookingsData';
-import {roomsData} from '../sample-data/roomsData';
+import {customersData} from '../sample-data/sampleCustomers';
+import {bookingsData} from '../sample-data/sampleBookings';
+import {roomsData} from '../sample-data/sampleRooms';
 
 describe('Customer', () => {
   let customer1, customer2, room1, room2, booking1, booking2;
 
   beforeEach(() => {
-    customer1 = new Customer(customerData[0]);
-    customer2 = new Customer(customerData[1]);
+    customer1 = new Customer(customersData[0]);
+    customer2 = new Customer(customersData[1]);
   });
 
   it('Should be a function', () => {
