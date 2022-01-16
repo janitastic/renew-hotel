@@ -29,27 +29,25 @@ describe.only('Hotel', () => {
     expect(hotel).to.have.a.property('rooms');
     expect(hotel.rooms).to.be.an('Array');
     expect(hotel.rooms.length).to.deep.equal(6);
+    expect(hotel.rooms).to.deep.equal(roomsData);
   });
 
-  // it('Should keep track of the user id of the user who booked the room', () => {
-  //   expect(booking1).to.have.a.property('userID');
-  //   expect(booking1.userID).to.be.a('number');
-  //   expect(booking1.userID).to.be.at.least(1);
-  // });
+  it('Should have a bookings property that stores all the bookings in the hotel', () => {
+    expect(hotel).to.have.a.property('bookings');
+    expect(hotel.bookings).to.be.an('Array');
+    expect(hotel.bookings.length).to.deep.equal(6);
+    expect(hotel.bookings).to.deep.equal(bookingsData);
+  });
 
-  // it('Should have a date string formatted by YYYY/MM/DD', () => {
-  //   expect(booking1).to.have.a.property('date');
-  //   expect(booking1.date).to.be.a.dateString();
-  // });
+  it('Should have a customers property that stores all the customers in the hotel', () => {
+    expect(hotel).to.have.a.property('customers');
+    expect(hotel.customers).to.be.an('Array');
+    expect(hotel.customers.length).to.deep.equal(6);
+    expect(hotel.customers).to.deep.equal(customersData);
+  });
 
-  // it('Should have a room number', () => {
-  //   expect(booking1).to.have.a.property('roomNumber');
-  //   expect(booking1.roomNumber).to.be.a('number');
-  //   expect(booking1.roomNumber).to.be.at.least(1);
-  // });
-
-  // it('Should start out with no room service charges', () => {
-  //   expect(booking1).to.have.a.property('roomServiceCharges');
-  //   expect(booking1.roomServiceCharges).to.deep.equal([]);
-  // });
+  it('Should have an available rooms property that stores all the available rooms in the hotel', () => {
+    expect(hotel).to.have.a.property('availableRooms');
+    expect(hotel.availableRooms).to.deep.equal([]);
+  });
 });
