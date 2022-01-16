@@ -55,10 +55,27 @@ describe.only('Customer', () => {
     expect(customer2.totalSpent).to.deep.equal(0);
   });
 
-  it('Should be able to list all of the customer\'s bookings', () => {
-    const actual = customer1.listBookings(hotel);
+  it('Should be able to list all of the current customer\'s bookings', () => {
+    const bookingsList = customer1.listBookings(hotel);
     expect(customer1.bookings).to.be.an('Array');
     expect(customer1.bookings.length).to.deep.equal(1);
-    expect(customer1.bookings).to.deep.equal(actual);
+    expect(customer1.bookings).to.deep.equal(bookingsList);
+  });
+  
+  it('Should be able to calculate the total amount each customer has spent', () => {
+    const bookingsList = customer1.listBookings(hotel);
+    const totalSpent = customer1.addTotalSpent(hotel);
+    expect(customer1.totalSpent).to.be.a('number');
+    expect(customer1.totalSpent).to.deep.equal(172.09);
+  });
+  
+  it('Should be able to return no bookings and nothing spent if the current customer has no reservation history', () => {
+    const bookingsList = customer2.listBookings(hotel);
+    expect(customer2.bookings).to.be.an('Array');
+    expect(customer2.bookings.length).to.deep.equal(0);
+    expect(customer2.bookings).to.deep.equal(bookingsList);
+
+    const totalSpent = customer2.addTotalSpent(hotel);
+    expect(customer2.totalSpent).to.deep.equal(0);
   });
 });

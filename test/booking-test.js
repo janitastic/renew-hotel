@@ -5,7 +5,7 @@ chai.use(require('chai-date-string'));
 import Booking from '../classes/Booking';
 import {bookingsData} from '../sample-data/sampleBookings';
 
-describe.only('Booking', () => {
+describe('Booking', () => {
   let booking1, booking2;
 
   beforeEach(() => {
@@ -26,7 +26,6 @@ describe.only('Booking', () => {
   });
 
   it('Should have booking id number', () => {
-    console.log('2022/02/19' - '2022/02/18');
     expect(booking1).to.have.a.property('id');
     expect(booking1.id).to.be.a('string');
     //will I need the tests below? Or do these change with date.now bookings?
