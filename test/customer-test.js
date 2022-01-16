@@ -4,9 +4,9 @@ const expect = chai.expect;
 import Customer from '../classes/Customer';
 import Room from '../classes/Room';
 
-import {customerData} from '../sample-data/test-customers';
-import {bookingsData} from '../sample-data/test-bookings';
-import {roomsData} from '../sample-data/test-rooms';
+import {customerData} from '../sample-data/customersData';
+import {bookingsData} from '../sample-data/bookingsData';
+import {roomsData} from '../sample-data/roomsData';
 
 describe('Customer', () => {
   let customer1, customer2, room1, room2, booking1, booking2;

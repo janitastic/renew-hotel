@@ -2,7 +2,7 @@ import chai from 'chai';
 const expect = chai.expect;
 
 import Room from '../classes/Room';
-import {roomsData} from '../sample-data/test-rooms';
+import {roomsData} from '../sample-data/roomsData';
 
 describe.only('Room', () => {
   let room1, room2;

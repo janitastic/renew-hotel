@@ -5,7 +5,7 @@ chai.use(require('chai-date-string'));
 
 import Booking from '../classes/Booking';
 // import Customer from '../classes/Customer';
-import {bookingsData} from '../sample-data/test-bookings';
+import {bookingsData} from '../sample-data/bookingsData';
 
 describe.only('Booking', () => {
   let booking1, booking2;
