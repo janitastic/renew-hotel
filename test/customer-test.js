@@ -1,7 +1,9 @@
 import chai from 'chai';
 const expect = chai.expect;
+chai.use(require('chai-date-string'));
 
 import Customer from '../classes/Customer';
+import Booking from '../classes/Booking';
 import Room from '../classes/Room';
 import Hotel from '../classes/Hotel';
 
@@ -9,7 +11,7 @@ import {customersData} from '../sample-data/sampleCustomers';
 import {bookingsData} from '../sample-data/sampleBookings';
 import {roomsData} from '../sample-data/sampleRooms';
 
-describe.only('Customer', () => {
+describe('Customer', () => {
   let customer1, customer2, room1, room2, booking1, booking2, hotel;
 
   beforeEach(() => {
@@ -56,26 +58,41 @@ describe.only('Customer', () => {
   });
 
   it('Should be able to list all of the current customer\'s bookings', () => {
-    const bookingsList = customer1.listBookings(hotel);
+    const bookingsList = customer1.listAllUserBookings(hotel);
     expect(customer1.bookings).to.be.an('Array');
     expect(customer1.bookings.length).to.deep.equal(1);
     expect(customer1.bookings).to.deep.equal(bookingsList);
   });
   
   it('Should be able to calculate the total amount each customer has spent', () => {
-    const bookingsList = customer1.listBookings(hotel);
+    const bookingsList = customer1.listAllUserBookings(hotel);
     const totalSpent = customer1.addTotalSpent(hotel);
     expect(customer1.totalSpent).to.be.a('number');
     expect(customer1.totalSpent).to.deep.equal(172.09);
   });
   
   it('Should be able to return no bookings and nothing spent if the current customer has no reservation history', () => {
-    const bookingsList = customer2.listBookings(hotel);
+    const bookingsList = customer2.listAllUserBookings(hotel);
     expect(customer2.bookings).to.be.an('Array');
     expect(customer2.bookings.length).to.deep.equal(0);
     expect(customer2.bookings).to.deep.equal(bookingsList);
 
     const totalSpent = customer2.addTotalSpent(hotel);
     expect(customer2.totalSpent).to.deep.equal(0);
+  });
+
+  it.only('Should be able to filter room availability by date', () => {
+    const selectedDate = '2022/01/10';
+
+    const availableRooms = customer1.filterRoomsByDate(hotel, selectedDate);
+    console.log('available rooms >>>', availableRooms);
+    
+    // const availableRooms = customer1.filterRoomsByDate(hotel, selectedDate);
+    
+    expect(selectedDate).to.be.a.dateString();
+    // const bookingsList = customer1.listAllUserBookings(hotel);
+    // const totalSpent = customer1.addTotalSpent(hotel);
+    // expect(customer1.totalSpent).to.be.a('number');
+    // expect(customer1.totalSpent).to.deep.equal(172.09);
   });
 });
