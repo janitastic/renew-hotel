@@ -3,17 +3,19 @@ const expect = chai.expect;
 
 import Customer from '../classes/Customer';
 import Room from '../classes/Room';
+import Hotel from '../classes/Hotel';
 
 import {customersData} from '../sample-data/sampleCustomers';
 import {bookingsData} from '../sample-data/sampleBookings';
 import {roomsData} from '../sample-data/sampleRooms';
 
 describe.only('Customer', () => {
-  let customer1, customer2, room1, room2, booking1, booking2;
+  let customer1, customer2, room1, room2, booking1, booking2, hotel;
 
   beforeEach(() => {
     customer1 = new Customer(customersData[0]);
     customer2 = new Customer(customersData[1]);
+    hotel = new Hotel(roomsData, bookingsData, customersData);
   });
 
   it('Should be a function', () => {
@@ -51,5 +53,12 @@ describe.only('Customer', () => {
     expect(customer2.bookings).to.deep.equal([]);
     expect(customer2).to.have.a.property('totalSpent');
     expect(customer2.totalSpent).to.deep.equal(0);
+  });
+
+  it('Should be able to list all of the customer\'s bookings', () => {
+    const actual = customer1.listBookings(hotel);
+    expect(customer1.bookings).to.be.an('Array');
+    expect(customer1.bookings.length).to.deep.equal(1);
+    expect(customer1.bookings).to.deep.equal(actual);
   });
 });
