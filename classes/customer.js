@@ -16,6 +16,11 @@ class Customer {
     return pastBookings;
   }
 
+  listUpcomingBookings(hotel, currentDate) {
+    const upcomingBookings = hotel.bookings.filter(booking => booking.date >= currentDate);
+    return upcomingBookings;
+  }
+
   addTotalSpent(hotel) {
     this.totalSpent = this.bookings.reduce((total, booking) => {
       hotel.rooms.find(room => {

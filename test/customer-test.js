@@ -64,13 +64,22 @@ describe('Customer', () => {
     expect(customer1.bookings).to.deep.equal(bookingsList);
   });
 
-  it.only('Should be able to list all of the current customer\'s past bookings', () => {
+  it('Should be able to list all of the current customer\'s past bookings', () => {
     const currentDate = '2022/01/16';
 
     const pastBookings = customer1.listPastBookings(hotel, currentDate);
     expect(pastBookings).to.be.an('Array');
     expect(pastBookings.length).to.deep.equal(1);
     expect(pastBookings).to.deep.equal([bookingsData[2]]);
+  });
+
+  it('Should be able to list all of the current customer\'s past bookings', () => {
+    const currentDate = '2022/01/16';
+
+    const pastBookings = customer1.listUpcomingBookings(hotel, currentDate);
+    expect(pastBookings).to.be.an('Array');
+    expect(pastBookings.length).to.deep.equal(5);
+    expect(pastBookings).to.deep.equal([bookingsData[0], bookingsData[1], bookingsData[3], bookingsData[4], bookingsData[5]]);
   });
   
   it('Should be able to calculate the total amount each customer has spent', () => {
