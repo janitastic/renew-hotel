@@ -6,31 +6,41 @@ const fetchCustomers = () => {
   fetch(customers)
     .then(response => response.json())
     .then(data => console.log(data))
-    .catch(error => console.log(error))
+    .catch(error => {
+      console.log(error)
+      checkResponse(response)
+    })
 }
 
 const fetchBookings = () => {
   fetch(bookings)
     .then(response => response.json())
     .then(data => console.log(data))
-    .catch(error => console.log(error))
+    .catch(error => {
+      console.log(error)
+      checkResponse(response)
+    })
 }
 
 const fetchRooms = () => {
   fetch(rooms)
     .then(response => response.json())
     .then(data => console.log(data))
-    .catch(error => console.log(error))
+    .catch(error => {
+      console.log(error)
+      checkResponse(response)
+    })
 }
 
 /*************** PROMISE ***************/
-let hotel;
-
 const fetchAllData = () => {
-  Promise.all([fetchCustomers(), fetchBookings(), fetchRooms()])
+  Promise.all([allCustomersData, allBookingsData, allRoomsData])
     .then(data => {
-      // console.log(data)
-      hotel = new Hotel(data[0].rooms, data[1].customers, data[2].bookings);
+      console.log(data)
+    })
+    .catch(error => {
+      console.log(error)
+      checkResponse(response)
     })
 }
 
@@ -58,10 +68,21 @@ const bookRoom = (userId, selectedDate, roomNumber) => {
 
 /*************** ERROR HANDLING ***************/
 
+const checkResponse = (response) => {
+  if (!response.ok) {
+    throw new Error('Status: ${response.status} StatusText: ${response.status.text}');
+  }
+  return response.json()
+}
+
 /*************** VARIABLES ***************/
 const customers = 'http://localhost:3001/api/v1/customers';
 const bookings = 'http://localhost:3001/api/v1/bookings';
 const rooms = 'http://localhost:3001/api/v1/rooms';
+
+const allCustomersData = fetchCustomers();
+const allBookingsData = fetchBookings();
+const allRoomsData = fetchRooms();
 
 /*************** QUERY SELECTORS ***************/
 
