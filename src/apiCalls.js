@@ -1,3 +1,4 @@
+import Hotel from '../classes/Hotel';
 import {loadPage} from './scripts.js';
 /*************** FETCH CALLS ***************/
 
@@ -15,11 +16,22 @@ const fetchBookings = () => {
     .catch(error => console.log(error))
 }
 
+const fetchRooms = () => {
+  fetch(rooms)
+    .then(response => response.json())
+    .then(data => console.log(data))
+    .catch(error => console.log(error))
+}
+
 /*************** PROMISE ***************/
+let hotel;
 
 const fetchAllData = () => {
-  Promise.all([fetchCustomers(), fetchBookings()])
-    .then(data => console.log(data))
+  Promise.all([fetchCustomers(), fetchBookings(), fetchRooms()])
+    .then(data => {
+      // console.log(data)
+      hotel = new Hotel(data[0].rooms, data[1].customers, data[2].bookings);
+    })
 }
 
 /*************** POST REQUESTS ***************/
@@ -47,10 +59,10 @@ const bookRoom = (userId, selectedDate, roomNumber) => {
 /*************** ERROR HANDLING ***************/
 
 /*************** VARIABLES ***************/
-
 const customers = 'http://localhost:3001/api/v1/customers';
 const bookings = 'http://localhost:3001/api/v1/bookings';
+const rooms = 'http://localhost:3001/api/v1/rooms';
 
 /*************** QUERY SELECTORS ***************/
 
-export default {fetchAllData, fetchCustomers, fetchBookings};
+export default {fetchAllData, fetchCustomers, fetchBookings, fetchRooms};
