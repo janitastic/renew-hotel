@@ -3,8 +3,6 @@ const expect = chai.expect;
 chai.use(require('chai-date-string'));
 
 import Customer from '../classes/Customer';
-import Booking from '../classes/Booking';
-import Room from '../classes/Room';
 import Hotel from '../classes/Hotel';
 
 import {customersData} from '../sample-data/sampleCustomers';
@@ -12,7 +10,7 @@ import {bookingsData} from '../sample-data/sampleBookings';
 import {roomsData} from '../sample-data/sampleRooms';
 
 describe('Customer', () => {
-  let customer1, customer2, room1, room2, booking1, booking2, hotel;
+  let customer1, customer2, hotel;
 
   beforeEach(() => {
     customer1 = new Customer(customersData[0]);
@@ -58,10 +56,10 @@ describe('Customer', () => {
   });
 
   it('Should be able to list all of the current customer\'s bookings', () => {
-    const bookingsList = customer1.listAllUserBookings(hotel);
+    customer1.listAllUserBookings(hotel);
     expect(customer1.bookings).to.be.an('Array');
     expect(customer1.bookings.length).to.deep.equal(1);
-    expect(customer1.bookings).to.deep.equal(bookingsList);
+    expect(customer1.bookings).to.deep.equal([bookingsData[4]]);
   });
 
   it('Should be able to list all of the current customer\'s past bookings', () => {
@@ -90,10 +88,10 @@ describe('Customer', () => {
   });
   
   it('Should be able to return no bookings and nothing spent if the current customer has no reservation history', () => {
-    const bookingsList = customer2.listAllUserBookings(hotel);
+    customer2.listAllUserBookings(hotel);
     expect(customer2.bookings).to.be.an('Array');
     expect(customer2.bookings.length).to.deep.equal(0);
-    expect(customer2.bookings).to.deep.equal(bookingsList);
+    expect(customer2.bookings).to.deep.equal([]);
 
     customer2.addTotalSpent(hotel);
     expect(customer2.totalSpent).to.deep.equal(0);
