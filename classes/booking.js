@@ -1,5 +1,3 @@
-import {bookingsData} from '../sample-data/test-bookings';
-
 class Booking {
   constructor(booking) {
     this.id = booking.id;
@@ -8,11 +6,6 @@ class Booking {
     this.roomNumber = booking.roomNumber;
     this.roomServiceCharges = [];
   }
-
-  // findHighestNumber() {
-  //   const sortLowestToHighest = bookingsData.sort((a,b) => a.userID - b.userID);
-  //   return sortLowestToHighest.pop().userID;
-  // }
 }
 
 export default Booking;

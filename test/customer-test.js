@@ -80,15 +80,4 @@ describe('Customer', () => {
     customer2.addTotalSpent(hotel);
     expect(customer2.totalSpent).to.deep.equal(0);
   });
-
-  it.only('Should be able to filter room availability by date', () => {
-    const selectedDate = '2022/01/10';
-
-    const filteredRooms = customer1.filterRoomsByDate(hotel, selectedDate);  
-    // console.log(filteredRooms);
-    expect(selectedDate).to.be.a.dateString();
-    expect(filteredRooms).to.be.an('array');
-    expect(filteredRooms.length).to.deep.equal(24);
-    // expect(filteredRooms).to.deep.equal()
-  });
 });
