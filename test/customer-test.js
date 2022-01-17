@@ -71,7 +71,7 @@ describe('Customer', () => {
     expect(pastBookings).to.deep.equal([bookingsData[2]]);
   });
 
-  it('Should be able to sort a customer\'s bookings from ', () => {
+  it('Should be able to list all of the current customer\'s upcoming bookings', () => {
     const currentDate = '2022/01/16';
 
     const pastBookings = customer1.listUpcomingBookings(hotel, currentDate);
