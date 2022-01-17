@@ -1,6 +1,6 @@
-const customerData =  [
+const customersData =  [
   // {
-  //   'customers': [
+  //   'customerss': [
       {
         'id': 1,
         'name': 'Leatha Ullrich'
@@ -29,4 +29,4 @@ const customerData =  [
   // }
 ]
 
-export {customerData};
+export {customersData};

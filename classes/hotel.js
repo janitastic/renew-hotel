@@ -43,14 +43,13 @@ class Hotel {
   }
 
   filterAvailableRoomsByType(selectedType) {
-    // this.filterRoomsByDate(selectedDate)
     if (!this.availableRooms.length) {
       this.availableRooms = this.rooms.filter(room => room.roomType === selectedType);
-      // console.log('available rooms', this.availableRooms);
-      // return 'no available rooms message';
+      console.log('available rooms', this.availableRooms);
+      return 'no available rooms message';
     } else {
       this.availableRooms = this.availableRooms.filter(room => room.roomType === selectedType);
-      // console.log('available rooms 2', this.availableRooms);
+      console.log('available rooms 2', this.availableRooms);
     }
   }
 }
