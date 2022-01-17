@@ -1,6 +1,3 @@
-import Room from './room';
-import Booking from './booking';
-
 class Hotel {
   constructor(roomsData, bookingsData, customersData) {
     this.rooms = roomsData;

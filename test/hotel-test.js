@@ -1,10 +1,8 @@
 import chai from 'chai';
 const expect = chai.expect;
-// chai.use(require('chai-date-string'));
+chai.use(require('chai-date-string'));
 
 import Hotel from '../classes/Hotel';
-import Customer from '../classes/Customer';
-import Room from '../classes/Room';
 
 import {customersData} from '../sample-data/sampleCustomers';
 import {bookingsData} from '../sample-data/sampleBookings';
@@ -63,7 +61,6 @@ describe('Hotel', () => {
     const selectedDate = '2022/01/10';
 
     const availableRooms = hotel.filterRoomsByDate(selectedDate);  
-    // console.log(availableRooms);
 
     expect(selectedDate).to.be.a.dateString();
     expect(availableRooms).to.be.an('array');
@@ -99,9 +96,11 @@ describe('Hotel', () => {
     expect(residential).to.be.a('string');
     expect(residentialType).to.be.an('array');
     expect(residentialType.length).to.deep.equal(5);
+    expect(residentialType).to.deep.equal([roomsData[0], roomsData[13], roomsData[14], roomsData[19], roomsData[22]]);
 
     expect(single).to.be.a('string');
     expect(singleType).to.be.an('array');
     expect(singleType.length).to.deep.equal(13);
+    expect(singleType).to.deep.equal([roomsData[2], roomsData[3], roomsData[4], roomsData[6], roomsData[8], roomsData[10], roomsData[11], roomsData[12], roomsData[15], roomsData[18], roomsData[20], roomsData[21], roomsData[24]]);
   });
 });
