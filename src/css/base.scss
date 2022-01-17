@@ -1,6 +1,522 @@
-/* This is an example of how to import a partial scss file*/
 @import '_variables';
+@import '_mixins';
+@import '_reset';
+@import '_mediaqueries';
+
+* {
+	font-family: $bodyFont;
+	color: $offWhite;
+}
+
+
+html {
+  scroll-behavior: smooth;
+}
 
 body {
-  background: $primary-background;
+  height: 100vh;
+  background: $soft-teal;
+  line-height: 1.2;
+}
+
+.hero {
+  background-image: url('../images/hero.png');
+	background-size: cover;
+	background-repeat: no-repeat;
+	padding: 5% 0 0 0;
+	width: 100vw;
+}
+
+header {
+	// padding: 2%;
+	// background-color: $dark-green;
+	grid-template-columns: 1fr 3fr;
+	grid-gap: 1em;
+	@include flexgrid(normal, normal, normal, stretch);
+}
+
+nav {
+	@include flexbox(row, wrap, normal, flex-end, normal);
+}
+
+h1 {
+	font-family: $headerFont;
+	font-size: 2em;
+	color: $offWhite;
+}
+
+h2 {
+	font-family: $headerFont;
+	font-size: 1.5em;
+	color: $offWhite;
+	text-shadow: 3px 3px 8px black;
+}
+
+h3 {
+	font-size: 1.2em;
+	color: $offWhite;
+	padding: 5%;
+	text-align: center;
+}
+
+h4 {
+	font-size: 1.5em;
+  font-weight: 600;
+	color: $offWhite;
+}
+
+main {
+	height: 100%;
+}
+
+a {
+	text-decoration: none;
+}
+
+.search-bar,
+.favorite-search-bar {
+	@include flexbox(column, wrap, center, normal, center);
+	padding: 5% 5% 2% 5%;
+}
+
+.no-recipes,
+.delete-instructions {
+	text-align: center;
+	margin-top: 5%;
+}
+
+.checked-icon {
+	margin: 2%;
+}
+
+.instructions {
+	// color: $almost-black;
+}
+
+.user-message {
+	text-align: center;
+	padding: 2%;
+}
+
+.recipe-cards {
+	gap: 2em;
+  grid-template-columns: 25% 25% 25% 25%;
+	padding: 5% 10%;
+	@include flexgrid(normal, center, normal, normal);
+}
+
+.card,
+.individual-card,
+.pantry-card {
+	border-radius: 0.5em;
+	font-size: 1.2em;
+  background-color: rgba(10, 30, 35, .90);
+  box-shadow: $boxShadow;
+  padding: 5%;
+}
+
+.individual-card,
+.pantry-card {
+	@include flexbox(column, nowrap, normal, normal, normal);
+	margin: 5% 20%;
+}
+
+.pantry-list {
+	@include flexbox(row, wrap, normal, normal, normal);
+}
+
+.name-and-image {
+	flex: 2;
+  padding-right: 5%;
+}
+
+.ingredients {
+	flex: 2;
+	@include flexbox(column, nowrap, normal, center, normal);
+	padding-left: 5%;
+}
+
+.card:hover {
+	transform: scale(1.1);
+}
+
+.thumbnail-image {
+	width: 100%;
+	border-radius: 0.2em;
+}
+
+.recipe-image {
+	width: 100%;
+	border-radius: 0.3em;
+}
+
+.recipe-card-top {
+	display: flex;
+}
+
+.recipe-ingredients {
+  padding-left: 10%;
+	margin-top: 5%;
+}
+
+.ingredient-bullet {
+	list-style: disc;
+	margin: 1%;
+}
+
+ol, li {
+	list-style: none;
+	margin: 1%;
+}
+
+hr {
+	border-top: 1px solid $offWhite;
+  margin: 1.5em 0;
+  width: 100%;
+}
+
+.recipe-card-bottom {
+	@include flexbox(column, nowrap, normal, normal, normal);
+}
+
+.step-number {
+	font-weight: 600;
+	font-size: 1.2em;
+}
+
+.menu-button {
+	cursor: pointer;
+	@include flexbox(row, nowrap, normal, normal, center);
+	background-color: transparent;
+	color: $offWhite;
+  border: none;
+  font-size: .75em;
+	white-space: nowrap;
+	padding: 0 2%;
+
+	&:hover {
+		transform: scale(1.1);
+	}
+}
+
+.icon,
+.filter-icon {
+	padding: 5%;
+
+	&:hover {
+		transform: scale(1.2);
+	}
+}
+
+.checked-icon {
+	margin: 2%;
+}
+
+.search-title {
+	text-align: left;
+  margin: 2%;
+	// color: $almost-black;
+	font-size: 1.2em;
+	text-shadow: 1px 1px 18px black;
+}
+
+input {
+	margin: 1%;
+	width: 98%;
+	padding: 2%;
+	border-radius: 3px;
+	border: none;
+	font-size: 1em;
+	// color: $almost-black;
+}
+
+.example-text {
+	font-size: 0.60em;
+	// color: $light-gray;
+	text-align: left;
+	margin: 1% 2% 2% 2%;
+	padding: 0;
+}
+
+.filter-buttons,
+.cook-button,
+.favorite-button {
+	background-color: transparent;
+	color: $offWhite;
+  border: none;
+  font-size: 1em;
+	padding: 1%;
+}
+
+.hide-text {
+	display: none;
+}
+
+.recipe-icon:hover + .hide-text,
+.add-icon:hover + .hide-text {
+	@include flexbox(row, nowrap, normal, center, normal);
+}
+
+.filter-buttons:hover
+.recipe-card-button:hover {
+	transform: scale(1.1);
+}
+
+.top-buttons {
+	gap: 11em;
+	grid-template-columns: 50% 50%;
+	margin: 0 0 10% 0;
+	@include flexgrid(normal, center, normal, normal);
+}
+
+.pantry-title {
+	gap: 5em;
+	grid-template-columns: 75% 25%;
+	margin: 0 0 5% 10%;
+	@include flexgrid(normal, center, normal, normal);
+}
+
+.recipe-card-button {
+	@include flexbox(column, nowrap, normal, normal, center);
+}
+
+.trash-icon {
+	text-align: center;
+}
+
+.card-icons {
+	@include flexbox(row, nowrap, normal, space-between, normal);
+}
+
+.search-button,
+.return-button,
+.check-pantry-btn {
+	border-radius: 0.5em;
+  font-size: 1.5em;
+	font-weight: 600;
+  // background-color: $burgundy;
+  box-shadow: $boxShadow;
+  color: $offWhite;
+	border: none;
+	letter-spacing: 2px;
+	min-width: 15em;
+  min-height: 4em;
+
+	&:hover {
+		cursor: pointer;
+		// background-color: $light-brown;
+		transform: scale(1.1);
+	}
+}
+
+.return-button,
+.check-pantry-btn {
+	letter-spacing: 1px;
+	min-width: 10em;
+  min-height: 2em;
+	margin: 1em;
+}
+
+.search-icon {
+	display: inline-block;
+}
+
+.filter-icons,
+.favorite-filter-icons {
+	margin-top: 10%;
+	padding: 2% 0;
+	text-align: center;
+	background-color: rgba(10, 30, 35, .9);
+}
+
+.link-to-recipes {
+	color: transparent;
+}
+
+.drop-down,
+.fav-drop-down {
+  position: relative;
+  display: inline-block;
+  text-align: center;
+
+  & a:hover {
+		cursor: default;
+	}
+}
+
+.drop-down-search,
+.fav-drop-down-search {
+  display: none;
+  background-color: rgba(242, 242, 242, .8);
+  min-width: 230px;
+	margin: 1%;
+  overflow: auto;
+  border: 1px solid #ddd;
+  z-index: 1;
+	border-radius: 0.5em;
+  font-size: 1.2em;
+	font-weight: 500;
+  box-shadow: $boxShadow;
+  color: $offWhite;
+	border: none;
+
+	& a {
+		padding: 12px 16px;
+		text-decoration: none;
+		display: block;
+	}
+}
+
+.search-buttons {
+	// background-color: $burgundy;
+  padding: 3% 6%;
+  border-radius: 0.2em;
+	border: none;
+	font-size: 1em;
+	width: 90%;
+
+	&:hover {
+		cursor: pointer;
+		// background-color: $light-brown;
+	}
+
+	&:disabled {
+		cursor: no-drop;
+		background-color: gray;
+	}
+}
+
+.drop-down-arrow {
+	line-height: 4em;
+	color: $offWhite;
+}
+
+.hidden {
+	display: none;
+}
+
+.show {
+	display: block;
+}
+
+//media-queries
+//tablet view
+@media only screen and (max-width: 1068px) {
+// @media (min-width: 1025px) and (max-width: 1280px) {
+	nav {
+		// @include flexbox(row, wrap, normal, center, normal);
+    @include flexbox(row, wrap, normal, flex-end, normal);
+	}
+
+  .recipe-cards {
+    grid-template-columns: 33% 33% 33%;
+  }
+}
+
+//Tablet landscape view
+// @media only screen and (max-width: 734px)
+@media (min-width: 1024px) and (max-width: 768px) {
+	header {
+		@include flexbox(column, wrap, normal, normal, stretch);
+	}
+
+	h1 {
+		text-align: center;
+		margin: 2% 0%;
+	}
+
+	nav {
+		margin: 2% 0%;
+	}
+
+	.menu-button {
+		margin: none;
+	}
+
+  .recipe-cards {
+    grid-template-columns: 50% 50%;
+  }
+
+	.indvidual-card,
+	.pantry-card {
+		margin: 5%;
+	}
+}
+
+//Tablet portrait view
+@media (min-width: 768px) and (max-width: 1024px) {
+	// header {
+	// 	@include flexbox(column, wrap, normal, normal, stretch);
+	// }
+
+	h1 {
+		text-align: center;
+		margin: 2% 0%;
+	}
+
+	nav {
+		margin: 2% 0%;
+	}
+
+	.menu-button {
+		margin: none;
+	}
+
+  .recipe-cards {
+    grid-template-columns: 50% 50%;
+  }
+
+	.top-buttons {
+		@include flexbox(row, nowrap, normal, space-evenly, normal);
+	}
+
+	.indvidual-card,
+	.pantry-card {
+		margin: 5%;
+	}
+}
+
+//small mobile device view
+@media (min-width: 320px) and (max-width: 767px) {
+	header {
+		@include flexbox(column, wrap, normal, normal, stretch);
+	}
+
+	h1 {
+		text-align: center;
+		margin: 2% 0%;
+	}
+
+	nav {
+		@include flexbox(column, wrap, normal, normal, center);
+		margin: 2%;
+	}
+
+	.menu-button {
+		padding: 0;
+		margin: 0;
+		max-height: 2em;
+	}
+
+  .recipe-cards {
+    grid-template-columns: 100%;
+  }
+
+	.top-buttons {
+		@include flexbox(row, nowrap, normal, space-evenly, normal);
+	}
+
+	.indvidual-card,
+	.pantry-card {
+		margin: 5%;
+	}
+
+	.recipe-card-top {
+    display: flex;
+    flex-direction: column;
+	}
+
+	.ingredients-title {
+		margin-top: 5%;
+	}
 }
