@@ -1,3 +1,4 @@
+import Hotel from '../classes/Hotel';
 import {loadPage} from './scripts.js';
 /*************** FETCH CALLS ***************/
 
@@ -5,21 +6,42 @@ const fetchCustomers = () => {
   fetch(customers)
     .then(response => response.json())
     .then(data => console.log(data))
-    .catch(error => console.log(error))
+    .catch(error => {
+      console.log(error)
+      checkResponse(response)
+    })
 }
 
 const fetchBookings = () => {
   fetch(bookings)
     .then(response => response.json())
     .then(data => console.log(data))
-    .catch(error => console.log(error))
+    .catch(error => {
+      console.log(error)
+      checkResponse(response)
+    })
+}
+
+const fetchRooms = () => {
+  fetch(rooms)
+    .then(response => response.json())
+    .then(data => console.log(data))
+    .catch(error => {
+      console.log(error)
+      checkResponse(response)
+    })
 }
 
 /*************** PROMISE ***************/
-
 const fetchAllData = () => {
-  Promise.all([fetchCustomers(), fetchBookings()])
-    .then(data => console.log(data))
+  Promise.all([allCustomersData, allBookingsData, allRoomsData])
+    .then(data => {
+      console.log(data)
+    })
+    .catch(error => {
+      console.log(error)
+      checkResponse(response)
+    })
 }
 
 /*************** POST REQUESTS ***************/
@@ -46,11 +68,22 @@ const bookRoom = (userId, selectedDate, roomNumber) => {
 
 /*************** ERROR HANDLING ***************/
 
-/*************** VARIABLES ***************/
+const checkResponse = (response) => {
+  if (!response.ok) {
+    throw new Error('Status: ${response.status} StatusText: ${response.status.text}');
+  }
+  return response.json()
+}
 
+/*************** VARIABLES ***************/
 const customers = 'http://localhost:3001/api/v1/customers';
 const bookings = 'http://localhost:3001/api/v1/bookings';
+const rooms = 'http://localhost:3001/api/v1/rooms';
+
+const allCustomersData = fetchCustomers();
+const allBookingsData = fetchBookings();
+const allRoomsData = fetchRooms();
 
 /*************** QUERY SELECTORS ***************/
 
-export default {fetchAllData, fetchCustomers, fetchBookings};
+export default {fetchAllData, fetchCustomers, fetchBookings, fetchRooms};
