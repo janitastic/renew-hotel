@@ -1,6 +1,6 @@
 /*************** FILE IMPORTS ***************/
 import './css/base.scss';
-import {fetchCustomers, fetchBookings, fetchRooms} from './apiCalls';
+import {fetchCustomers, fetchBookings, fetchRooms, fetchSingleCustomer} from './apiCalls';
 import domUpdates from './domUpdates';
 
 import Hotel from '../classes/Hotel';
@@ -43,6 +43,12 @@ const instantiateClasses = (data) => {
     hotel.getCurrentCustomer(currentCustomerId);
   console.log(currentCustomerId);
     //display customer name to DOM
+  fetchCurrentUser(currentCustomerId);
+}
+
+const fetchCurrentUser = (id) => {
+  console.log('id in fetch call', id)
+  return Promise.all([fetchSingleCustomer(id)]);
 }
 
 const loadPage = (data) => {
@@ -70,4 +76,4 @@ window.addEventListener('load', loadData);
 
 /*************** EXPORTS ***************/
 
-export {fetchAllData};
+export {currentCustomerId, fetchAllData};

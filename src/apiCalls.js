@@ -1,7 +1,7 @@
 import Hotel from '../classes/Hotel';
-import {fetchAllData} from './scripts.js';
+import {currentCustomerId, fetchAllData} from './scripts.js';
 import domUpdates from './domUpdates.js';
-
+// let id = 18;
 /*************** FETCH CALLS ***************/
 
 const fetchCustomers = () => {
@@ -14,15 +14,15 @@ const fetchCustomers = () => {
     })
 }
 
-// const fetchSingleCustomer = (id) => {
-//   fetch('http://localhost:3001/api/v1/customers/${id}')
-//     .then(response => response.json())
-//     .then(data => console.log(data))
-//     .catch(error => {
-//       console.log(error)
-//       checkResponse(response)
-//     })
-// }
+const fetchSingleCustomer = (id) => {
+  fetch(`http://localhost:3001/api/v1/customers/${id}`)
+    .then(response => response.json())
+    .then(data => console.log('currentUser >>>', data))
+    .catch(error => {
+      console.log(error)
+      checkResponse(response)
+    })
+}
 
 const fetchBookings = () => {
   return fetch(bookings)
@@ -80,16 +80,12 @@ const checkForErrors = (response) => {
 const customers = 'http://localhost:3001/api/v1/customers';
 const bookings = 'http://localhost:3001/api/v1/bookings';
 const rooms = 'http://localhost:3001/api/v1/rooms';
-const singleCustomer = 'http://localhost:3001/api/v1/customers/${id}';
+// const singleCustomer = `http://localhost:3001/api/v1/customers/${id}`;
 
-const allCustomersData = fetchCustomers();
-const allBookingsData = fetchBookings();
-const allRoomsData = fetchRooms();
-// const singleCustomerData = fetchSingleCustomer(1);
 
 const newBooking = { 'userID': 18, 'date': '2021/01/20', 'roomNumber': 5 }
 
 
-export {fetchCustomers, fetchBookings, fetchRooms};
+export {fetchCustomers, fetchBookings, fetchRooms, fetchSingleCustomer};
 
 // export default {apiCalls};
