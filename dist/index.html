@@ -1,19 +1,90 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" dir="ltr">
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Webpack Starter Kit</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Belleza&family=Marcellus&family=Montserrat:wght@100;200;300;400;500;600;700&display=swap" rel="stylesheet">
+  <title>Dew Breeze Suites | Luxury Boutique Hotel</title>
+  <link rel="icon" href="../images/dew-breeze-favicon.png" type="image/x-icon">
 </head>
 <body>
-  <p id="data">
-    <!-- data displays here -->
-  <p>
-  <img src="./images/turing-logo.png" alt="turing logo">
-  <p>Jani Test</p>
-  <!-- Do not include the scripts.js or class files here - it is done by the webpack server -->
+  <main>
+    <article class="hero">
+      <header>
+        <!-- <a href="/"><h1>Dew Breeze Suites</h1></a> -->
+        <a href="/"><img class="logo" src="../images/dew-breeze-header-logo.png" alt="Dew Breeze Suites Luxury Boutique Hotel logo"></a>
+        <nav>
+          <a class="menu" id="home">Home</a>
+          <a class="menu" id="reservations">Your Reservations</a>
+          <a class="menu" id="login">Login</a>
+          <a class="menu" id="logout">Log Out</a>
+          <button class="book-now" id="bookNow">Book Now</button>
+        </nav>
+      </header>
+      <section class="hero-message">
+        <div class="user-message" id="userMessage">
+          <!-- where our user greeting displays -->
+        </div>
+        <!-- <button class="hero-button">Book Now</button> -->
+        <img class="hero-logo" src="../images/dew-breeze-suites-logo.png" alt="Dew Breeze Suites Logo">
+      </section>
+      <section class="search-form" id="searchForm">
+        <h2>Make a Reservation</h2>
+        <!-- <a class="link-to-rooms" href="#filterRooms" tabindex="-1"> -->
+          <!-- search form here -->
+          <form class="search-wrapper">
+              <label for="dateInput">
+                <p class="example-text">Check In</p>
+                <input class="date-input" id="dateInput" type="date">
+              </label>
+                <!-- <input type="submit" class="search-button" id="dateSearch">Search -->
+                <button class="search-button" id="dateSearch">Search</button>
+              <label for="typeInput">
+                <p class="example-text">Room Type</p>
+                <!-- <input class="input" id="typeInput" placeholder="ex: single room"> -->
+                <select class="input" id="typeInput" placeholder="make a selection" name="room options">
+                  <option value="all">any</option>
+                  <option value="residential">residential suite</option>
+                  <option value="suite">suite</option>
+                  <option value="single">single room</option>
+                  <option value="junior suite">junior suite</option>
+                </select>
+              </label>
+                <!-- <input type="submit" class="search-button" id="typeSearch">Search Rooms -->
+                <button class="search-button" id="typeSearch">Filter</button>
+                <button class="search-button" id="clear">Clear</button>
+          </form>
+        <!-- </a> -->
+      </section>
+    </article>
+    <article class="filter-rooms" id="filterRooms" tabindex="0">
+      <!-- display room filter images -->
+      <h3>Images will display here</h3>
+      <section class="no-rooms-message" id="noRoomsMessage">
+        <!-- display no rooms message here -->
+      </section>
+    </article>
+    <article class="bookings" id="bookings" tabindex="0">
+      <section class="total-spent" id="totalSpent">
+        <!-- total spent displays here -->
+      </section>
+      <section class="current-bookings" id="current">
+        <!-- upcoming bookings display header -->
+      </section>
+      <section class="upcoming-bookings" id="upcoming">
+        <!-- upcoming bookings display header -->
+      </section>
+      <section class="past-bookings" id="past">
+        <!-- upcoming bookings display header -->
+      </section>
+    </article>
+    <article>
+      <!-- login page will go here -->
+    </article>
+  </main>
   <script src="bundle.js"></script>
-
 </body>
 </html>

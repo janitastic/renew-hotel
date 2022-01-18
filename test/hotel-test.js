@@ -8,7 +8,7 @@ import {customersData} from '../sample-data/sampleCustomers';
 import {bookingsData} from '../sample-data/sampleBookings';
 import {roomsData} from '../sample-data/sampleRooms';
 
-describe('Hotel', () => {
+describe.only('Hotel', () => {
   let hotel;
 
   beforeEach(() => {
@@ -43,18 +43,23 @@ describe('Hotel', () => {
     expect(hotel.customers.length).to.deep.equal(6);
     expect(hotel.customers).to.deep.equal(customersData);
   });
-
-  it('Should have an available rooms property that stores all the available rooms in the hotel', () => {
-    expect(hotel).to.have.a.property('availableRooms');
-    expect(hotel.availableRooms).to.deep.equal([]);
-  });
-
+  
   it('Should be able to log all room types with no duplicates', () => {
     const roomTypesList = hotel.logRoomTypes();  
-
+    
     expect(roomTypesList).to.be.an('array');
     expect(roomTypesList.length).to.deep.equal(4);
     expect(roomTypesList).to.deep.equal([ 'residential suite', 'suite', 'single room', 'junior suite' ]);
+  });
+  
+  it('Should be able to acces the current customer\'s id and first name', () => {
+    expect(hotel).to.have.a.property('currentCustomer');
+    expect(hotel).to.have.a.property('currentCustomerFirstName');
+
+    hotel.getCurrentCustomer(1);
+    
+    expect(hotel.currentCustomer.id).to.deep.equal(1);
+    expect(hotel.currentCustomerFirstName).to.deep.equal('Leatha');
   });
 
   it('Should be able to filter room availability by date', () => {

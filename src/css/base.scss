@@ -1,6 +1,403 @@
-/* This is an example of how to import a partial scss file*/
 @import '_variables';
+@import '_mixins';
+@import '_reset';
+@import '_media';
+
+* {
+	font-family: $bodyFont;
+	// color: $offWhite;
+}
+
+html {
+  scroll-behavior: smooth;
+}
 
 body {
-  background: $primary-background;
+  height: 100vh;
+  // background: $soft-teal;
+  line-height: 1.2;
 }
+
+header {
+  padding: 1% 2%;
+	background-color: $transparentTeal;
+	grid-template-columns: 2fr 3fr;
+	grid-gap: 1em;
+	@include flexgrid(normal, normal, normal, stretch);
+}
+
+.logo {
+  width: 70%;
+}
+
+nav {
+  @include flexbox(row, wrap, normal, flex-end, normal);
+}
+
+.book-now {
+  cursor: pointer;
+  background-color: $green;
+	color: $offWhite;
+  border: none;
+  max-height: 2.5em;
+  min-height: 2.5em;
+  min-width: 6em;
+
+  &:hover {
+		background-color: $paleGreen;
+    color: $offWhite;
+	}
+}
+
+.hero {
+  background-image: url('../images/hero.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+  // padding: 5% 0 0 0;
+  // width: 100vw;
+}
+
+.hero-logo {
+  background-color: rgba(248, 248, 248, .60);
+  width: 40%;
+}
+
+.hero-button {
+  cursor: pointer;
+  padding: 2% 5%;
+  background-color: $transparentTeal;
+  font-family: $titleFont;
+  font-size: 2em;
+  border: none;
+  box-shadow: $boxShadow;
+
+  &:hover {
+		transform: scale(1.2);
+	}
+}
+
+.search-wrapper {
+  margin: 2%;
+  @include flexbox(row, nowrap, normal, center, center);
+}
+
+h1 {
+	font-family: $headerFont;
+	font-size: 2em;
+	color: $offWhite;
+}
+
+h2 {
+	font-family: $titleFont;
+	font-size: 1em;
+  font-size: 1.2em;
+  font-weight: 400;
+  letter-spacing: 1px;
+	color: $offWhite;
+	text-shadow: 3px 3px 8px black;
+}
+
+h3 {
+	font-size: 1.2em;
+	color: $offWhite;
+	padding: 5%;
+	text-align: center;
+}
+
+h4 {
+	font-size: 1.5em;
+  font-weight: 600;
+	color: $offWhite;
+}
+
+main {
+	height: 100%;
+  background-color: $softTeal;
+}
+
+a {
+	text-decoration: none;
+}
+
+.hero-message {
+	@include flexbox(column, wrap, center, normal, center);
+	padding: 5% 5% 2% 5%;
+}
+
+.checked-icon {
+	margin: 2%;
+}
+
+.user-message {
+	text-align: center;
+	padding: 2%;
+}
+
+.room-cards {
+	gap: 2em;
+  grid-template-columns: 25% 25% 25% 25%;
+	padding: 5% 10%;
+	@include flexgrid(normal, center, normal, normal);
+}
+
+.card {
+	border-radius: 0.5em;
+	font-size: 1.2em;
+  background-color: rgba(10, 30, 35, .90);
+  box-shadow: $boxShadow;
+  padding: 5%;
+}
+
+.thumbnail-image {
+	width: 100%;
+	border-radius: 0.2em;
+}
+
+.room-image {
+	width: 100%;
+	border-radius: 0.3em;
+}
+
+ol, li {
+	list-style: none;
+	margin: 1%;
+}
+
+hr {
+	border-top: 1px solid $offWhite;
+  margin: 1.5em 0;
+  width: 100%;
+}
+
+.menu {
+	cursor: pointer;
+	@include flexbox(row, nowrap, normal, normal, center);
+	background-color: transparent;
+	color: $offWhite;
+  border: none;
+  font-family: $titleFont;
+  font-size: .75em;
+  letter-spacing: 1px;
+	white-space: nowrap;
+	padding: 0 2%;
+
+	&:hover {
+		transform: scale(1.1);
+	}
+}
+
+.icon,
+.filter-icon {
+	padding: 5%;
+
+	&:hover {
+		transform: scale(1.2);
+	}
+}
+
+.checked-icon {
+	margin: 2%;
+}
+
+.search-title {
+	text-align: left;
+  margin: 2%;
+	// color: $almost-black;
+	font-size: 1.2em;
+	text-shadow: 1px 1px 18px black;
+}
+
+input,
+select {
+	// margin: 1%;
+	// width: 98%;
+	padding: .5em;
+	// border-radius: 3px;
+	border: none;
+	// font-size: 1em;
+	color: #020202;
+}
+
+.example-text {
+	font-size: 0.75em;
+	color: $offWhite;
+	text-align: left;
+	margin-bottom: 2%;
+	padding: 0;
+}
+
+.hide-text {
+	display: none;
+}
+
+.recipe-icon:hover + .hide-text,
+.add-icon:hover + .hide-text {
+	@include flexbox(row, nowrap, normal, center, normal);
+}
+
+.return-button,
+.check-pantry-btn {
+	letter-spacing: 1px;
+	min-width: 10em;
+  min-height: 2em;
+	margin: 1em;
+}
+
+.search-icon {
+	display: inline-block;
+}
+
+.search-form {
+	margin-top: 10%;
+	padding: 2% 0;
+	text-align: center;
+	background-color: $transparentTeal;
+}
+
+.link-to-rooms {
+	color: transparent;
+}
+
+.search-button {
+	// border-radius: 0.5em;
+  // font-size: 1.5em;
+	// font-weight: 600;
+  background-color: $green;
+  // box-shadow: $boxShadow;
+  color: $offWhite;
+	border: none;
+	letter-spacing: 1px;
+  margin: 1.4em 1% 0%;
+  max-height: 2.5em;
+  min-height: 2.5em;
+  min-width: 6em;
+
+	&:hover {
+		cursor: pointer;
+		// background-color: $light-brown;
+		transform: scale(1.1);
+	}
+
+  &:disabled {
+		cursor: no-drop;
+		background-color: gray;
+	}
+}
+
+.drop-down-arrow {
+	line-height: 4em;
+	color: $offWhite;
+}
+
+.hidden {
+	display: none;
+}
+
+.show {
+	display: block;
+}
+
+/********************* MEDIAN QUERIES ****************/
+
+//tablet view
+@media only screen and (max-width: 1068px) {
+	// @media (min-width: 1025px) and (max-width: 1280px) {
+		nav {
+			// @include flexbox(row, wrap, normal, center, normal);
+			@include flexbox(row, wrap, normal, flex-end, normal);
+		}
+	
+		.room-cards {
+			grid-template-columns: 33% 33% 33%;
+		}
+	}
+	
+	//Tablet landscape view
+	// @media only screen and (max-width: 734px)
+	@media (min-width: 1024px) and (max-width: 768px) {
+		header {
+			@include flexbox(column, wrap, normal, normal, stretch);
+		}
+	
+		h1 {
+			text-align: center;
+			margin: 2% 0%;
+		}
+	
+		nav {
+			margin: 2% 0%;
+		}
+	
+		.menu {
+			margin: none;
+		}
+	
+		.room-cards {
+			grid-template-columns: 50% 50%;
+		}
+	}
+	
+	//Tablet portrait view
+	@media (min-width: 768px) and (max-width: 1024px) {
+		// header {
+		// 	@include flexbox(column, wrap, normal, normal, stretch);
+		// }
+	
+		h1 {
+			margin: 2% 0%;
+		}
+	
+		nav {
+			margin: 2% 0%;
+		}
+	
+		.menu {
+			margin: none;
+		}
+	
+		.room-cards {
+			grid-template-columns: 50% 50%;
+		}
+	}
+	
+	//small mobile device view
+	@media (min-width: 320px) and (max-width: 767px) {
+		header {
+			@include flexbox(column, wrap, normal, normal, stretch);
+		}
+	
+		h1 {
+			margin: 2% 0%;
+		}
+	
+		nav {
+			@include flexbox(row, nowrap, normal, space-around, center);
+			margin: 2%;
+		}
+
+    .logo {
+      width: 90%;
+    }
+
+    .hero-logo {
+      width: 90%;
+    }
+	
+		.menu {
+			padding: 0;
+			margin: 0;
+			max-height: 2em;
+		}
+	
+		.book-now {
+			display: none;
+		}
+	
+		.search-wrapper {
+			@include flexbox(column, nowrap, normal, center, center);
+		}
+	
+		.room-cards {
+			grid-template-columns: 100%;
+		}
+	}
