@@ -68,6 +68,10 @@ const instantiateUser = (data) => {
   domUpdates.loadUserInfo(customer);
 }
 
+const loadCustomerDashboard = () => {
+  
+}
+
 
 /**************** EVENT LISTENERS ****************/
 

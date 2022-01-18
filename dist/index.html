@@ -66,17 +66,36 @@
       </section>
     </article>
     <article class="bookings" id="userDashboard" tabindex="0">
-      <section class="total-spent" id="totalSpent">
-        <!-- total spent displays here -->
+      <section class="message">
+        <h4>Thank you for being Dew Breeze Luxury Resorts Loyalty Member!</h4>
+        <p>You have spent on <span id="totalSpent">$8806.73</span> bookings.</p>
       </section>
       <section class="current-bookings" id="current">
-        <!-- upcoming bookings display header -->
+        <!-- may remove this section -->
       </section>
       <section class="upcoming-bookings" id="upcoming">
-        <!-- upcoming bookings display header -->
+        <h4>Your Upcoming Stays</h4>
+        <article class="search-results" id="upcomingView" tabindex="0">
+          <!-- display room filter images -->
+          <section class="filtered-results" id=filteredResults" tabindex="0">
+            <!-- room cards -->
+            <article class="room-card" id="2">
+              <div class="image-area">
+                <div class="thumbnail-image" id="thumbRoomImage">
+                  <img src="../images/junior-suite.png" class="room-image" alt="relaxing junior suite">
+                </div>
+              </div>
+              <div class="room-details">
+                <h3 class="card-text" id="roomType">suite</h3>
+                <p class="card-text">Beds: <span class="card-text" id="typeOfBed">2 full</span></p>
+                <p class="card-text" id="costPerNight">$477.38 per night</p>
+                <p class="card-text">Booking Date: <span class="card-text" id="bookingDate">2022/01/18</span></p>
+              </div>
+            </article>
+          </section>
       </section>
       <section class="past-bookings" id="past">
-        <!-- upcoming bookings display header -->
+        <h4>Your Previous Stays</h4>
       </section>
     </article>
     <article class="search-results" id="roomsView" tabindex="0">
@@ -118,11 +137,11 @@
             </div>
           </div>
         </article>
-      <section class="no-rooms-message" id="noRoomsMessage" tabindex="0">
+      <section class="message" id="noRoomsMessage" tabindex="0">
         <h4>We have no rooms available that match your criteria.</h4>
         <p>To get more results, try adjusting your search by changing your check in date or room type.</p>
       </section>
-      <section class="confirmation-message" id="confirmationMessage" tabindex="0">
+      <section class="message" id="confirmationMessage" tabindex="0">
         <h4>Your room is booked!</h4>
         <p>We'll see you soon!</p>
       </section>

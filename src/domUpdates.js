@@ -19,6 +19,7 @@ const clearBtn = document.getElementById('clear');
 
 // ---- SECTIONS & DISPLAYS ---- //
 const userDashboard = document.getElementById('userDashboard');
+const totalSpent = document.getElementById('totalSpent');
 const roomsView = document.getElementById('roomsView');
 const filteredResults = document.getElementById('filteredResults');
 const noRoomsMessage = document.getElementById('noRoomsMessage');
@@ -66,6 +67,8 @@ const domUpdates = {
       heroLogo
     ])
   },
+
+  
 }
 
 export default domUpdates;
