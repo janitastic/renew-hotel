@@ -17,7 +17,8 @@ import './images/dew-breeze-favicon.png';
 
 /*************** GLOBAL VARIABLES ***************/
 let hotel, roomsData, bookingsData, customersData;
-let customerId;
+let currentCustomerId = 18;
+
 /*************** PROMISE & DATA COLLECTION ***************/
 
 const loadData = () => {
@@ -32,13 +33,16 @@ const fetchAllData = () => {
 }
 
 const instantiateClasses = (data) => {
-    console.log('my data >>>', data);
+  console.log('my data >>>', data);
     //full arrays below need to be iterated over
     roomsData = data[0].rooms;
     bookingsData = data[1].bookings;
     customersData = data[2].customers;
     hotel = new Hotel(roomsData, bookingsData, customersData);
-    console.log(hotel);
+  console.log(hotel);
+    hotel.getCurrentCustomer(currentCustomerId);
+  console.log(currentCustomerId);
+    //display customer name to DOM
 }
 
 const loadPage = (data) => {

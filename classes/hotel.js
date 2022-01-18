@@ -5,11 +5,20 @@ class Hotel {
     this.customers = customersData;
     // this.availableRooms = [];
     this.roomTypes = this.logRoomTypes();
+    this.currentCustomer;
+    this.currentCustomerFirstName;
   }
 
   logRoomTypes() {
     const allRoomTypes = this.rooms.map(room => room.roomType);
     return this.roomTypes = [...new Set(allRoomTypes)];
+  }
+
+  getCurrentCustomer(id) {
+    this.currentCustomer = this.customers.find(customer => customer.id === id);
+    const fullName = this.currentCustomer.name;
+    const [first, last] = fullName.split(' ');
+    this.currentCustomerFirstName = first;
   }
 
   filterRoomsByDate(selectedDate) {
