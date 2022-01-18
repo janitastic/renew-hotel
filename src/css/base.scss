@@ -14,28 +14,60 @@ html {
 
 body {
   height: 100vh;
-  background: $soft-teal;
+  // background: $soft-teal;
   line-height: 1.2;
 }
 
-.hero {
-  background-image: url('../images/hero.png');
-	background-size: cover;
-	background-repeat: no-repeat;
-	// padding: 5% 0 0 0;
-	// width: 100vw;
-}
-
 header {
-	padding: 2%;
-	// background-color: $dark-green;
-	grid-template-columns: 1fr 3fr;
+  padding: 1% 2%;
+	background-color: $transparentTeal;
+	grid-template-columns: 2fr 3fr;
 	grid-gap: 1em;
 	@include flexgrid(normal, normal, normal, stretch);
 }
 
 nav {
-	@include flexbox(row, wrap, normal, flex-end, normal);
+  @include flexbox(row, wrap, normal, flex-end, normal);
+}
+
+.book-now {
+  cursor: pointer;
+  padding: 0% 2%;
+  background-color: $green;
+  border: none;
+  // margin: 2% 0%;
+
+  &:hover {
+		background-color: $paleGreen;
+    color: $offWhite;
+	}
+}
+
+.hero {
+  background-image: url('../images/hero.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+  // padding: 5% 0 0 0;
+  // width: 100vw;
+}
+
+.hero-button {
+  cursor: pointer;
+  padding: 2% 5%;
+  background-color: $transparentTeal;
+  font-family: $titleFont;
+  font-size: 2em;
+  border: none;
+  box-shadow: $boxShadow;
+
+  &:hover {
+		transform: scale(1.2);
+	}
+}
+
+.search-wrapper {
+  margin: 2%;
+  @include flexbox(row, nowrap, normal, center, center);
 }
 
 h1 {
@@ -45,8 +77,11 @@ h1 {
 }
 
 h2 {
-	font-family: $headerFont;
-	font-size: 1.5em;
+	font-family: $titleFont;
+	font-size: 1em;
+  font-size: 1.2em;
+  font-weight: 400;
+  letter-spacing: 1px;
 	color: $offWhite;
 	text-shadow: 3px 3px 8px black;
 }
@@ -66,30 +101,20 @@ h4 {
 
 main {
 	height: 100%;
+  background-color: $softTeal;
 }
 
 a {
 	text-decoration: none;
 }
 
-.search-bar,
-.favorite-search-bar {
+.hero-message {
 	@include flexbox(column, wrap, center, normal, center);
 	padding: 5% 5% 2% 5%;
 }
 
-.no-recipes,
-.delete-instructions {
-	text-align: center;
-	margin-top: 5%;
-}
-
 .checked-icon {
 	margin: 2%;
-}
-
-.instructions {
-	// color: $almost-black;
 }
 
 .user-message {
@@ -97,16 +122,14 @@ a {
 	padding: 2%;
 }
 
-.recipe-cards {
+.room-cards {
 	gap: 2em;
   grid-template-columns: 25% 25% 25% 25%;
 	padding: 5% 10%;
 	@include flexgrid(normal, center, normal, normal);
 }
 
-.card,
-.individual-card,
-.pantry-card {
+.card {
 	border-radius: 0.5em;
 	font-size: 1.2em;
   background-color: rgba(10, 30, 35, .90);
@@ -114,53 +137,14 @@ a {
   padding: 5%;
 }
 
-.individual-card,
-.pantry-card {
-	@include flexbox(column, nowrap, normal, normal, normal);
-	margin: 5% 20%;
-}
-
-.pantry-list {
-	@include flexbox(row, wrap, normal, normal, normal);
-}
-
-.name-and-image {
-	flex: 2;
-  padding-right: 5%;
-}
-
-.ingredients {
-	flex: 2;
-	@include flexbox(column, nowrap, normal, center, normal);
-	padding-left: 5%;
-}
-
-.card:hover {
-	transform: scale(1.1);
-}
-
 .thumbnail-image {
 	width: 100%;
 	border-radius: 0.2em;
 }
 
-.recipe-image {
+.room-image {
 	width: 100%;
 	border-radius: 0.3em;
-}
-
-.recipe-card-top {
-	display: flex;
-}
-
-.recipe-ingredients {
-  padding-left: 10%;
-	margin-top: 5%;
-}
-
-.ingredient-bullet {
-	list-style: disc;
-	margin: 1%;
 }
 
 ol, li {
@@ -174,22 +158,15 @@ hr {
   width: 100%;
 }
 
-.recipe-card-bottom {
-	@include flexbox(column, nowrap, normal, normal, normal);
-}
-
-.step-number {
-	font-weight: 600;
-	font-size: 1.2em;
-}
-
-.menu-button {
+.menu {
 	cursor: pointer;
 	@include flexbox(row, nowrap, normal, normal, center);
 	background-color: transparent;
 	color: $offWhite;
   border: none;
+  font-family: $titleFont;
   font-size: .75em;
+  letter-spacing: 1px;
 	white-space: nowrap;
 	padding: 0 2%;
 
@@ -219,32 +196,23 @@ hr {
 	text-shadow: 1px 1px 18px black;
 }
 
-input {
-	margin: 1%;
-	width: 98%;
-	padding: 2%;
-	border-radius: 3px;
+input,
+select {
+	// margin: 1%;
+	// width: 98%;
+	padding: .5em;
+	// border-radius: 3px;
 	border: none;
-	font-size: 1em;
-	// color: $almost-black;
+	// font-size: 1em;
+	color: #020202;
 }
 
 .example-text {
-	font-size: 0.60em;
+	font-size: 0.75em;
 	// color: $light-gray;
 	text-align: left;
-	margin: 1% 2% 2% 2%;
+	margin-bottom: 2%;
 	padding: 0;
-}
-
-.filter-buttons,
-.cook-button,
-.favorite-button {
-	background-color: transparent;
-	color: $offWhite;
-  border: none;
-  font-size: 1em;
-	padding: 1%;
 }
 
 .hide-text {
@@ -254,58 +222,6 @@ input {
 .recipe-icon:hover + .hide-text,
 .add-icon:hover + .hide-text {
 	@include flexbox(row, nowrap, normal, center, normal);
-}
-
-.filter-buttons:hover
-.recipe-card-button:hover {
-	transform: scale(1.1);
-}
-
-.top-buttons {
-	gap: 11em;
-	grid-template-columns: 50% 50%;
-	margin: 0 0 10% 0;
-	@include flexgrid(normal, center, normal, normal);
-}
-
-.pantry-title {
-	gap: 5em;
-	grid-template-columns: 75% 25%;
-	margin: 0 0 5% 10%;
-	@include flexgrid(normal, center, normal, normal);
-}
-
-.recipe-card-button {
-	@include flexbox(column, nowrap, normal, normal, center);
-}
-
-.trash-icon {
-	text-align: center;
-}
-
-.card-icons {
-	@include flexbox(row, nowrap, normal, space-between, normal);
-}
-
-.search-button,
-.return-button,
-.check-pantry-btn {
-	border-radius: 0.5em;
-  font-size: 1.5em;
-	font-weight: 600;
-  // background-color: $burgundy;
-  box-shadow: $boxShadow;
-  color: $offWhite;
-	border: none;
-	letter-spacing: 2px;
-	min-width: 15em;
-  min-height: 4em;
-
-	&:hover {
-		cursor: pointer;
-		// background-color: $light-brown;
-		transform: scale(1.1);
-	}
 }
 
 .return-button,
@@ -320,15 +236,14 @@ input {
 	display: inline-block;
 }
 
-.filter-icons,
-.favorite-filter-icons {
+.search-form {
 	margin-top: 10%;
 	padding: 2% 0;
 	text-align: center;
-	background-color: rgba(10, 30, 35, .9);
+	background-color: $transparentTeal;
 }
 
-.link-to-recipes {
+.link-to-rooms {
 	color: transparent;
 }
 
@@ -343,43 +258,27 @@ input {
 	}
 }
 
-.drop-down-search,
-.fav-drop-down-search {
-  display: none;
-  background-color: rgba(242, 242, 242, .8);
-  min-width: 230px;
-	margin: 1%;
-  overflow: auto;
-  border: 1px solid #ddd;
-  z-index: 1;
-	border-radius: 0.5em;
-  font-size: 1.2em;
-	font-weight: 500;
-  box-shadow: $boxShadow;
+.search-button {
+	// border-radius: 0.5em;
+  // font-size: 1.5em;
+	// font-weight: 600;
+  background-color: $green;
+  // box-shadow: $boxShadow;
   color: $offWhite;
 	border: none;
-
-	& a {
-		padding: 12px 16px;
-		text-decoration: none;
-		display: block;
-	}
-}
-
-.search-buttons {
-	// background-color: $burgundy;
-  padding: 3% 6%;
-  border-radius: 0.2em;
-	border: none;
-	font-size: 1em;
-	width: 90%;
+	letter-spacing: 1px;
+  padding: .7em;
+  margin: 1.6% 1% 0%;
+	// min-width: 15em;
+  // min-height: 4em;
 
 	&:hover {
 		cursor: pointer;
 		// background-color: $light-brown;
+		transform: scale(1.1);
 	}
 
-	&:disabled {
+  &:disabled {
 		cursor: no-drop;
 		background-color: gray;
 	}
@@ -398,7 +297,8 @@ input {
 	display: block;
 }
 
-//media-queries
+/******************* MEDIA QUERIES ****************/
+
 //tablet view
 @media only screen and (max-width: 1068px) {
 // @media (min-width: 1025px) and (max-width: 1280px) {
@@ -407,7 +307,7 @@ input {
     @include flexbox(row, wrap, normal, flex-end, normal);
 	}
 
-  .recipe-cards {
+  .room-cards {
     grid-template-columns: 33% 33% 33%;
   }
 }
@@ -428,18 +328,13 @@ input {
 		margin: 2% 0%;
 	}
 
-	.menu-button {
+	.menu {
 		margin: none;
 	}
 
-  .recipe-cards {
+  .room-cards {
     grid-template-columns: 50% 50%;
   }
-
-	.indvidual-card,
-	.pantry-card {
-		margin: 5%;
-	}
 }
 
 //Tablet portrait view
@@ -457,22 +352,13 @@ input {
 		margin: 2% 0%;
 	}
 
-	.menu-button {
+	.menu {
 		margin: none;
 	}
 
-  .recipe-cards {
+  .room-cards {
     grid-template-columns: 50% 50%;
   }
-
-	.top-buttons {
-		@include flexbox(row, nowrap, normal, space-evenly, normal);
-	}
-
-	.indvidual-card,
-	.pantry-card {
-		margin: 5%;
-	}
 }
 
 //small mobile device view
@@ -491,31 +377,17 @@ input {
 		margin: 2%;
 	}
 
-	.menu-button {
+	.menu {
 		padding: 0;
 		margin: 0;
 		max-height: 2em;
 	}
 
-  .recipe-cards {
-    grid-template-columns: 100%;
+  .book-now {
+    display: none;
   }
 
-	.top-buttons {
-		@include flexbox(row, nowrap, normal, space-evenly, normal);
-	}
-
-	.indvidual-card,
-	.pantry-card {
-		margin: 5%;
-	}
-
-	.recipe-card-top {
-    display: flex;
-    flex-direction: column;
-	}
-
-	.ingredients-title {
-		margin-top: 5%;
-	}
+  .room-cards {
+    grid-template-columns: 100%;
+  }
 }

@@ -7,8 +7,10 @@ import apiCalls from './apiCalls';
 import {fetchAllData, fetchCustomers, fetchBookings, fetchRooms} from './apiCalls';
 
 // An example of how you tell webpack to use an image (also need to link to it in the index.html)
-import './images/turing-logo.png';
-import '.images/hero.png';
+// import './images/turing-logo.png';
+import './images/hero.png';
+import './images/dew-breeze-suites-logo.png';
+import './images/dew-breeze-favicon.png';
 
 
 /**************** FUNCTIONS ****************/
