@@ -1,6 +1,7 @@
 /*************** FILE IMPORTS ***************/
 import './css/base.scss';
-import {fetchCustomers, fetchBookings, fetchRooms}from './apiCalls';
+import {fetchCustomers, fetchBookings, fetchRooms} from './apiCalls';
+import domUpdates from './domUpdates';
 
 import Hotel from '../classes/Hotel';
 import Customer from '../classes/Customer';
@@ -20,19 +21,21 @@ let customerId;
 /*************** PROMISE & DATA COLLECTION ***************/
 
 const loadData = () => {
-  fetchAllData().then(data => instantiateClasses(data));
+  fetchAllData().then(data => instantiateClasses(data))
 };
 
 const fetchAllData = () => {
-  const response = Promise.all([fetchCustomers(), fetchBookings(), fetchRooms()]);
-  return response;
+  return Promise.all([fetchCustomers(), fetchBookings(), fetchRooms()]).catch(err => {
+    domUpdates.displayError(error)
+    console.log('Promise not fulfilled.', error);
+  })
 }
 
 const instantiateClasses = (data) => {
     console.log('my data >>>', data);
+    customer = new Customer(data[0].customers[0]);
     bookings = new Booking(data[1].bookings[0]);
     rooms = new Room(data[2].rooms[0]);
-    customer = new Customer(data[0].customers[0]);
     // console.log(bookings, rooms, customer);
 }
 
