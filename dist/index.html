@@ -16,19 +16,20 @@
       <header>
         <a href="/"><img class="logo" src="../images/dew-breeze-header-logo.png" alt="Dew Breeze Suites Luxury Boutique Hotel logo"></a>
         <nav>
-          <a class="menu" id="home">Home</a>
-          <a class="menu" id="reservations">Your Reservations</a>
-          <a class="menu" id="login">Login</a>
-          <a class="menu" id="logout">Log Out</a>
-          <button class="book-now" id="bookNow">Book Now</button>
+          <a href="/" class="menu" id="home">Home</a>
+          <a href="/" class="menu" id="reservations">Your Reservations</a>
+          <a href="/" class="menu" id="logIn">Login</a>
+          <a href="/" class="menu" id="logOut">Log Out</a>
+          <a href="#dateInput" class="menu book-now" id="bookNow">Book Now</a>
+          <!-- <button class="book-now" id="bookNow">Book Now</button> -->
         </nav>
       </header>
       <section class="hero-message">
-        <div class="user-greeting" id="userMessage">
+        <div class="user-greeting hidden" id="userMessage">
           <h2 class="user-message">Welcome Back Bob!</h2>
           <p class="user-message">Your next vacation awaits...</p>
         </div>
-        <img class="hero-logo hidden" src="../images/dew-breeze-suites-logo.png" alt="Dew Breeze Suites Logo" id="heroLogo">
+        <img class="hero-logo" src="../images/dew-breeze-suites-logo.png" alt="Dew Breeze Suites Logo" id="heroLogo">
       </section>
       <section class="search-form" id="searchForm">
         <h3>Make a Reservation</h3>
@@ -59,14 +60,7 @@
         <!-- </a> -->
       </section>
     </article>
-    <article class="filter-rooms" id="filterRooms" tabindex="0">
-      <!-- display room filter images -->
-      <h4>Images will display here</h4>
-      <section class="no-rooms-message" id="noRoomsMessage">
-        <!-- display no rooms message here -->
-      </section>
-    </article>
-    <article class="bookings" id="bookings" tabindex="0">
+    <article class="bookings" id="userDashboard" tabindex="0">
       <section class="total-spent" id="totalSpent">
         <!-- total spent displays here -->
       </section>
@@ -80,7 +74,14 @@
         <!-- upcoming bookings display header -->
       </section>
     </article>
-    <article>
+    <article class="filter-rooms" id="roomsView" tabindex="0">
+      <!-- display room filter images -->
+      <section class="no-rooms-message" id="noRoomsMessage" tabindex="0">
+        <h4>We have no rooms available that match your criteria.</h4>
+        <p>To get more results, try adjusting your search by changing your check in date.</p>
+      </section>
+    </article>
+    <article class="login" id="loginView">
       <!-- login page will go here -->
     </article>
   </main>

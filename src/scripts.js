@@ -17,13 +17,14 @@ import './images/dew-breeze-favicon.png';
 
 /*************** GLOBAL VARIABLES ***************/
 let currentDate = new Date().toJSON().slice(0, 10);
-let hotel, roomsData, bookingsData, customersData;
+let hotel, roomsData, bookingsData, customersData, customer;
 let currentCustomerId = 18;
 
 /*************** PROMISE & DATA COLLECTION ***************/
 
 const loadData = () => {
   fetchAllData().then(data => instantiateClasses(data))
+  domUpdates.loadLandingPage();
 };
 
 const fetchAllData = () => {
@@ -57,21 +58,11 @@ const fetchCurrentUser = (id) => {
   })
 }
 
-const loadPage = (data) => {
-  // console.log('load page data received')
-  // customersData = data[0].customers;
-  // bookingsData = data[1].bookings;
-  // roomsData = data[2].rooms;
-  // collectData(customersData, bookingsData, roomsData);
-}
-
-const collectData = (customersData, bookingsData, roomsData) => {
-  // collectHotelData(bookingsData, roomsData, customersData);
-  // collectCustomers(customersData);
-}
-
 /**************** FUNCTIONS ****************/
-
+const instantiateUser = (data) => {
+  customer = new Customer(data);
+  domUpdates.loadUserInfo(customer);
+}
 
 
 /**************** EVENT LISTENERS ****************/

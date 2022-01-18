@@ -34,21 +34,6 @@ nav {
   @include flexbox(row, wrap, normal, flex-end, normal);
 }
 
-.book-now {
-  cursor: pointer;
-  background-color: $gold;
-	color: $offWhite;
-  border: none;
-  max-height: 2.5em;
-  min-height: 2.5em;
-  min-width: 6em;
-
-  &:hover {
-		background-color: $paleGreen;
-    color: $offWhite;
-	}
-}
-
 .hero {
   background-image: url('../images/hero.png');
   background-size: cover;
@@ -114,7 +99,7 @@ h3 {
 h4 {
 	font-size: 1.5em;
 	text-align: center;
-	padding: 5%;
+	margin: 1%;
 }
 
 main {
@@ -129,6 +114,11 @@ a {
 .hero-message {
 	@include flexbox(column, wrap, center, normal, center);
 	padding: 5% 5% 2% 5%;
+}
+
+.no-rooms-message {
+	text-align: center;
+	padding: 5%;
 }
 
 .checked-icon {
@@ -193,6 +183,19 @@ hr {
 
 	&:hover {
 		transform: scale(1.1);
+	}
+}
+
+.book-now {
+  cursor: pointer;
+  background-color: $gold;
+	color: $offWhite;
+  border: none;
+	margin-left: 1%;
+
+  &:hover {
+		background-color: $paleGreen;
+    color: $offWhite;
 	}
 }
 

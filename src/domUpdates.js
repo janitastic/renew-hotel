@@ -7,8 +7,8 @@ const logInBtn = document.getElementById('logIn');//goes to dashboard
 const logOutBtn = document.getElementById('logOut');//goes home
 
 // ---- HERO ---- //
-const userMessage = document.getElementById('userMessage');
-const heroLogo = document.getElementById('heroLogo');
+const userMessage = document.getElementById('userMessage');//greeting
+const heroLogo = document.getElementById('heroLogo');//hide on login
 
 // ---- SEARCH INPUTS & BUTTONS ---- //
 const dateInput = document.getElementById('dateInput');
