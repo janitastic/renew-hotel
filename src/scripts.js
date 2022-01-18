@@ -16,6 +16,7 @@ import './images/dew-breeze-favicon.png';
 
 
 /*************** GLOBAL VARIABLES ***************/
+let currentDate = new Date().toJSON().slice(0, 10);
 let hotel, roomsData, bookingsData, customersData;
 let currentCustomerId = 18;
 
