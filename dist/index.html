@@ -44,7 +44,6 @@
                 <button class="search-button" id="dateSearch">Search</button>
               <label for="typeInput">
                 <p class="example-text">Room Type</p>
-                <!-- <input class="input" id="typeInput" placeholder="ex: single room"> -->
                 <select class="input" id="typeInput" placeholder="make a selection" name="room options">
                   <option value="all">any</option>
                   <option value="residential">residential suite</option>
@@ -53,6 +52,12 @@
                   <option value="junior suite">junior suite</option>
                 </select>
               </label>
+              <!-- <div class="dropdown">
+                <span>Mouse over me</span>
+                <div class="dropdown-content">
+                  <p>Hello World!</p>
+                </div>
+              </div> -->
                 <!-- <input type="submit" class="search-button" id="typeSearch">Search Rooms -->
                 <button class="search-button" id="typeSearch">Filter</button>
                 <button class="clear-button" id="clear">Clear</button>
@@ -74,11 +79,52 @@
         <!-- upcoming bookings display header -->
       </section>
     </article>
-    <article class="filter-rooms" id="roomsView" tabindex="0">
+    <article class="search-results" id="roomsView" tabindex="0">
       <!-- display room filter images -->
+      <section class="filtered-results" id=filteredResults" tabindex="0">
+        <!-- room cards -->
+        <article class="room-card" id="2">
+          <div class="image-area">
+            <div class="thumbnail-image" id="thumbRoomImage">
+              <img src="../images/junior-suite.png" class="room-image" alt="relaxing junior suite">
+            </div>
+          </div>
+          <div class="room-details">
+            <h3 class="card-text" id="roomType">suite</h3>
+            <p class="card-text">Beds: <span class="card-text" id="typeOfBed">2 full</span></p>
+            <p class="card-text" id="costPerNight">$477.38 per night</p>
+            <button class="select-room" id="selectRoom">View Room</button>
+          </div>
+        </article>
+      </section>
+        <!-- selected room -->
+        <article class="book-this-room" id="selectedRoom">
+          <div class="room-selection">
+            <img src="../images/junior-suite.png" class="selected-room-image" alt="relaxing junior suite">
+          </div>
+          <div class="room-details">
+            <div class="selected-text-area" id="2">
+              <h4 id="roomType">suite</h4>
+              <p>Beds: <span id="typeOfBed">2 full</span></p>
+              <p>Date: <span id="datesOfStay">Jan 18 2022</span></p>
+              <p>Nightly Rate: <span id="costPerNight">$477.38</span> x 1 night</p>
+              <p id="totalCost">Total: <span class="cost">$477.38</span></p>
+            </div>
+            <div class="button-container">
+              <button class="book-button" id="2">Book this Room</button>
+              <button class="return-button" id="goBack">
+              Go Back
+              </button>
+            </div>
+          </div>
+        </article>
       <section class="no-rooms-message" id="noRoomsMessage" tabindex="0">
         <h4>We have no rooms available that match your criteria.</h4>
-        <p>To get more results, try adjusting your search by changing your check in date.</p>
+        <p>To get more results, try adjusting your search by changing your check in date or room type.</p>
+      </section>
+      <section class="confirmation-message" id="confirmationMessage" tabindex="0">
+        <h4>Your room is booked!</h4>
+        <p>We'll see you soon!</p>
       </section>
     </article>
     <article class="login" id="loginView">

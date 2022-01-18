@@ -20,9 +20,20 @@ const clearBtn = document.getElementById('clear');
 // ---- SECTIONS & DISPLAYS ---- //
 const userDashboard = document.getElementById('userDashboard');
 const roomsView = document.getElementById('roomsView');
+const filteredResults = document.getElementById('filteredResults');
 const noRoomsMessage = document.getElementById('noRoomsMessage');
+const confirmationMessage = document.getElementById('confirmationMessage');
 const loginView = document.getElementById('loginView');
 
+// ---- ROOM CARD SECTIONS & BUTTONS ---- //
+const thumbRoomImage = document.getElementById('thumbRoomImage');
+const selectedRoom = document.getElementById('selectedRoom');
+const roomType = document.getElementById('roomType');
+const typeOfBed = document.getElementById('typeOfBed');
+const costPerNight = document.getElementById('costPerNight');
+
+const selectRoomBtn = document.getElementById('selectRoom');
+const goBackBtn = document.getElementById('goBack');
 
 /********************* DOM UPDATES ******************/
 
@@ -40,13 +51,13 @@ const domUpdates = {
     //add innerHTML display here
   },
 
-  loadLandingPage() {
+  loadLandingPage() {//happens before login on loadData
     domUpdates.hide([
       logOutBtn, reservationsBtn
     ])
   },
 
-  loadUserInfo(user) {
+  loadUserLandingPage(user) {//happens after login
     userMessage.innerHTML = `
       <h2 class="user-message">Welcome Back ${user.name}!</h2>
       <p class="user-message">Your next vacation awaits...</p>

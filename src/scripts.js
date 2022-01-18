@@ -13,6 +13,10 @@ import './images/hero.png';
 import './images/dew-breeze-suites-logo.png';
 import './images/dew-breeze-header-logo.png';
 import './images/dew-breeze-favicon.png';
+import './images/junior-suite.png';
+import './images/residential.png';
+import './images/single.png';
+import './images/suite.png';
 
 
 /*************** GLOBAL VARIABLES ***************/
