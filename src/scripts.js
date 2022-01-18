@@ -10,6 +10,7 @@ import {fetchAllData, fetchCustomers, fetchBookings, fetchRooms} from './apiCall
 // import './images/turing-logo.png';
 import './images/hero.png';
 import './images/dew-breeze-suites-logo.png';
+import './images/dew-breeze-header-logo.png';
 import './images/dew-breeze-favicon.png';
 
 

@@ -26,6 +26,10 @@ header {
 	@include flexgrid(normal, normal, normal, stretch);
 }
 
+.logo {
+  width: 70%;
+}
+
 nav {
   @include flexbox(row, wrap, normal, flex-end, normal);
 }
@@ -50,6 +54,11 @@ nav {
   background-repeat: no-repeat;
   // padding: 5% 0 0 0;
   // width: 100vw;
+}
+
+.hero-logo {
+  background-color: rgba(248, 248, 248, .20);
+  width: 40%;
 }
 
 .hero-button {
