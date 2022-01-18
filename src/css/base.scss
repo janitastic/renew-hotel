@@ -36,7 +36,7 @@ nav {
 
 .book-now {
   cursor: pointer;
-  background-color: $green;
+  background-color: $gold;
 	color: $offWhite;
   border: none;
   max-height: 2.5em;
@@ -258,12 +258,9 @@ select {
 	color: transparent;
 }
 
-.search-button {
-	// border-radius: 0.5em;
-  // font-size: 1.5em;
-	// font-weight: 600;
-  background-color: $green;
-  // box-shadow: $boxShadow;
+.search-button,
+.clear-button {
+  background-color: $gold;
   color: $offWhite;
 	border: none;
 	letter-spacing: 1px;
@@ -274,13 +271,22 @@ select {
 
 	&:hover {
 		cursor: pointer;
-		// background-color: $light-brown;
-		transform: scale(1.1);
+		background-color: $green;
+		// transform: scale(1.1);
 	}
 
   &:disabled {
 		cursor: no-drop;
 		background-color: gray;
+	}
+}
+
+.clear-button {
+  background-color: $green;
+
+	&:hover {
+		background-color: $paleGreen;
+		transform: scale(1.1);
 	}
 }
 
