@@ -32,10 +32,11 @@ nav {
 
 .book-now {
   cursor: pointer;
-  padding: 0% 2%;
   background-color: $green;
   border: none;
-  // margin: 2% 0%;
+  max-height: 2.5em;
+  min-height: 2.5em;
+  min-width: 6em;
 
   &:hover {
 		background-color: $paleGreen;
@@ -267,10 +268,10 @@ select {
   color: $offWhite;
 	border: none;
 	letter-spacing: 1px;
-  padding: .7em;
-  margin: 1.6% 1% 0%;
-	// min-width: 15em;
-  // min-height: 4em;
+  margin: 1.4em 1% 0%;
+  max-height: 2.5em;
+  min-height: 2.5em;
+  min-width: 6em;
 
 	&:hover {
 		cursor: pointer;
@@ -373,7 +374,7 @@ select {
 	}
 
 	nav {
-		@include flexbox(column, wrap, normal, normal, center);
+		@include flexbox(row, nowrap, normal, space-around, center);
 		margin: 2%;
 	}
 
