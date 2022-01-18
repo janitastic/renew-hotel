@@ -16,7 +16,7 @@ import './images/dew-breeze-favicon.png';
 
 
 /*************** GLOBAL VARIABLES ***************/
-let hotel, bookings, rooms, customer;
+let hotel, roomsData, bookingsData, customersData;
 let customerId;
 /*************** PROMISE & DATA COLLECTION ***************/
 
@@ -25,7 +25,7 @@ const loadData = () => {
 };
 
 const fetchAllData = () => {
-  return Promise.all([fetchCustomers(), fetchBookings(), fetchRooms()]).catch(err => {
+  return Promise.all([fetchRooms(), fetchBookings(),fetchCustomers()]).catch(err => {
     domUpdates.displayError(error)
     console.log('Promise not fulfilled.', error);
   })
@@ -33,10 +33,12 @@ const fetchAllData = () => {
 
 const instantiateClasses = (data) => {
     console.log('my data >>>', data);
-    customer = new Customer(data[0].customers[0]);
-    bookings = new Booking(data[1].bookings[0]);
-    rooms = new Room(data[2].rooms[0]);
-    // console.log(bookings, rooms, customer);
+    // hotel = new Hotel()
+    //full arrays below need to be iterated over
+    roomsData = data[0].rooms;
+    bookingsData = data[1].bookings;
+    customersData = data[2].customers;
+    console.log(roomsData, bookingsData, customersData);
 }
 
 const loadPage = (data) => {
