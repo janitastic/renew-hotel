@@ -54,4 +54,13 @@ describe('Booking', () => {
     expect(booking1).to.have.a.property('roomServiceCharges');
     expect(booking1.roomServiceCharges).to.deep.equal([]);
   });
+
+  it('Should be able to create a new booking ID', () => {
+    const length = 17;
+    const characters = 'abcdefghijklmnopqrstuvwxyz1234567890';
+    const newID = booking1.createNewId(length, characters);
+    console.log(newID);
+
+    expect(newID.length).to.equal(17);
+  });
 });
