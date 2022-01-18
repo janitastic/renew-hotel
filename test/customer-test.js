@@ -50,6 +50,7 @@ describe('Customer', () => {
 
   it('Should be able to list all of the current customer\'s bookings', () => {
     customer1.listAllUserBookings(hotel);
+    
     expect(customer1.bookings).to.be.an('Array');
     expect(customer1.bookings.length).to.deep.equal(1);
     expect(customer1.bookings).to.deep.equal([bookingsData[4]]);
@@ -71,6 +72,15 @@ describe('Customer', () => {
     expect(pastBookings).to.be.an('Array');
     expect(pastBookings.length).to.deep.equal(5);
     expect(pastBookings).to.deep.equal([bookingsData[0], bookingsData[1], bookingsData[3], bookingsData[4], bookingsData[5]]);
+  });
+
+  it('Should be able to list all of the current customer\'s current bookings', () => {
+    const currentDate = '2022/01/16';
+
+    const currentBookings = customer1.listCurrentBookings(hotel, currentDate);
+    expect(currentBookings).to.be.an('Array');
+    expect(currentBookings.length).to.deep.equal(0);
+    expect(currentBookings).to.deep.equal([]);
   });
   
   it('Should be able to calculate the total amount each customer has spent', () => {

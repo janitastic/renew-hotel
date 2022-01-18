@@ -6,6 +6,7 @@ class Customer {
     this.allBookings = null;
     this.pastBookings = null;
     this.upcomingBookings = null;
+    this.currentBookings = null;
   }
 
   listAllUserBookings(hotel) {
@@ -21,6 +22,11 @@ class Customer {
   listUpcomingBookings(hotel, currentDate) {
     this.upcomingBookings = hotel.bookings.filter(booking => booking.date >= currentDate);
     return this.upcomingBookings;
+  }
+
+  listCurrentBookings(hotel, currentDate) {
+    this.currentBookings = hotel.bookings.filter(booking => booking.date === currentDate);
+    return this.currentBookings;
   }
 
   addTotalSpent(hotel) {
