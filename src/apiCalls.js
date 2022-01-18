@@ -4,10 +4,10 @@ import domUpdates from './domUpdates.js';
 
 /*************** FETCH CALLS ***************/
 
-const fetchCustomers = () => {
-  fetch(customers)
+export const fetchCustomers = () => {
+  return fetch(customers)
     .then(response => response.json())
-    .then(data => console.log(data))
+    // .then(data => console.log('customers data >>>>', data))
     .catch(error => {
       console.log(error)
       checkResponse(response)
@@ -24,20 +24,20 @@ const fetchCustomers = () => {
 //     })
 // }
 
-const fetchBookings = () => {
-  fetch(bookings)
+export const fetchBookings = () => {
+  return fetch(bookings)
     .then(response => response.json())
-    .then(data => console.log(data))
+    // .then(data => console.log('bookings data>>>', data))
     .catch(error => {
       console.log(error)
       checkResponse(response)
     })
 }
 
-const fetchRooms = () => {
-  fetch(rooms)
+export const fetchRooms = () => {
+  return fetch(rooms)
     .then(response => response.json())
-    .then(data => console.log(data))
+    // .then(data => console.log('rooms >>>', data))
     .catch(error => {
       console.log(error)
       checkResponse(response)
@@ -91,4 +91,6 @@ const newBooking = { 'userID': 18, 'date': '2021/01/20', 'roomNumber': 5 }
 
 /*************** QUERY SELECTORS ***************/
 
-export {fetchCustomers, fetchBookings, fetchRooms, allCustomersData, allBookingsData, allRoomsData};
+// export {fetchCustomers, fetchBookings, fetchRooms, allCustomersData, allBookingsData, allRoomsData};
+
+// export default {apiCalls};

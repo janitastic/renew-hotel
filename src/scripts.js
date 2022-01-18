@@ -1,7 +1,6 @@
 /*************** FILE IMPORTS ***************/
 import './css/base.scss';
-import apiCalls from './apiCalls';
-import {fetchCustomers, fetchBookings, fetchRooms, allCustomersData, allBookingsData, allRoomsData} from './apiCalls';
+import {fetchCustomers, fetchBookings, fetchRooms}from './apiCalls';
 
 import Hotel from '../classes/Hotel';
 import Customer from '../classes/Customer';
@@ -25,16 +24,16 @@ const loadData = () => {
 };
 
 const fetchAllData = () => {
-  return Promise.all([allCustomersData, allBookingsData, allRoomsData])
+  const response = Promise.all([fetchCustomers(), fetchBookings(), fetchRooms()])
+  return response;
 }
 
 const instantiateClasses = (data) => {
     console.log('my data >>>', data);
-    console.log('load page data received')
-    bookings = new Booking(data[1]);
-    rooms = new Room(data[2]);
+    bookings = new Booking(data[1].bookings[0]);
+    rooms = new Room(data[2].rooms[0]);
     customer = new Customer(data[0].customers[0]);
-    hotel = new Hotel(data[0], data[1], data[2]);
+    // console.log(bookings, rooms, customer);
 }
 
 const loadPage = (data) => {
