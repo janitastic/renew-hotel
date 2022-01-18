@@ -3,8 +3,8 @@ class Hotel {
     this.rooms = roomsData;
     this.bookings = bookingsData;
     this.customers = customersData;
-    this.availableRooms = [];
-    this.roomTypes = [];
+    // this.availableRooms = [];
+    this.roomTypes = this.logRoomTypes();
   }
 
   logRoomTypes() {
