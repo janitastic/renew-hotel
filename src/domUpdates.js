@@ -20,13 +20,29 @@ const clearBtn = document.getElementById('clear');
 // ---- SECTIONS & DISPLAYS ---- //
 const userDashboard = document.getElementById('userDashboard');
 const totalSpent = document.getElementById('totalSpent');
+const upcomingView = document.getElementById('upcomingView');
+const pastView = document.getElementById('pastView');
 const roomsView = document.getElementById('roomsView');
 const filteredResults = document.getElementById('filteredResults');
 const noRoomsMessage = document.getElementById('noRoomsMessage');
 const confirmationMessage = document.getElementById('confirmationMessage');
 const loginView = document.getElementById('loginView');
 
-// ---- ROOM CARD SECTIONS & BUTTONS ---- //
+// ---- DASHBOARD CARDS SECTION ---- //
+const upcomingResults = document.getElementById('upcomingResults');
+const bookedRoomType = document.getElementById('bookedRoomType');
+const bookedBedType = document.getElementById('bookedBed');
+const bookedCostPerNight = document.getElementById('bookedCost');
+const bookedDate = document.getElementById('bookedDate');
+
+const pastResults = document.getElementById('pastResutls');
+const pastRoomType = document.getElementById('pastRoomType');
+const pastBedType = document.getElementById('pastBed');
+const pastCostPerNight = document.getElementById('pastCost');
+const pastDate = document.getElementById('pastDate');
+
+
+// ---- ROOM SEARCH CARDS SECTION & BUTTONS ---- //
 const thumbRoomImage = document.getElementById('thumbRoomImage');
 const selectedRoom = document.getElementById('selectedRoom');
 const roomType = document.getElementById('roomType');

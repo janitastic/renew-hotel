@@ -232,9 +232,12 @@ hr {
 .select-room {
   cursor: pointer;
   background-color: $gold;
-	color: $offWhite;
+	color: $almostBlack;
   border: none;
 	margin: 2%;
+	font-weight: 500;
+	letter-spacing: 1px;
+	font-family: $titleFont;
 
   &:hover {
 		background-color: $paleGreen;
