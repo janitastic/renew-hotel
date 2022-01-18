@@ -99,7 +99,7 @@ h2 {
 
 h3 {
 	font-size: 1.2em;
-	color: $offWhite;
+	color: $darkTeal;
 	padding: 5%;
 	text-align: center;
 }
@@ -260,7 +260,7 @@ select {
 
 .search-button,
 .clear-button {
-  background-color: $gold;
+  background-color: $green;
   color: $offWhite;
 	border: none;
 	letter-spacing: 1px;
@@ -271,7 +271,7 @@ select {
 
 	&:hover {
 		cursor: pointer;
-		background-color: $green;
+		background-color: $gold;
 		// transform: scale(1.1);
 	}
 
