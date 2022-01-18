@@ -86,17 +86,20 @@ describe('Customer', () => {
   it('Should be able to calculate the total amount each customer has spent', () => {
     customer1.listAllUserBookings(hotel);
     customer1.addTotalSpent(hotel);
+
     expect(customer1.totalSpent).to.be.a('number');
     expect(customer1.totalSpent).to.deep.equal(172.09);
   });
   
   it('Should be able to return no bookings and nothing spent if the current customer has no reservation history', () => {
     customer2.listAllUserBookings(hotel);
+
     expect(customer2.bookings).to.be.an('Array');
     expect(customer2.bookings.length).to.deep.equal(0);
     expect(customer2.bookings).to.deep.equal([]);
 
     customer2.addTotalSpent(hotel);
+    
     expect(customer2.totalSpent).to.deep.equal(0);
   });
 });
