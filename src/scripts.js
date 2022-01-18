@@ -33,12 +33,12 @@ const fetchAllData = () => {
 
 const instantiateClasses = (data) => {
     console.log('my data >>>', data);
-    // hotel = new Hotel()
     //full arrays below need to be iterated over
     roomsData = data[0].rooms;
     bookingsData = data[1].bookings;
     customersData = data[2].customers;
-    console.log(roomsData, bookingsData, customersData);
+    hotel = new Hotel(roomsData, bookingsData, customersData);
+    console.log(hotel);
 }
 
 const loadPage = (data) => {
