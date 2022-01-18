@@ -4,7 +4,7 @@
 // An example of how you tell webpack to use a CSS (SCSS) file
 import './css/base.scss';
 import apiCalls from './apiCalls';
-import {fetchAllData, fetchCustomers, fetchBookings, fetchRooms} from './apiCalls';
+import {fetchAllData, fetchCustomers, fetchSingleCustomer, fetchBookings, fetchRooms} from './apiCalls';
 
 // An example of how you tell webpack to use an image (also need to link to it in the index.html)
 // import './images/turing-logo.png';
