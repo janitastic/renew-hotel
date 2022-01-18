@@ -6,13 +6,11 @@ import Booking from '../classes/Booking';
 import {bookingsData} from '../sample-data/sampleBookings';
 
 describe('Booking', () => {
-  let booking1, booking2, idLength, characters;
-
+  let booking1, booking2;
+  
   beforeEach(() => {
     booking1 = new Booking(bookingsData[0]);
     booking2 = new Booking(bookingsData[1]);
-    idLength = 17;
-    characters = 'abcdefghijklmnopqrstuvwxyz1234567890';
   });
 
   it('Should be a function', () => {
@@ -57,12 +55,11 @@ describe('Booking', () => {
     expect(booking1.roomServiceCharges).to.deep.equal([]);
   });
 
-  it('Should be able to create a new booking ID', () => {
-    // const idLength = 17;
-    // const characters = 'abcdefghijklmnopqrstuvwxyz1234567890';
+  it('Should be able to create a new booking ID with a given list of characters and a length requirement of 17', () => {
+    const idLength = 17;
+    const characters = 'abcdefghijklmnopqrstuvwxyz1234567890';
     const newID = booking1.createNewId(idLength, characters);
-    console.log(newID);
-
+ 
     expect(newID.length).to.equal(17);
   });
 });

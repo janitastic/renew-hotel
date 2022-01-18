@@ -108,4 +108,13 @@ describe('Hotel', () => {
     expect(singleType.length).to.deep.equal(13);
     expect(singleType).to.deep.equal([roomsData[2], roomsData[3], roomsData[4], roomsData[6], roomsData[8], roomsData[10], roomsData[11], roomsData[12], roomsData[15], roomsData[18], roomsData[20], roomsData[21], roomsData[24]]);
   });
+
+  it('Should be able to create a new booking', () => {
+    const bookingDetails = {userID: 1, date: '2022/03/18', roomNumber: 2};
+
+    hotel.bookRoom(bookingDetails);
+
+    expect(hotel.bookings.length).to.equal(7);
+    // expect(hotel.bookings).to.deep.equal();
+  });
 });
