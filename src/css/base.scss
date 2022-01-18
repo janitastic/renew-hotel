@@ -5,7 +5,7 @@
 
 * {
 	font-family: $bodyFont;
-	color: $offWhite;
+	// color: $offWhite;
 }
 
 html {
@@ -37,6 +37,7 @@ nav {
 .book-now {
   cursor: pointer;
   background-color: $green;
+	color: $offWhite;
   border: none;
   max-height: 2.5em;
   min-height: 2.5em;
@@ -219,7 +220,7 @@ select {
 
 .example-text {
 	font-size: 0.75em;
-	// color: $light-gray;
+	color: $offWhite;
 	text-align: left;
 	margin-bottom: 2%;
 	padding: 0;

@@ -1,5 +1,7 @@
 import Hotel from '../classes/Hotel';
-import {loadPage} from './scripts.js';
+import {fetchAllData} from './scripts.js';
+import domUpdates from './domUpdates.js';
+
 /*************** FETCH CALLS ***************/
 
 const fetchCustomers = () => {
@@ -12,15 +14,15 @@ const fetchCustomers = () => {
     })
 }
 
-const fetchSingleCustomer = (id) => {
-  fetch(singleCustomer)
-    .then(response => response.json())
-    .then(data => console.log(data))
-    .catch(error => {
-      console.log(error)
-      checkResponse(response)
-    })
-}
+// const fetchSingleCustomer = (id) => {
+//   fetch('http://localhost:3001/api/v1/customers/${id}')
+//     .then(response => response.json())
+//     .then(data => console.log(data))
+//     .catch(error => {
+//       console.log(error)
+//       checkResponse(response)
+//     })
+// }
 
 const fetchBookings = () => {
   fetch(bookings)
@@ -42,50 +44,36 @@ const fetchRooms = () => {
     })
 }
 
-/*************** PROMISE ***************/
-const fetchAllData = () => {
-  Promise.all([allCustomersData, allBookingsData, allRoomsData])
-    .then(data => {
-      console.log(data)
-    })
-    .catch(error => {
-      console.log(error)
-      checkResponse(response)
-    })
-}
-
 /*************** POST REQUESTS ***************/
 
-const postBooking = (userId, selectedDate, roomNumber) => {
+const postBooking = (newBooking) => {
   fetch(url);
   fetch(bookings, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify(
-      { "userID": 48, "date": "2019/09/23", "roomNumber": 4 }
-    )
+    body: JSON.stringify(newBooking)
   })
   .then(response => {
-    if(response.ok) {
-      
-    }
     console.log(response, '<<<<response>>>>')
-    // checkForErrors(response);//built out this function to look for the error
+    checkForErrors(response);//built out this function to look for the error
     response.json()})//promise object that's returned to us. Carries the properties and values
   .then(data => console.log(data))
   .catch(error => showError(error));
 }
 
-// bookRoom(18, '2021/01/13', 5);
+// postBooking(newBooking);
 
 
 /*************** ERROR HANDLING ***************/
 
-const checkResponse = (response) => {
+const checkForErrors = (response) => {
   if (!response.ok) {
-    throw new Error('Status: ${response.status} StatusText: ${response.status.text}');
+    throw new Error('Status: ${response.status} StatusText: ${response.status.text}')
+  } else if (response.ok) {
+    fetchAllData();
+    // display message on dom
+    return response.json()
   }
-  return response.json()
 }
 
 /*************** VARIABLES ***************/
@@ -97,7 +85,10 @@ const singleCustomer = 'http://localhost:3001/api/v1/customers/${id}';
 const allCustomersData = fetchCustomers();
 const allBookingsData = fetchBookings();
 const allRoomsData = fetchRooms();
+// const singleCustomerData = fetchSingleCustomer(1);
+
+const newBooking = { 'userID': 18, 'date': '2021/01/20', 'roomNumber': 5 }
 
 /*************** QUERY SELECTORS ***************/
 
-export default {fetchAllData, fetchCustomers, fetchSingleCustomer, fetchBookings, fetchRooms};
+export {fetchCustomers, fetchBookings, fetchRooms, allCustomersData, allBookingsData, allRoomsData};
