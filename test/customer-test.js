@@ -32,12 +32,7 @@ describe('Customer', () => {
     expect(customer1).to.have.a.property('name');
     expect(customer1.name).to.equal('Leatha Ullrich');
   });
-
-  it('Should start out with no bookings', () => {
-    expect(customer1).to.have.a.property('bookings');
-    expect(customer1.bookings).to.deep.equal([]);
-  });
-  
+ 
   it('Should start out with no money spent', () => {
     expect(customer1).to.have.a.property('totalSpent');
     expect(customer1.totalSpent).to.deep.equal(0);
@@ -49,8 +44,6 @@ describe('Customer', () => {
     expect(customer2.id).to.equal(2);
     expect(customer2).to.have.a.property('name');
     expect(customer2.name).to.equal('Rocio Schuster');
-    expect(customer2).to.have.a.property('bookings');
-    expect(customer2.bookings).to.deep.equal([]);
     expect(customer2).to.have.a.property('totalSpent');
     expect(customer2.totalSpent).to.deep.equal(0);
   });

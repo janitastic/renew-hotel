@@ -2,8 +2,10 @@ class Customer {
   constructor(customer) {
     this.id = customer.id;
     this.name = customer.name;
-    this.bookings = [];
     this.totalSpent = 0;
+    this.allBookings = null;
+    this.pastBookings = null;
+    this.upcomingBookings = null;
   }
 
   listAllUserBookings(hotel) {
@@ -12,13 +14,13 @@ class Customer {
   }
 
   listPastBookings(hotel, currentDate) {
-    const pastBookings = hotel.bookings.filter(booking => booking.date < currentDate);
-    return pastBookings;
+    this.pastBookings = hotel.bookings.filter(booking => booking.date < currentDate);
+    return this.pastBookings;
   }
 
   listUpcomingBookings(hotel, currentDate) {
-    const upcomingBookings = hotel.bookings.filter(booking => booking.date >= currentDate);
-    return upcomingBookings;
+    this.upcomingBookings = hotel.bookings.filter(booking => booking.date >= currentDate);
+    return this.upcomingBookings;
   }
 
   addTotalSpent(hotel) {
