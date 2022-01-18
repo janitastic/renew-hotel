@@ -7,7 +7,7 @@ import {bookingsData} from '../sample-data/sampleBookings';
 
 describe('Booking', () => {
   let booking1, booking2;
-
+  
   beforeEach(() => {
     booking1 = new Booking(bookingsData[0]);
     booking2 = new Booking(bookingsData[1]);
@@ -53,5 +53,13 @@ describe('Booking', () => {
   it('Should start out with no room service charges', () => {
     expect(booking1).to.have.a.property('roomServiceCharges');
     expect(booking1.roomServiceCharges).to.deep.equal([]);
+  });
+
+  it('Should be able to create a new booking ID with a given list of characters and a length requirement of 17', () => {
+    const idLength = 17;
+    const characters = 'abcdefghijklmnopqrstuvwxyz1234567890';
+    const newID = booking1.createNewId(idLength, characters);
+ 
+    expect(newID.length).to.equal(17);
   });
 });

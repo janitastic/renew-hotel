@@ -1,3 +1,5 @@
+import Booking from './booking';
+
 class Hotel {
   constructor(roomsData, bookingsData, customersData) {
     this.rooms = roomsData;
@@ -57,6 +59,10 @@ class Hotel {
       this.availableRooms = this.availableRooms.filter(room => room.roomType === selectedType);
       console.log('available rooms 2', this.availableRooms);
     }
+  }
+
+  bookRoom(bookingDetails) {
+    this.bookings.push(new Booking(bookingDetails, this.bookings));
   }
 }
 
