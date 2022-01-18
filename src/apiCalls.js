@@ -4,7 +4,7 @@ import domUpdates from './domUpdates.js';
 
 /*************** FETCH CALLS ***************/
 
-export const fetchCustomers = () => {
+const fetchCustomers = () => {
   return fetch(customers)
     .then(response => response.json())
     // .then(data => console.log('customers data >>>>', data))
@@ -24,7 +24,7 @@ export const fetchCustomers = () => {
 //     })
 // }
 
-export const fetchBookings = () => {
+const fetchBookings = () => {
   return fetch(bookings)
     .then(response => response.json())
     // .then(data => console.log('bookings data>>>', data))
@@ -34,7 +34,7 @@ export const fetchBookings = () => {
     })
 }
 
-export const fetchRooms = () => {
+const fetchRooms = () => {
   return fetch(rooms)
     .then(response => response.json())
     // .then(data => console.log('rooms >>>', data))
@@ -89,8 +89,7 @@ const allRoomsData = fetchRooms();
 
 const newBooking = { 'userID': 18, 'date': '2021/01/20', 'roomNumber': 5 }
 
-/*************** QUERY SELECTORS ***************/
 
-// export {fetchCustomers, fetchBookings, fetchRooms, allCustomersData, allBookingsData, allRoomsData};
+export {fetchCustomers, fetchBookings, fetchRooms};
 
 // export default {apiCalls};

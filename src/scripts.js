@@ -20,11 +20,11 @@ let customerId;
 /*************** PROMISE & DATA COLLECTION ***************/
 
 const loadData = () => {
-  fetchAllData().then(data => instantiateClasses(data))
+  fetchAllData().then(data => instantiateClasses(data));
 };
 
 const fetchAllData = () => {
-  const response = Promise.all([fetchCustomers(), fetchBookings(), fetchRooms()])
+  const response = Promise.all([fetchCustomers(), fetchBookings(), fetchRooms()]);
   return response;
 }
 
