@@ -1,4 +1,16 @@
+/********************* VARIABLE IMPORTS ******************/
+import {currentUserName} from './scripts';
+import Hotel from '../classes/Hotel';
+import Customer from '../classes/Customer';
+import Room from '../classes/Room';
+import Booking from '../classes/Booking';
+
+let hotel, roomsData, bookingsData, customersData, customer;
+
 /********************* QUERY SELECTORS ******************/
+
+////TEST BUTTON
+const bookNow = document.getElementById('bookNow');
 
 // ---- MENU BUTTONS ---- //
 const homeBtn = document.getElementById('home');
@@ -9,6 +21,7 @@ const logOutBtn = document.getElementById('logOut');//goes home
 // ---- HERO ---- //
 const userMessage = document.getElementById('userMessage');//greeting
 const heroLogo = document.getElementById('heroLogo');//hide on login
+const userName = document.getElementById('userName');
 
 // ---- SEARCH INPUTS & BUTTONS ---- //
 const dateInput = document.getElementById('dateInput');
@@ -69,22 +82,15 @@ const domUpdates = {
   },
 
   loadLandingPage() {//happens before login on loadData
-    domUpdates.hide([
-      logOutBtn, reservationsBtn
-    ])
+    domUpdates.hide([logOutBtn, reservationsBtn]);
   },
 
-  loadUserLandingPage(user) {//happens after login
-    userMessage.innerHTML = `
-      <h2 class="user-message">Welcome Back ${user.name}!</h2>
-      <p class="user-message">Your next vacation awaits...</p>
-    `;
-    domUpdates.hide([
-      heroLogo
-    ])
-  },
-
-  
+  displayUserDashboard() {
+    domUpdates.hide([heroLogo])
+    domUpdates.show([userMessage])
+    userName.innerText = currentUserName;
+    // totalSpent.innerText = 
+  }
 }
 
 export default domUpdates;

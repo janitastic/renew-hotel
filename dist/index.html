@@ -26,7 +26,7 @@
       </header>
       <section class="hero-message">
         <div class="user-greeting hidden" id="userMessage">
-          <h2 class="user-message">Welcome Back Bob!</h2>
+          <h2 class="user-message">Welcome Back <span class="user-message" id="userName"></span>!</h2>
           <p class="user-message">Your next vacation awaits...</p>
         </div>
         <img class="hero-logo" src="../images/dew-breeze-suites-logo.png" alt="Dew Breeze Suites Logo" id="heroLogo">
@@ -38,7 +38,7 @@
           <form class="search-wrapper">
               <label for="dateInput">
                 <p class="example-text">Check In</p>
-                <input class="date-input" id="dateInput" type="date">
+                <input class="date-input" id="dateInput" value="2022-01-18" type="date">
               </label>
                 <!-- <input type="submit" class="search-button" id="dateSearch">Search -->
                 <button class="search-button" id="dateSearch">Search</button>
@@ -68,7 +68,7 @@
     <article class="bookings" id="userDashboard" tabindex="0">
       <section class="message">
         <h4>Thank you for being Dew Breeze Luxury Resorts Loyalty Member!</h4>
-        <p>You have spent on <span id="totalSpent">$8806.73</span> bookings.</p>
+        <p>You have spent on <span id="totalSpent"></span> bookings.</p>
       </section>
       <section class="current-bookings" id="current">
         <!-- may remove this section -->

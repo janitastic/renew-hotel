@@ -1,6 +1,7 @@
 /*************** FILE IMPORTS ***************/
 import './css/base.scss';
 import {fetchCustomers, fetchBookings, fetchRooms, fetchSingleCustomer} from './apiCalls';
+// import {bookNow, homeBtn, reservationsBtn, logInBtn, logOutBtn} from './domUpdates';
 import domUpdates from './domUpdates';
 
 import Hotel from '../classes/Hotel';
@@ -22,7 +23,15 @@ import './images/suite.png';
 /*************** GLOBAL VARIABLES ***************/
 let currentDate = new Date().toJSON().slice(0, 10);
 let hotel, roomsData, bookingsData, customersData, customer;
-let currentCustomerId = 18;
+let currentCustomerId = 18;//currently global
+let currentUser;
+let currentUserId;
+let currentUserName;
+
+///Random User (delete later)
+const getRandomIndex = (array) => {
+  return Math.floor(Math.random() * array.length);
+}
 
 /*************** PROMISE & DATA COLLECTION ***************/
 
@@ -46,9 +55,9 @@ const instantiateClasses = (data) => {
     bookingsData = data[1].bookings;
     customersData = data[2].customers;
     hotel = new Hotel(roomsData, bookingsData, customersData);
-  console.log(hotel);
+  // console.log(hotel);
     hotel.getCurrentCustomer(currentCustomerId);
-  console.log(currentCustomerId);
+  // console.log(currentCustomerId);
     //display customer name to DOM
   fetchCurrentUser(currentCustomerId);
 }
@@ -63,13 +72,26 @@ const fetchCurrentUser = (id) => {
 }
 
 /**************** FUNCTIONS ****************/
-const instantiateUser = (data) => {
-  customer = new Customer(data);
-  domUpdates.loadUserInfo(customer);
-}
+
+// const instantiateUser = (data) => {
+//   console.log('instantiate user', currentCustomerId)
+//   console.log(customersData)
+  
+//   console.log(currentUserName)
+// }
 
 const loadCustomerDashboard = () => {
-  
+  console.log('can access >>>>', currentCustomerId)
+  console.log('can I access the hotel? >>>', hotel)
+
+  currentUserName = hotel.currentCustomerFirstName;
+  domUpdates.displayUserDashboard();
+
+  console.log(currentUserName)
+  // customer.listAllUserBookings(hotel)
+  // const totalSpent = customer.addTotalSpent(hotel);
+  // console.log('totalSpent>>>', totalSpent)
+  // domUpdates.
 }
 
 
@@ -78,7 +100,9 @@ const loadCustomerDashboard = () => {
 // window.addEventListener('load', loadPage);
 window.addEventListener('load', loadData);
 
+//test button
+bookNow.addEventListener('click', loadCustomerDashboard);
 
 /*************** EXPORTS ***************/
 
-export {currentCustomerId, fetchAllData};
+export {currentCustomerId, loadData, currentUserName};
