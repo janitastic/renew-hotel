@@ -80,12 +80,9 @@ const checkForErrors = (response) => {
 const customers = 'http://localhost:3001/api/v1/customers';
 const bookings = 'http://localhost:3001/api/v1/bookings';
 const rooms = 'http://localhost:3001/api/v1/rooms';
-// const singleCustomer = `http://localhost:3001/api/v1/customers/${id}`;
 
 
 const newBooking = { 'userID': 18, 'date': '2021/01/20', 'roomNumber': 5 }
 
 
 export {fetchCustomers, fetchBookings, fetchRooms, fetchSingleCustomer};
-
-// export default {apiCalls};

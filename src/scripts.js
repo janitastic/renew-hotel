@@ -26,9 +26,10 @@ const loadData = () => {
 };
 
 const fetchAllData = () => {
-  return Promise.all([fetchRooms(), fetchBookings(),fetchCustomers()]).catch(err => {
-    domUpdates.displayError(error)
-    console.log('Promise not fulfilled.', error);
+  return Promise.all([fetchRooms(), fetchBookings(),fetchCustomers()])
+    .catch(err => {
+      domUpdates.displayError(error)
+      console.log('Promise not fulfilled.', error);
   })
 }
 
@@ -48,7 +49,11 @@ const instantiateClasses = (data) => {
 
 const fetchCurrentUser = (id) => {
   console.log('id in fetch call', id)
-  return Promise.all([fetchSingleCustomer(id)]);
+  return Promise.all([fetchSingleCustomer(id)])
+    .catch(err => {
+      domUpdates.displayError(error)
+      console.log('Promise not fulfilled.', error);
+  })
 }
 
 const loadPage = (data) => {
