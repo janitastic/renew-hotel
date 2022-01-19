@@ -84,7 +84,7 @@ const domUpdates = {
 
   displayUserDashboard(customer, hotel) {
     this.hide([heroLogo, selectedRoom, noRoomsMessage, confirmationMessage, filteredResults])
-    this.show([userMessage, reservationsBtn])
+    this.show([userMessage, reservationsBtn, userDashboard])
     userName.innerText = hotel.currentCustomerFirstName;
     totalSpent.innerText = customer.addTotalSpent(hotel);
   },
