@@ -22,7 +22,7 @@ import './images/suite.png';
 
 /*************** GLOBAL VARIABLES ***************/
 let currentDate = new Date().toJSON().slice(0, 10);
-let hotel, roomsData, bookingsData, customersData, customer;
+let hotel, customer, roomsData, bookingsData, customersData, customerData;
 let currentCustomerId = 18;//currently global
 let currentUser;
 let currentUserId;
@@ -41,8 +41,8 @@ const loadData = () => {
 };
 
 const fetchAllData = () => {
-  return Promise.all([fetchRooms(), fetchBookings(),fetchCustomers()])
-    .catch(err => {
+  return Promise.all([fetchRooms(), fetchBookings(),fetchCustomers(),fetchSingleCustomer(currentCustomerId)])
+    .catch(error => {
       domUpdates.displayError(error)
       console.log('Promise not fulfilled.', error);
   })
@@ -50,35 +50,17 @@ const fetchAllData = () => {
 
 const instantiateClasses = (data) => {
   console.log('my data >>>', data);
-    //full arrays below need to be iterated over
-    roomsData = data[0].rooms;
-    bookingsData = data[1].bookings;
-    customersData = data[2].customers;
-    hotel = new Hotel(roomsData, bookingsData, customersData);
-  // console.log(hotel);
-    hotel.getCurrentCustomer(currentCustomerId);
-  // console.log(currentCustomerId);
-    //display customer name to DOM
-  fetchCurrentUser(currentCustomerId);
-}
-
-const fetchCurrentUser = (id) => {
-  console.log('id in fetch call', id)
-  return Promise.all([fetchSingleCustomer(id)])
-    .catch(err => {
-      domUpdates.displayError(error)
-      console.log('Promise not fulfilled.', error);
-  })
+  roomsData = data[0].rooms;
+  bookingsData = data[1].bookings;
+  customersData = data[2].customers;
+  customerData = data[3];
+  hotel = new Hotel(roomsData, bookingsData, customersData);
+  customer = new Customer(customerData);
+  hotel.getCurrentCustomer(currentCustomerId);
 }
 
 /**************** FUNCTIONS ****************/
 
-// const instantiateUser = (data) => {
-//   console.log('instantiate user', currentCustomerId)
-//   console.log(customersData)
-  
-//   console.log(currentUserName)
-// }
 
 const loadCustomerDashboard = () => {
   console.log('can access >>>>', currentCustomerId)
@@ -87,11 +69,7 @@ const loadCustomerDashboard = () => {
   currentUserName = hotel.currentCustomerFirstName;
   domUpdates.displayUserDashboard();
 
-  console.log(currentUserName)
-  // customer.listAllUserBookings(hotel)
-  // const totalSpent = customer.addTotalSpent(hotel);
-  // console.log('totalSpent>>>', totalSpent)
-  // domUpdates.
+  console.log(customer, 'here!!!')
 }
 
 
@@ -105,4 +83,4 @@ bookNow.addEventListener('click', loadCustomerDashboard);
 
 /*************** EXPORTS ***************/
 
-export {currentCustomerId, loadData, currentUserName};
+export {currentCustomerId, loadData, currentUser, currentUserName};

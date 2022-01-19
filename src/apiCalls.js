@@ -10,17 +10,17 @@ const fetchCustomers = () => {
     // .then(data => console.log('customers data >>>>', data))
     .catch(error => {
       console.log(error)
-      checkResponse(response)
+      checkForErrors(response)
     })
 }
 
 const fetchSingleCustomer = (id) => {
-  fetch(`http://localhost:3001/api/v1/customers/${id}`)
+  return fetch(`http://localhost:3001/api/v1/customers/${id}`)
     .then(response => response.json())
-    .then(data => console.log('currentUser >>>', data))
+    // .then(data => console.log('currentUser >>>', data))
     .catch(error => {
       console.log(error)
-      checkResponse(response)
+      checkForErrors(response)
     })
 }
 
@@ -30,7 +30,7 @@ const fetchBookings = () => {
     // .then(data => console.log('bookings data>>>', data))
     .catch(error => {
       console.log(error)
-      checkResponse(response)
+      checkForErrors(response)
     })
 }
 
@@ -40,7 +40,7 @@ const fetchRooms = () => {
     // .then(data => console.log('rooms >>>', data))
     .catch(error => {
       console.log(error)
-      checkResponse(response)
+      checkForErrors(response)
     })
 }
 
