@@ -5,7 +5,7 @@ class Hotel {
     this.rooms = roomsData;
     this.bookings = bookingsData;
     this.customers = customersData;
-    // this.availableRooms = [];
+    this.availableRooms = [];
     this.roomTypes = this.logRoomTypes();
     this.currentCustomer = null;
     this.currentCustomerFirstName = null;
