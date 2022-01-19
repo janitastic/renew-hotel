@@ -97,13 +97,6 @@ const selectRoomType = () => {
 
   selectedRoomType = roomTypeInput.value;
   // console.log(selectedRoomType)
-  if (selectedRoomType === 'single') {
-    selectedRoomType = 'single room'
-  } else if (selectedRoomType === 'residential') {
-    selectedRoomType = 'residential suite'
-  } else if (selectedRoomType === 'junior') {
-    selectedRoomType = 'junior suite'
-  }
 }
 
 const loadAvailableBookings = (event) => {
