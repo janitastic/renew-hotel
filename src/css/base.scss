@@ -1,7 +1,7 @@
+@import '_media';
 @import '_variables';
 @import '_mixins';
 @import '_reset';
-@import '_media';
 
 * {
 	font-family: $bodyFont;
@@ -41,8 +41,6 @@ nav {
   background-image: url('../images/hero.png');
   background-size: cover;
   background-repeat: no-repeat;
-  // padding: 5% 0 0 0;
-  // width: 100vw;
 }
 
 .hero-logo {
@@ -131,7 +129,6 @@ a {
 
 .user-message {
 	text-align: center;
-	// padding: 2%;
 	animation: fadeInAnimation ease 3s;
 	animation-iteration-count: 1;
 	animation-fill-mode: forwards;
@@ -344,11 +341,10 @@ select {
 		cursor: pointer;
 		background-color: $gold;
 	}
+}
 
-  // &:disabled {
-	// 	cursor: no-drop;
-	// 	background-color: gray;
-	// }
+.dashboard {
+	margin-bottom: 10%;
 }
 
 .clear-button {
@@ -375,6 +371,17 @@ select {
 
 .show {
 	display: block;
+}
+
+	/****************** KEYFRAMES *****************/
+
+@keyframes fadeInAnimation {
+	0% {
+			opacity: 0;
+	}
+	100% {
+			opacity: 1;
+		}
 }
 
 /********************* MEDIAN QUERIES ****************/
@@ -480,14 +487,3 @@ select {
 			grid-template-columns: 100%;
 		}
 	}
-
-	/****************** KEYFRAMES *****************/
-
-@keyframes fadeInAnimation {
-	0% {
-			opacity: 0;
-	}
-	100% {
-			opacity: 1;
-		}
-}

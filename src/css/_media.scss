@@ -1,12 +1,16 @@
+@import '_variables';
+@import '_mixins';
+@import '_reset';
+/********************* MEDIAN QUERIES ****************/
+
 //tablet view
 @media only screen and (max-width: 1068px) {
 	// @media (min-width: 1025px) and (max-width: 1280px) {
 		nav {
-			// @include flexbox(row, wrap, normal, center, normal);
 			@include flexbox(row, wrap, normal, flex-end, normal);
 		}
 	
-		.room-cards {
+		.filtered-results {
 			grid-template-columns: 33% 33% 33%;
 		}
 	}
@@ -31,7 +35,7 @@
 			margin: none;
 		}
 	
-		.room-cards {
+		.filtered-results {
 			grid-template-columns: 50% 50%;
 		}
 	}
@@ -51,10 +55,10 @@
 		}
 	
 		.menu {
-			margin: none;
+			margin: 0;
 		}
 	
-		.room-cards {
+		.filtered-results {
 			grid-template-columns: 50% 50%;
 		}
 	}
@@ -73,22 +77,30 @@
 			@include flexbox(row, nowrap, normal, space-around, center);
 			margin: 2%;
 		}
+
+    .logo {
+      width: 90%;
+    }
+
+    .hero-logo {
+      width: 90%;
+    }
 	
 		.menu {
-			padding: 0;
+			padding: 1%;
 			margin: 0;
 			max-height: 2em;
 		}
 	
-		.book-now {
-			display: none;
-		}
+		// .book-now {
+		// 	display: none;
+		// }
 	
 		.search-wrapper {
 			@include flexbox(column, nowrap, normal, center, center);
 		}
 	
-		.room-cards {
+		.filtered-results {
 			grid-template-columns: 100%;
 		}
 	}

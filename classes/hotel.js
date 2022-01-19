@@ -52,7 +52,6 @@ class Hotel {
 
   filterAvailableRoomsByType(selectedType) {
     if (!this.availableRooms.length) {
-      this.availableRooms = this.rooms.filter(room => room.roomType === selectedType);
       return 'no available rooms message';
     } 
       this.availableRooms = this.availableRooms.filter(room => room.roomType === selectedType);

@@ -78,6 +78,10 @@ const domUpdates = {
     this.show([userMessage, searchForm, reservationsBtn, userDashboard, roomsView]);
   },
 
+  goHome() {
+    this.show([loyaltyMessage, searchForm, reservationsBtn, userDashboard, roomsView, upcoming]);
+  },
+
   displayUserDashboard(customer, hotel) {
     const fullName = customer.name;
     const [first, last] = fullName.split(' ');

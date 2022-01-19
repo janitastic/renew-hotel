@@ -29,6 +29,7 @@ const dateSearchBtn = document.getElementById('dateSearch');
 const roomTypeInput = document.getElementById('typeInput');
 const roomSearchBtn = document.getElementById('typeSearch');
 const clearBtn = document.getElementById('clear');
+const returnBtn = document.getElementById('returnBtn');
 
 /*************** GLOBAL VARIABLES ***************/
 let todaysDate = new Date().toJSON().slice(0, 10);
@@ -135,6 +136,13 @@ const login = (event) => {
   }
 }
 
+const goHome = () => {
+  fetchSingleCustomer(currentUserId)
+    .then(data => {
+      loadData()
+      domUpdates.goHome()
+  });
+}
 
 /**************** EVENT LISTENERS ****************/
 
@@ -144,6 +152,7 @@ searchRooms.addEventListener('submit', filterRoomsByType);
 clearBtn.addEventListener('click', resetSearch);
 logInBtn.addEventListener('submit', login);
 filteredResults.addEventListener('click', bookARoom);
+returnBtn.addEventListener('click', goHome)
 
 
 /*************** EXPORTS ***************/
