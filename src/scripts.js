@@ -99,9 +99,10 @@ const loadAvailableBookings = (event) => {
   event.preventDefault();
   selectDate();
   console.log('selected date', selectedDate);
-
-  const filterRooms = hotel.filterRoomsByDate(selectedDate);
-  console.log('filteredRooms', filterRooms)
+  domUpdates.displaySearchResults();
+  domUpdates.displaySearchByDate(selectedDate);
+  // const filterRooms = hotel.filterRoomsByDate(selectedDate);
+  // console.log('filteredRooms', filterRooms)
 }
 
 const filterRoomsByType = (event) => {

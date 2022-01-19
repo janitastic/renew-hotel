@@ -93,15 +93,40 @@ const domUpdates = {
       <article class="room-card" id="${booking.roomNumber}">
         <div class="image-area">
           <div class="thumbnail-image" id="thumbRoomImage">
-            <img src="../images/suite.png" class="room-image" alt="relaxing and bright room">
+            <img src="../images/suite.png" class="room-image" alt="relaxing and bright suite">
           </div>
         </div>
         <div class="room-details">
           <p class="card-text">Booking Date: <span class="card-text" id="bookedDate">${booking.date}</span></p>
           <p class="card-text">Reservation ID: <span class="card-text" id="bookedDate">${booking.id}</span></p>
         </div>
-      </article>
-    `
+      </article>`
+    });
+  },
+
+  displaySearchResults() {
+    this.hide([userDashboard, selectedRoom, noRoomsMessage, confirmationMessage])
+    this.show([reservationsBtn, filteredResults])
+  },
+
+  displaySearchByDate(selectedDate) {
+    const filterRooms = hotel.filterRoomsByDate(selectedDate);
+    console.log('filteredRooms', filterRooms)
+    filterRooms.forEach(room => {
+      return filteredResults.innerHTML += `
+      <article class="room-card" id="${room.number}">
+          <div class="image-area">
+            <div class="thumbnail-image" id="thumbRoomImage">
+              <img src="../images/suite.png" class="room-image" alt="relaxing and bright suite">
+            </div>
+          </div>
+          <div class="room-details">
+            <h3 class="card-text" id="roomType">${room.roomType}</h3>
+            <p class="card-text">Beds: <span class="card-text" id="typeOfBed">${room.numBeds} ${room.bedSize}</span></p>
+            <p class="card-text" id="costPerNight">$${room.costPerNight} per night</p>
+            <button class="select-room" id="selectRoom">View Room</button>
+          </div>
+        </article>`
     });
   }
 
