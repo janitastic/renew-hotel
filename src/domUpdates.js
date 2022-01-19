@@ -112,7 +112,7 @@ const domUpdates = {
 
   displaySearchByDate(selectedDate) {
     const filterRooms = hotel.filterRoomsByDate(selectedDate);
-    console.log('filteredRooms', filterRooms)
+    console.log('roomsByDate', filterRooms)
     filterRooms.forEach(room => {
       return filteredResults.innerHTML += `
       <article class="room-card" id="${room.number}">
@@ -129,9 +129,28 @@ const domUpdates = {
           </div>
         </article>`
     });
-  }
+  },
 
-  
+  displayFilteredSearch(selectedRoomType) {
+    // const filteredType = hotel.filterAvailableRoomsByType(selectedRoomType);
+    // console.log(filteredType)
+    // filterRooms.forEach(room => {
+    //   return filteredResults.innerHTML += `
+    //   <article class="room-card" id="${room.number}">
+    //       <div class="image-area">
+    //         <div class="thumbnail-image" id="thumbRoomImage">
+    //           <img src="../images/suite.png" class="room-image" alt="relaxing and bright suite">
+    //         </div>
+    //       </div>
+    //       <div class="room-details">
+    //         <h3 class="card-text" id="roomType">${room.roomType}</h3>
+    //         <p class="card-text">Beds: <span class="card-text" id="typeOfBed">${room.numBeds} ${room.bedSize}</span></p>
+    //         <p class="card-text" id="costPerNight">$${room.costPerNight} per night</p>
+    //         <button class="select-room" id="selectRoom">View Room</button>
+    //       </div>
+    //     </article>`
+    // });
+  }
 }
 
 export default domUpdates;

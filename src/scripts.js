@@ -93,10 +93,17 @@ const selectDate = () => {
 const selectRoomType = () => {
   selectedDate = dateInput.value;
   const roomTypes = hotel.logRoomTypes();
-  console.log(roomTypes);
+  // console.log(roomTypes);
 
   selectedRoomType = roomTypeInput.value;
-  console.log(selectedRoomType)
+  // console.log(selectedRoomType)
+  if (selectedRoomType === 'single') {
+    selectedRoomType = 'single room'
+  } else if (selectedRoomType === 'residential') {
+    selectedRoomType = 'residential suite'
+  } else if (selectedRoomType === 'junior') {
+    selectedRoomType = 'junior suite'
+  }
 }
 
 const loadAvailableBookings = (event) => {
@@ -111,7 +118,7 @@ const filterRoomsByType = (event) => {
   event.preventDefault();
   selectRoomType();
   const filteredType = hotel.filterAvailableRoomsByType(selectedRoomType);
-  console.log(filteredType)
+  console.log('filtered by type', filteredType)
 }
 
 const resetSearch = () => {
