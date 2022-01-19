@@ -7,7 +7,7 @@ This project is based off the Turing School of Software & Design Overlook Hotel 
 ## See it in action!
 - Upon opening the application, the user is greeted with a long in page. After they log in they can see their dashboard including their name, total spent, and past, current, and upcoming reservations.
 
-![login-page](https://github.com/janitastic/renew-hotel/blob/main/demo1.gif)
+![login-page](https://github.com/janitastic/renew-hotel/blob/main/login-screen.gif)
 
 - The user can also select from the calendar to filter through available bookings by date, as well as by room type.
 
