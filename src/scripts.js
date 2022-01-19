@@ -23,11 +23,11 @@ import './images/suite.png';
 /*************** GLOBAL VARIABLES ***************/
 let currentDate = new Date().toJSON().slice(0, 10);
 let hotel, customer, roomsData, bookingsData, customersData, customerData;
-let currentCustomerId = 20;//currently global
+let currentCustomerId = 18;//currently global
 let currentUser;
 let currentUserId;
-let currentUserName;
-let currentTotalSpent;
+let currentUserName, currentTotalSpent, currentUserBookings;
+
 
 ///Random User (delete later)
 const getRandomIndex = (array) => {
@@ -73,6 +73,11 @@ const loadCustomerDashboard = () => {
   domUpdates.displayUserDashboard(customer, currentDate);
 }
 
+const getAllUserBookings = () => {
+  // const allBookings = customer.listAllUserBookings(hotel);
+  // console.log(allBookings);
+  domUpdates.displayUserBookings(customer, hotel);
+}
 
 /**************** EVENT LISTENERS ****************/
 
@@ -80,7 +85,7 @@ const loadCustomerDashboard = () => {
 window.addEventListener('load', loadData);
 
 //test button
-bookNow.addEventListener('click', loadCustomerDashboard);
+bookNow.addEventListener('click', getAllUserBookings);
 
 /*************** EXPORTS ***************/
 
