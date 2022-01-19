@@ -29,6 +29,10 @@ class Customer {
     return this.currentBookings;
   }
 
+  sortBookings(hotel) {
+    
+  }
+
   addTotalSpent(hotel) {
     let bookings = this.listAllUserBookings(hotel);
     this.totalSpent = bookings.reduce((total, booking) => {

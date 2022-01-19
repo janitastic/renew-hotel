@@ -94,8 +94,25 @@ const domUpdates = {
   },
 
   displayUpcomingStays(hotel, currentDate) {
-    const upcomingBookings = customer.listUpcomingBookings(hotel, currentDate);
-    console.log(upcomingBookings);
+    const allBookings = customer.listAllUserBookings(hotel);
+    console.log(allBookings);
+    allBookings.forEach(booking => {
+      return upcomingResults.innerHTML += `
+      <article class="room-card" id="${booking.roomNumber}">
+        <div class="image-area">
+          <div class="thumbnail-image" id="thumbRoomImage">
+            <img src="../images/junior-suite.png" class="room-image" alt="relaxing junior suite">
+          </div>
+        </div>
+        <div class="room-details">
+          <h3 class="card-text" id="bookedRoomType"></h3>
+          <p class="card-text">Beds: <span class="card-text" id="bookedBed"></span></p>
+          <p class="card-text" id="bookedCost"> per night</p>
+          <p class="card-text">Booking Date: <span class="card-text" id="bookedDate">${booking.date}</span></p>
+        </div>
+      </article>
+    `
+    });
   },
 
   displayUserBookings(customer, hotel) {
