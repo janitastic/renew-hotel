@@ -24,6 +24,13 @@ const reservationsBtn = document.getElementById('reservations');
 const logInBtn = document.getElementById('logIn');//goes to dashboard
 const logOutBtn = document.getElementById('logOut');//goes home
 
+// ---- SEARCH INPUTS & BUTTONS ---- //
+const dateInput = document.getElementById('dateInput');
+const search = document.getElementById('search');
+const dateSearchBtn = document.getElementById('dateSearch');
+const roomTypeInput = document.getElementById('typeInput');
+const roomSearchBtn = document.getElementById('typeSearch');
+const clearBtn = document.getElementById('clear');
 
 /*************** GLOBAL VARIABLES ***************/
 let currentDate = new Date().toJSON().slice(0, 10);
@@ -32,6 +39,7 @@ let currentCustomerId = 18;//currently global
 let currentUser;
 let currentUserId;
 let currentUserName, currentTotalSpent, currentUserBookings;
+let selectedDate;
 
 
 ///Random User (delete later)
@@ -73,15 +81,24 @@ const loadCustomerDashboard = () => {
   domUpdates.displayUpcomingStays(hotel, currentDate)
 }
 
-// const getAllUserBookings = () => {
-//   domUpdates.displayUserBookings(customer, hotel);
-// }
+const selectDate = () => {
+  selectedDate = dateInput.value;
+}
+
+const loadAvailableBookings = (event) => {
+  event.preventDefault();
+  selectDate();
+  console.log('selected date', selectedDate);
+  const filterRooms = hotel.filterRoomsByDate(selectedDate);
+  console.log('filteredRooms', filterRooms)
+}
 
 /**************** EVENT LISTENERS ****************/
 
 // window.addEventListener('load', loadPage);
 window.addEventListener('load', loadData);
 homeBtn.addEventListener('click', loadCustomerDashboard);
+search.addEventListener('submit', loadAvailableBookings);
 // logInBtn.addEventListener('click', loadCustomerDashboard);
 
 //test button

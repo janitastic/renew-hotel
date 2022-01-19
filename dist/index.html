@@ -17,7 +17,7 @@
         <a href="/"><img class="logo" src="../images/dew-breeze-header-logo.png" alt="Dew Breeze Suites Luxury Boutique Hotel logo"></a>
         <nav>
           <a class="menu" id="home">Home</a>
-          <a class="menu" id="reservations">Your Reservations</a>
+          <a href="#upcoming" class="menu" id="reservations">Your Reservations</a>
           <a class="menu" id="logIn">Login</a>
           <a class="menu" id="logOut">Log Out</a>
           <a href="#dateInput" class="menu book-now" id="bookNow">Book Now</a>
@@ -35,13 +35,12 @@
         <h3>Make a Reservation</h3>
         <!-- <a class="link-to-rooms" href="#filterRooms" tabindex="-1"> -->
           <!-- search form here -->
-          <form class="search-wrapper">
+          <form class="search-wrapper" id="search">
               <label for="dateInput">
                 <p class="example-text">Check In</p>
-                <input class="date-input" id="dateInput" value="2022-01-18" type="date">
+                <input class="date-input" id="dateInput" type="date">
               </label>
-                <!-- <input type="submit" class="search-button" id="dateSearch">Search -->
-                <button class="search-button" id="dateSearch">Search</button>
+                <button class="search-button" type="submit" id="dateSearch">Search</button>
               <label for="typeInput">
                 <p class="example-text">Room Type</p>
                 <select class="input" id="typeInput" placeholder="make a selection" name="room options">
@@ -74,44 +73,10 @@
         <!-- may remove this section -->
       </section>
       <section class="upcoming-bookings" id="upcoming">
-        <h4>Your Upcoming Stays</h4>
+        <h4>Your Reservations</h4>
         <article class="search-results" id="upcomingView" tabindex="0">
           <section class="filtered-results" id="upcomingResults" tabindex="0">
-            <!-- upcoming room cards -->
-            <!-- <article class="room-card" id="6">
-              <div class="image-area">
-                <div class="thumbnail-image" id="thumbRoomImage">
-                  <img src="../images/junior-suite.png" class="room-image" alt="relaxing junior suite">
-                </div>
-              </div>
-              <div class="room-details">
-                <h3 class="card-text" id="bookedRoomType">suite</h3>
-                <p class="card-text">Beds: <span class="card-text" id="bookedBed">2 full</span></p>
-                <p class="card-text" id="bookedCost">$477.38 per night</p>
-                <p class="card-text">Booking Date: <span class="card-text" id="bookedDate">2022/01/18</span></p>
-              </div>
-            </article> -->
-          </section>
-        </article>
-      </section>
-      <section class="past-bookings" id="past">
-        <h4>Your Previous Stays</h4>
-        <article class="search-results" id="pastView" tabindex="0">
-          <section class="filtered-results" id="pastResults" tabindex="0">
-            <!-- past room cards -->
-            <article class="room-card" id="2">
-              <div class="image-area">
-                <div class="thumbnail-image" id="thumbRoomImage">
-                  <img src="../images/junior-suite.png" class="room-image" alt="relaxing junior suite">
-                </div>
-              </div>
-              <div class="room-details">
-                <h3 class="card-text" id="pastRoomType">suite</h3>
-                <p class="card-text">Beds: <span class="card-text" id="pastBed">2 full</span></p>
-                <p class="card-text" id="pastCost">$477.38 per night</p>
-                <p class="card-text">Booking Date: <span class="card-text" id="pastDate">2022/01/18</span></p>
-              </div>
-            </article>
+          <!-- bookings display here -->
           </section>
         </article>
       </section>

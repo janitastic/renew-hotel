@@ -11,13 +11,13 @@ class Room {
 
   selectImage(images) {
     if (this.roomType === 'residential suite') {
-      this.imageURL = './images/residential_suite';
+      this.imageURL = '../images/residential_suite';
     } else if (this.roomType === 'suite') {
-      this.imageURL = './images/suite';
+      this.imageURL = '../images/suite';
     } else if (this.roomType === 'single room') {
-      this.imageURL = './images/single_room';
+      this.imageURL = '../images/single_room';
     } else {
-      this.imageURL = './images/junior-suite'
+      this.imageURL = '../images/junior-suite'
     }
   }
 }
