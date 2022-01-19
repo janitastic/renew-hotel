@@ -3,7 +3,6 @@ import './css/base.scss';
 import {fetchCustomers, fetchBookings, fetchRooms, fetchSingleCustomer} from './apiCalls';
 // import {bookNow, homeBtn, reservationsBtn, logInBtn, logOutBtn} from './domUpdates';
 import domUpdates from './domUpdates';
-
 import Hotel from '../classes/Hotel';
 import Customer from '../classes/Customer';
 import Room from '../classes/Room';
@@ -18,6 +17,12 @@ import './images/junior-suite.png';
 import './images/residential.png';
 import './images/single.png';
 import './images/suite.png';
+
+// ---- MENU BUTTONS ---- //
+const homeBtn = document.getElementById('home');
+const reservationsBtn = document.getElementById('reservations');
+const logInBtn = document.getElementById('logIn');//goes to dashboard
+const logOutBtn = document.getElementById('logOut');//goes home
 
 
 /*************** GLOBAL VARIABLES ***************/
@@ -64,13 +69,6 @@ const instantiateClasses = (data) => {
 
 
 const loadCustomerDashboard = () => {
-  console.log('can access current id>>>>', currentCustomerId)
-  console.log('can I access the hotel? >>>', hotel)
-  console.log('can I access the customer? >>>', customer)
-  console.log('current date >>>>', currentDate)
-  
-
-  currentUserName = hotel.currentCustomerFirstName;
   domUpdates.displayUserDashboard(customer, hotel);
 }
 
@@ -82,9 +80,10 @@ const getAllUserBookings = () => {
 
 // window.addEventListener('load', loadPage);
 window.addEventListener('load', loadData);
+logInBtn.addEventListener('click', loadCustomerDashboard);
 
 //test button
-bookNow.addEventListener('click', loadCustomerDashboard);
+// bookNow.addEventListener('click', loadCustomerDashboard);
 
 /*************** EXPORTS ***************/
 
