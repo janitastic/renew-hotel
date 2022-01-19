@@ -35,31 +35,25 @@
         <h3>Make a Reservation</h3>
         <!-- <a class="link-to-rooms" href="#filterRooms" tabindex="-1"> -->
           <!-- search form here -->
-          <form class="search-wrapper" id="search">
+          <form class="search-wrapper" id="searchDate">
               <label for="dateInput">
                 <p class="example-text">Check In</p>
                 <input class="date-input" id="dateInput" type="date">
               </label>
-                <button class="search-button" type="submit" id="dateSearch">Search</button>
+              <button class="search-button" type="submit" id="dateSearch">Search</button>
+          </form>
+          <form class="search-wrapper" id="searchRooms">
               <label for="typeInput">
                 <p class="example-text">Room Type</p>
                 <select class="input" id="typeInput" placeholder="make a selection" name="room options">
-                  <option value="all">any</option>
                   <option value="residential">residential suite</option>
                   <option value="suite">suite</option>
                   <option value="single">single room</option>
                   <option value="junior suite">junior suite</option>
                 </select>
               </label>
-              <!-- <div class="dropdown">
-                <span>Mouse over me</span>
-                <div class="dropdown-content">
-                  <p>Hello World!</p>
-                </div>
-              </div> -->
-                <!-- <input type="submit" class="search-button" id="typeSearch">Search Rooms -->
-                <button class="search-button" id="typeSearch">Filter</button>
-                <button class="clear-button" id="clear">Clear</button>
+              <button class="search-button" type="submit" id="typeSearch">Filter</button>
+              <button class="clear-button" id="clear">Clear</button>
           </form>
         <!-- </a> -->
       </section>

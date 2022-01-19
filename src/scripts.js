@@ -26,7 +26,8 @@ const logOutBtn = document.getElementById('logOut');//goes home
 
 // ---- SEARCH INPUTS & BUTTONS ---- //
 const dateInput = document.getElementById('dateInput');
-const search = document.getElementById('search');
+const searchDate = document.getElementById('searchDate');
+const searchRooms = document.getElementById('searchRooms');
 const dateSearchBtn = document.getElementById('dateSearch');
 const roomTypeInput = document.getElementById('typeInput');
 const roomSearchBtn = document.getElementById('typeSearch');
@@ -39,7 +40,7 @@ let currentCustomerId = 18;//currently global
 let currentUser;
 let currentUserId;
 let currentUserName, currentTotalSpent, currentUserBookings;
-let selectedDate;
+let selectedDate, selectedRoomType;
 
 
 ///Random User (delete later)
@@ -78,19 +79,41 @@ const instantiateClasses = (data) => {
 
 const loadCustomerDashboard = () => {
   domUpdates.displayUserDashboard(customer, hotel);
-  domUpdates.displayUpcomingStays(hotel, currentDate)
+  domUpdates.displayUpcomingStays(hotel, currentDate);
 }
 
 const selectDate = () => {
   selectedDate = dateInput.value;
 }
 
+const selectRoomType = () => {
+  selectedDate = dateInput.value;
+  const roomTypes = hotel.logRoomTypes();
+  console.log(roomTypes);
+
+  selectedRoomType = roomTypeInput.value;
+  console.log(selectedRoomType)
+}
+
 const loadAvailableBookings = (event) => {
   event.preventDefault();
   selectDate();
   console.log('selected date', selectedDate);
+
   const filterRooms = hotel.filterRoomsByDate(selectedDate);
   console.log('filteredRooms', filterRooms)
+}
+
+const filterRoomsByType = (event) => {
+  event.preventDefault();
+  selectRoomType();
+  const filteredType = hotel.filterAvailableRoomsByType(selectedRoomType);
+  console.log(filteredType)
+}
+
+const resetSearch = () => {
+  dateInput.value = null;
+  roomTypeInput.value = null;
 }
 
 /**************** EVENT LISTENERS ****************/
@@ -98,7 +121,9 @@ const loadAvailableBookings = (event) => {
 // window.addEventListener('load', loadPage);
 window.addEventListener('load', loadData);
 homeBtn.addEventListener('click', loadCustomerDashboard);
-search.addEventListener('submit', loadAvailableBookings);
+searchDate.addEventListener('submit', loadAvailableBookings);
+searchRooms.addEventListener('submit', filterRoomsByType);
+clearBtn.addEventListener('click', resetSearch);
 // logInBtn.addEventListener('click', loadCustomerDashboard);
 
 //test button
