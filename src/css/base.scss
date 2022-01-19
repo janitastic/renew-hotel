@@ -18,7 +18,6 @@ p {
 
 body {
   height: 100vh;
-  // background: $soft-teal;
   line-height: 1.2;
 }
 
@@ -51,7 +50,8 @@ nav {
   width: 40%;
 }
 
-.user-greeting {
+.user-greeting,
+.login {
   background-color: rgba(248, 248, 248, .60);
 	padding: 5%;
 }
@@ -122,7 +122,7 @@ a {
 
 .message {
 	text-align: center;
-	padding: 5%;
+	padding: 5% 5% 0;
 }
 
 .checked-icon {
@@ -147,7 +147,6 @@ a {
 .thumbnail-image {
 	width: 100%;
 	position: relative;
-	// text-align: center;
 }
 
 .room-image {
@@ -163,8 +162,10 @@ a {
   padding: 5%;
 }
 
-.card-text {
+.card-text,
+.login-text {
 	color: $offWhite;
+	margin: 1%;
 }
 
 .select-room {
@@ -316,6 +317,11 @@ select {
 	background-color: $transparentTeal;
 }
 
+.login {
+	@include flexbox(column, wrap, normal, normal, normal);
+	padding: 5%;
+}
+
 .link-to-rooms {
 	color: transparent;
 }
@@ -323,7 +329,8 @@ select {
 .search-button,
 .clear-button, 
 .book-button,
-.return-button {
+.return-button,
+.login-button {
   background-color: $green;
   color: $offWhite;
 	border: none;
@@ -380,7 +387,7 @@ select {
 		}
 	
 		.filtered-results {
-			grid-template-columns: 25% 25% 25% 25%;
+			grid-template-columns: 33% 33% 33%;
 		}
 	}
 	

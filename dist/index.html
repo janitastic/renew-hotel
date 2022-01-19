@@ -30,6 +30,22 @@
         </div>
         <img class="hero-logo" src="../images/dew-breeze-suites-logo.png" alt="Dew Breeze Suites Logo" id="heroLogo">
       </section>
+      <article class="login search-form" id="loginView">
+        <h3>Login</h3><br>
+        <form action="action_page.php" method="post">     
+          <div class="login-fields">
+            <label for="user name">
+              <p class="login-text">Username</p>
+            </label>
+            <input type="text" placeholder="Enter Username" name="user ame" required>
+            <label for="password">
+              <p class="login-text">Password</p>
+            </label>
+            <input type="password" placeholder="Enter Password" name="password" required><br>
+            <button class="login-button" type="submit">Login</button>
+          </div>
+        </form>
+      </article>
       <section class="search-form" id="searchForm">
         <h3>Make a Reservation</h3>
         <!-- <a class="link-to-rooms" href="#filterRooms" tabindex="-1"> -->
@@ -73,24 +89,20 @@
         </article>
       </section>
     </article>
-    <article class="search-results hidden" id="resultsMessage" tabindex="0">
-      <h4>Your search returned <span id="resultCount"></span> results.</h4>
-    </article>
-    <section class="message" id="noRoomsMessage" tabindex="0">
-      <h4>We have no rooms available that match your criteria.</h4>
-      <p>To get more results, try adjusting your search by changing your check in date or room type.</p>
-    </section>
     <article class="search-results" id="roomsView" tabindex="0">
-      <!-- display room filter images -->
+      <article class="search-results message" id="resultsMessage" tabindex="0">
+        <h4>Your search returned <span id="resultCount"></span> results.</h4>
+        <p>To get more results, try adjusting your search by changing your check in date or room type.</p>
+      </article>
       <section class="filtered-results" id="filteredResults" tabindex="0">
         <!-- filtered room cards -->
       </section>
         <!-- selected room -->
-        <article class="book-this-room" id="selectedRoom">
+        <!-- <article class="book-this-room" id="selectedRoom">
           <div class="room-selection">
             <img src="../images/junior-suite.png" class="selected-room-image" alt="relaxing junior suite">
           </div>
-          <div class="room-details">
+          <div class="room-details" id="roomDetails" tabindex="0">
             <div class="selected-text-area" id="4">
               <h4 id="roomType">suite</h4>
               <p>Beds: <span id="typeOfBed">2 full</span></p>
@@ -105,15 +117,27 @@
               </button>
             </div>
           </div>
-        </article>
+        </article> -->
       <section class="message" id="confirmationMessage" tabindex="0">
         <h4>Your room is booked!</h4>
         <p>We'll see you soon!</p>
       </section>
     </article>
-    <article class="login" id="loginView">
-      <!-- login page will go here -->
-    </article>
+    <!-- <article class="login" id="loginView">
+      <form action="action_page.php" method="post">     
+        <div class="container">
+          <label for="user name">
+            <b>Username</b>
+          </label>
+          <input type="text" placeholder="Enter Username" name="uname" required>
+          <label for="password">
+            <b>Password</b>
+          </label>
+          <input type="password" placeholder="Enter Password" name="psw" required>
+          <button type="submit">Login</button>
+        </div>
+      </form>
+    </article> -->
   </main>
   <script src="bundle.js"></script>
 </body>

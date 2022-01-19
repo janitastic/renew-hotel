@@ -47,8 +47,7 @@ const fetchRooms = () => {
 /*************** POST REQUESTS ***************/
 
 const postBooking = (newBooking) => {
-  fetch(url);
-  fetch(bookings, {
+  return fetch(bookings, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(newBooking)

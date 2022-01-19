@@ -31,7 +31,6 @@ const roomsView = document.getElementById('roomsView');
 const filteredResults = document.getElementById('filteredResults');
 const loyaltyMessage = document.getElementById('loyaltyMessage');
 const reservationsTitle = document.getElementById('upcoming');
-const noRoomsMessage = document.getElementById('noRoomsMessage');
 const confirmationMessage = document.getElementById('confirmationMessage');
 const resultsMessage = document.getElementById('resultsMessage');
 const resultCount = document.getElementById('resultCount');
@@ -58,9 +57,6 @@ const roomType = document.getElementById('roomType');
 const typeOfBed = document.getElementById('typeOfBed');
 const costPerNight = document.getElementById('costPerNight');
 
-const selectRoomBtn = document.getElementById('selectRoom');
-const goBackBtn = document.getElementById('goBack');
-
 /********************* DOM UPDATES ******************/
 
 const domUpdates = {
@@ -78,13 +74,13 @@ const domUpdates = {
   },
 
   loadLandingPage() {//before login
-    this.hide([logOutBtn, reservationsBtn, userDashboard, roomsView, noRoomsMessage]);
-    this.show([heroLogo]);
+    this.hide([logOutBtn, reservationsBtn, userDashboard, roomsView]);
+    this.show([heroLogo, logInView]);
   },
 
   displayUserDashboard(customer, hotel) {
-    this.hide([heroLogo, selectedRoom, noRoomsMessage, confirmationMessage, filteredResults])
-    this.show([userMessage, reservationsBtn, userDashboard])
+    this.hide([heroLogo, confirmationMessage, filteredResults])
+    this.show([userMessage, reservationsBtn, userDashboard, roomsView])
     userName.innerText = hotel.currentCustomerFirstName;
     totalSpent.innerText = customer.addTotalSpent(hotel);
   },
@@ -108,19 +104,14 @@ const domUpdates = {
   },
 
   displaySearchResults() {
-    this.hide([userDashboard, selectedRoom, noRoomsMessage, confirmationMessage, loyaltyMessage, reservationsTitle])
+    this.hide([userDashboard, confirmationMessage, loyaltyMessage, reservationsTitle])
     this.show([userDashboard, filteredResults, roomsView])
   },
 
   displaySearchByDate(selectedDate) {
     const filterRooms = hotel.filterRoomsByDate(selectedDate);
     console.log('roomsByDate', filterRooms)
-    if (!filterRooms.length) {
-      this.show([noRoomsMessage]);
-      this.hide([resultsMessage]);
-    } 
     this.show([resultsMessage]);
-    this.hide([noRoomsMessage]);
     resultCount.innerText = filterRooms.length;
     filterRooms.forEach(room => {
       return filteredResults.innerHTML += `
@@ -134,7 +125,7 @@ const domUpdates = {
             <h3 class="card-text" id="roomType">${room.roomType}</h3>
             <p class="card-text">Beds: <span class="card-text" id="typeOfBed">${room.numBeds} ${room.bedSize}</span></p>
             <p class="card-text" id="costPerNight">$${room.costPerNight} per night</p>
-            <button class="select-room" id="selectRoom">View Room</button>
+            <button class="select-room" id="selectRoom">Book Room</button>
           </div>
         </article>`
     });
@@ -143,12 +134,7 @@ const domUpdates = {
   displayFilteredSearch(selectedRoomType) {
     const filteredType = hotel.filterAvailableRoomsByType(selectedRoomType);
     console.log(filteredType)
-    if (!filteredType.length) {
-      this.show([noRoomsMessage]);
-      this.hide([resultsMessage]);
-    } 
     this.show([resultsMessage]);
-    this.hide([noRoomsMessage]);
     resultCount.innerText = filteredType.length;
     filteredResults.innerHTML = '';
     filteredType.forEach(room => {
@@ -163,10 +149,19 @@ const domUpdates = {
             <h3 class="card-text" id="roomType">${room.roomType}</h3>
             <p class="card-text">Beds: <span class="card-text" id="typeOfBed">${room.numBeds} ${room.bedSize}</span></p>
             <p class="card-text" id="costPerNight">$${room.costPerNight} per night</p>
-            <button class="select-room" id="selectRoom">View Room</button>
+            <button class="select-room" id="selectRoom">Book Room</button>
           </div>
         </article>`
     });
+  },
+
+  clearSearchResults() {
+    this.hide([roomsView]);
+  },
+
+  confirmBooking() {
+    this.show([confirmationMessage]);
+    this.hide([roomsView]);
   }
 }
 

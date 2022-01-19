@@ -23,6 +23,7 @@ const homeBtn = document.getElementById('home');
 const reservationsBtn = document.getElementById('reservations');
 const logInBtn = document.getElementById('logIn');//goes to dashboard
 const logOutBtn = document.getElementById('logOut');//goes home
+const bookRoomBtn = document.getElementById('selectRoom');
 
 // ---- SEARCH INPUTS & BUTTONS ---- //
 const dateInput = document.getElementById('dateInput');
@@ -116,7 +117,22 @@ const filterRoomsByType = (event) => {
 const resetSearch = () => {
   dateInput.value = null;
   roomTypeInput.value = null;
+  domUpdates.clearSearchResults();
 }
+
+const bookARoom = (event) => {
+  if (event.target.closest('button')){
+  const newBooking = {
+    userID: currentCustomer.id,
+    date: selectedDate,
+    roomNumber: Number(event.target.closest('button').id)
+    }
+    postBooking(newBooking)
+    .then(response => onStart(currentCustomer.id))
+    domUpdates.confirmBooking();
+  }
+}
+
 
 /**************** EVENT LISTENERS ****************/
 
@@ -126,6 +142,7 @@ homeBtn.addEventListener('click', loadCustomerDashboard);
 searchDate.addEventListener('submit', loadAvailableBookings);
 searchRooms.addEventListener('submit', filterRoomsByType);
 clearBtn.addEventListener('click', resetSearch);
+// bookRoomBtn.addEventListener('click', bookRoom)
 // logInBtn.addEventListener('click', loadCustomerDashboard);
 
 //test button
