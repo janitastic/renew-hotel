@@ -1,7 +1,6 @@
 /*************** FILE IMPORTS ***************/
 import './css/base.scss';
-import {fetchCustomers, fetchBookings, fetchRooms, fetchSingleCustomer} from './apiCalls';
-// import {bookNow, homeBtn, reservationsBtn, logInBtn, logOutBtn} from './domUpdates';
+import {fetchCustomers, fetchBookings, fetchRooms, fetchSingleCustomer, postBooking} from './apiCalls';
 import domUpdates from './domUpdates';
 import Hotel from '../classes/Hotel';
 import Customer from '../classes/Customer';
@@ -19,9 +18,8 @@ import './images/single.png';
 import './images/suite.png';
 
 // ---- MENU BUTTONS ---- //
-const homeBtn = document.getElementById('home');
 const reservationsBtn = document.getElementById('reservations');
-const logInBtn = document.getElementById('logIn');//goes to dashboard
+const logInBtn = document.getElementById('logInForm')
 const logOutBtn = document.getElementById('logOut');//goes home
 const bookRoomBtn = document.getElementById('selectRoom');
 
@@ -39,51 +37,46 @@ let todaysDate = new Date().toJSON().slice(0, 10);
 let currentDate = todaysDate.split("-").join("/");
 const minDate = document.getElementById('dateInput').setAttribute("min", todaysDate);
 let hotel, customer, roomsData, bookingsData, customersData, customerData;
-let currentCustomerId = 18;//currently global
+// let currentCustomerId = 18;//currently global
 let currentUser;
 let currentUserId;
 let currentUserName, currentTotalSpent, currentUserBookings;
 let dateSelection, selectedDate, selectedRoomType;
 
-
-///Random User (delete later)
-const getRandomIndex = (array) => {
-  return Math.floor(Math.random() * array.length);
-}
-
 /*************** PROMISE & DATA COLLECTION ***************/
 
 const loadData = () => {
-  fetchAllData().then(data => instantiateClasses(data))
-  domUpdates.loadLandingPage();
+  fetchAllData()
+  .then(data => instantiateClasses(data))
+  .then(data => loadCustomerDashboard())
+  .then(data => domUpdates.loadLandingPage())
+  
 };
 
 const fetchAllData = () => {
-  return Promise.all([fetchRooms(), fetchBookings(),fetchCustomers(),fetchSingleCustomer(currentCustomerId)])
+  return Promise.all([fetchRooms(), fetchBookings(),fetchCustomers(),fetchSingleCustomer(currentUserId)])
     .catch(error => {
       domUpdates.displayError(error)
-      console.log('Promise not fulfilled.', error);
   })
 }
 
 const instantiateClasses = (data) => {
-  console.log('my data >>>', data);
   roomsData = data[0].rooms;
   bookingsData = data[1].bookings;
   customersData = data[2].customers;
   customerData = data[3];
   hotel = new Hotel(roomsData, bookingsData, customersData);
   customer = new Customer(customerData);
-  hotel.getCurrentCustomer(currentCustomerId);
+  hotel.getCurrentCustomer(currentUserId);
 }
 
 /**************** FUNCTIONS ****************/
 
 
 const loadCustomerDashboard = () => {
+  // userName.innerText = hotel.getCurrentCustomer(customer.id)
   domUpdates.displayUserDashboard(customer, hotel);
   domUpdates.displayUpcomingStays(hotel, currentDate);
-  console.log(currentDate);
 }
 
 const selectDate = () => {
@@ -93,17 +86,12 @@ const selectDate = () => {
 
 const selectRoomType = () => {
   selectedDate = dateInput.value;
-  const roomTypes = hotel.logRoomTypes();
-  // console.log(roomTypes);
-
   selectedRoomType = roomTypeInput.value;
-  // console.log(selectedRoomType)
 }
 
 const loadAvailableBookings = (event) => {
   event.preventDefault();
   selectDate();
-  console.log('selected date', selectedDate);
   domUpdates.displaySearchResults();
   domUpdates.displaySearchByDate(selectedDate);
 }
@@ -121,35 +109,49 @@ const resetSearch = () => {
 }
 
 const bookARoom = (event) => {
-  if (event.target.closest('button')){
   const newBooking = {
-    userID: currentCustomer.id,
+    userID: currentUserId,
     date: selectedDate,
-    roomNumber: Number(event.target.closest('button').id)
+    roomNumber: Number(event.target.id)
     }
     postBooking(newBooking)
-    .then(response => onStart(currentCustomer.id))
-    domUpdates.confirmBooking();
+    .then(response => {
+      onStart(currentUserId)
+      domUpdates.confirmBooking()
+    })
+    .catch(error => console.log(error));//need a function here
+}
+
+const getUserId =() => {
+  currentUserId = parseInt(userNameInput.value.substring(8))
+}
+
+const login = (event) => {
+  event.preventDefault();
+  getUserId();
+  if(currentUserId < 50 && 0 < currentUserId && passwordInput.value === 'overlook2021'){
+    fetchSingleCustomer(currentUserId)
+      .then(data => {
+        loadData()
+      })
+  } else {
+    domUpdates.displayLogInError();
   }
 }
 
 
 /**************** EVENT LISTENERS ****************/
 
-// window.addEventListener('load', loadPage);
-window.addEventListener('load', loadData);
-homeBtn.addEventListener('click', loadCustomerDashboard);
+// window.addEventListener('load', () => {domUpdates.loadLogInPage()});
 searchDate.addEventListener('submit', loadAvailableBookings);
 searchRooms.addEventListener('submit', filterRoomsByType);
 clearBtn.addEventListener('click', resetSearch);
-// bookRoomBtn.addEventListener('click', bookRoom)
-// logInBtn.addEventListener('click', loadCustomerDashboard);
+logInBtn.addEventListener('submit', login);
+filteredResults.addEventListener('click', bookARoom)
 
-//test button
-// bookNow.addEventListener('click', loadCustomerDashboard);
 
 /*************** EXPORTS ***************/
 
-export {currentCustomerId, loadData, currentUserName, currentDate};
+export {currentUserId, loadData, currentUserName, currentDate};
 
 export {hotel, customer, roomsData, bookingsData, customersData, customerData};

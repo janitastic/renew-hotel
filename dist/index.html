@@ -16,14 +16,12 @@
       <header>
         <a href="/"><img class="logo" src="../images/dew-breeze-header-logo.png" alt="Dew Breeze Suites Luxury Boutique Hotel logo"></a>
         <nav>
-          <a class="menu" id="home">Home</a>
           <a href="#upcoming" class="menu" id="reservations">Your Reservations</a>
-          <a class="menu" id="logIn">Login</a>
           <a class="menu" id="logOut">Log Out</a>
           <a href="#dateInput" class="menu book-now" id="bookNow">Book Now</a>
         </nav>
       </header>
-      <section class="hero-message">
+      <section class="hero-message" id="heroMessage">
         <div class="user-greeting hidden" id="userMessage">
           <h2 class="user-message">Welcome Back <span class="user-message" id="userName"></span>!</h2>
           <p class="user-message">Your next vacation awaits...</p>
@@ -32,19 +30,22 @@
       </section>
       <article class="login search-form" id="loginView">
         <h3>Login</h3><br>
-        <form action="action_page.php" method="post">     
+        <form id="logInForm">     
           <div class="login-fields">
             <label for="user name">
               <p class="login-text">Username</p>
             </label>
-            <input type="text" placeholder="Enter Username" name="user ame" required>
+            <input type="text" placeholder="Enter Username" name="user name" id="userNameInput" required>
             <label for="password">
               <p class="login-text">Password</p>
             </label>
-            <input type="password" placeholder="Enter Password" name="password" required><br>
-            <button class="login-button" type="submit">Login</button>
+            <input type="password" placeholder="Enter Password" name="password" id="passwordInput" required><br>
+            <button class="login-button" type="submit" id="loginButton">Login</button>
           </div>
         </form>
+        <section class="message hidden" id="loginMessage" tabindex="0">
+          <p>Oops! Your username or password is incorrect, please try again.</p>
+        </section>
       </article>
       <section class="search-form" id="searchForm">
         <h3>Make a Reservation</h3>
@@ -97,47 +98,11 @@
       <section class="filtered-results" id="filteredResults" tabindex="0">
         <!-- filtered room cards -->
       </section>
-        <!-- selected room -->
-        <!-- <article class="book-this-room" id="selectedRoom">
-          <div class="room-selection">
-            <img src="../images/junior-suite.png" class="selected-room-image" alt="relaxing junior suite">
-          </div>
-          <div class="room-details" id="roomDetails" tabindex="0">
-            <div class="selected-text-area" id="4">
-              <h4 id="roomType">suite</h4>
-              <p>Beds: <span id="typeOfBed">2 full</span></p>
-              <p>Date: <span id="datesOfStay">Jan 18 2022</span></p>
-              <p>Nightly Rate: <span id="costPerNight">$477.38</span> x 1 night</p>
-              <p id="totalCost">Total: <span class="cost">$477.38</span></p>
-            </div>
-            <div class="button-container">
-              <button class="book-button" id="5">Book this Room</button>
-              <button class="return-button" id="goBack">
-              Go Back
-              </button>
-            </div>
-          </div>
-        </article> -->
       <section class="message" id="confirmationMessage" tabindex="0">
         <h4>Your room is booked!</h4>
         <p>We'll see you soon!</p>
       </section>
     </article>
-    <!-- <article class="login" id="loginView">
-      <form action="action_page.php" method="post">     
-        <div class="container">
-          <label for="user name">
-            <b>Username</b>
-          </label>
-          <input type="text" placeholder="Enter Username" name="uname" required>
-          <label for="password">
-            <b>Password</b>
-          </label>
-          <input type="password" placeholder="Enter Password" name="psw" required>
-          <button type="submit">Login</button>
-        </div>
-      </form>
-    </article> -->
   </main>
   <script src="bundle.js"></script>
 </body>

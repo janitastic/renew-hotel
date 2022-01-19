@@ -5,7 +5,7 @@ import Customer from '../classes/Customer';
 import Room from '../classes/Room';
 import Booking from '../classes/Booking';
 
-import {hotel, customer, roomsData, bookingsData, customersData, customerData, currentDate} from './scripts';
+import {hotel, customer, roomsData, bookingsData, customersData, customerData, currentDate, currentUserId} from './scripts';
 
 /********************* QUERY SELECTORS ******************/
 
@@ -19,6 +19,7 @@ const logOutBtn = document.getElementById('logOut');//goes home
 
 // ---- HERO ---- //
 const userMessage = document.getElementById('userMessage');//greeting
+const heroMessage = document.getElementById('heroMessage');
 const heroLogo = document.getElementById('heroLogo');//hide on login
 const userName = document.getElementById('userName');
 
@@ -73,15 +74,25 @@ const domUpdates = {
     //add innerHTML display here
   },
 
+  loadLogInPage() {
+    this.hide([heroMessage, reservationsBtn, logOutBtn, bookNow, searchForm, userDashboard, roomsView])
+  },
+
+  logOut() {
+
+  },
+
   loadLandingPage() {//before login
     this.hide([logOutBtn, reservationsBtn, userDashboard, roomsView]);
-    this.show([heroLogo, logInView]);
+    this.show([heroLogo]);
   },
 
   displayUserDashboard(customer, hotel) {
-    this.hide([heroLogo, confirmationMessage, filteredResults])
-    this.show([userMessage, reservationsBtn, userDashboard, roomsView])
-    userName.innerText = hotel.currentCustomerFirstName;
+    this.hide([heroLogo, confirmationMessage, filteredResults]);
+    this.show([userMessage, reservationsBtn, userDashboard, roomsView]);
+    const fullName = customer.name;
+    const [first, last] = fullName.split(' ');
+    userName.innerText = first;
     totalSpent.innerText = customer.addTotalSpent(hotel);
   },
 
@@ -110,7 +121,6 @@ const domUpdates = {
 
   displaySearchByDate(selectedDate) {
     const filterRooms = hotel.filterRoomsByDate(selectedDate);
-    console.log('roomsByDate', filterRooms)
     this.show([resultsMessage]);
     resultCount.innerText = filterRooms.length;
     filterRooms.forEach(room => {
@@ -125,15 +135,15 @@ const domUpdates = {
             <h3 class="card-text" id="roomType">${room.roomType}</h3>
             <p class="card-text">Beds: <span class="card-text" id="typeOfBed">${room.numBeds} ${room.bedSize}</span></p>
             <p class="card-text" id="costPerNight">$${room.costPerNight} per night</p>
-            <button class="select-room" id="selectRoom">Book Room</button>
+            <button class="select-room" id="${room.number}">Book Room</button>
           </div>
         </article>`
     });
+    // document.getElementById('filteredResults')
   },
 
   displayFilteredSearch(selectedRoomType) {
     const filteredType = hotel.filterAvailableRoomsByType(selectedRoomType);
-    console.log(filteredType)
     this.show([resultsMessage]);
     resultCount.innerText = filteredType.length;
     filteredResults.innerHTML = '';
@@ -162,6 +172,10 @@ const domUpdates = {
   confirmBooking() {
     this.show([confirmationMessage]);
     this.hide([roomsView]);
+  },
+
+  displayLogInError() {
+    this.show([loginMessage]);
   }
 }
 

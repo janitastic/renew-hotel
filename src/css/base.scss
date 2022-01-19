@@ -319,7 +319,7 @@ select {
 
 .login {
 	@include flexbox(column, wrap, normal, normal, normal);
-	padding: 5%;
+	padding: 10%;
 }
 
 .link-to-rooms {
