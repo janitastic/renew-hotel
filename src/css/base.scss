@@ -5,16 +5,19 @@
 
 * {
 	font-family: $bodyFont;
-	// color: $offWhite;
+	color: $darkTeal;
 }
 
 html {
   scroll-behavior: smooth;
 }
 
+p {
+	line-height: 1.5em;
+}
+
 body {
   height: 100vh;
-  // background: $soft-teal;
   line-height: 1.2;
 }
 
@@ -34,21 +37,6 @@ nav {
   @include flexbox(row, wrap, normal, flex-end, normal);
 }
 
-.book-now {
-  cursor: pointer;
-  background-color: $gold;
-	color: $offWhite;
-  border: none;
-  max-height: 2.5em;
-  min-height: 2.5em;
-  min-width: 6em;
-
-  &:hover {
-		background-color: $paleGreen;
-    color: $offWhite;
-	}
-}
-
 .hero {
   background-image: url('../images/hero.png');
   background-size: cover;
@@ -60,6 +48,12 @@ nav {
 .hero-logo {
   background-color: rgba(248, 248, 248, .60);
   width: 40%;
+}
+
+.user-greeting,
+.login {
+  background-color: rgba(248, 248, 248, .60);
+	padding: 5%;
 }
 
 .hero-button {
@@ -89,25 +83,27 @@ h1 {
 
 h2 {
 	font-family: $titleFont;
-	font-size: 1em;
-  font-size: 1.2em;
+	font-size: 2em;
+	padding: 5%;
   font-weight: 400;
+  letter-spacing: 1px;
+	text-shadow: 0px 1px 5px black;
+}
+
+h3 {
+	font-family: $titleFont;
+	font-size: 1.5em;
+	text-align: center;
+	font-weight: 400;
   letter-spacing: 1px;
 	color: $offWhite;
 	text-shadow: 3px 3px 8px black;
 }
 
-h3 {
-	font-size: 1.2em;
-	color: $offWhite;
-	padding: 5%;
-	text-align: center;
-}
-
 h4 {
 	font-size: 1.5em;
-  font-weight: 600;
-	color: $offWhite;
+	text-align: center;
+	margin: 1%;
 }
 
 main {
@@ -124,38 +120,85 @@ a {
 	padding: 5% 5% 2% 5%;
 }
 
+.message {
+	text-align: center;
+	padding: 5% 5% 0;
+}
+
 .checked-icon {
 	margin: 2%;
 }
 
 .user-message {
 	text-align: center;
-	padding: 2%;
+	// padding: 2%;
+	animation: fadeInAnimation ease 3s;
+	animation-iteration-count: 1;
+	animation-fill-mode: forwards;
 }
 
-.room-cards {
+.filtered-results {
 	gap: 2em;
   grid-template-columns: 25% 25% 25% 25%;
 	padding: 5% 10%;
 	@include flexgrid(normal, center, normal, normal);
 }
 
-.card {
-	border-radius: 0.5em;
-	font-size: 1.2em;
-  background-color: rgba(10, 30, 35, .90);
-  box-shadow: $boxShadow;
-  padding: 5%;
-}
-
 .thumbnail-image {
 	width: 100%;
-	border-radius: 0.2em;
+	position: relative;
 }
 
 .room-image {
 	width: 100%;
-	border-radius: 0.3em;
+	position: relative;
+}
+
+.room-card {
+	border: none;
+	font-size: 1.2em;
+  background-color: $darkTeal;
+  box-shadow: $boxShadow;
+  padding: 5%;
+}
+
+.card-text,
+.login-text {
+	color: $offWhite;
+	margin: 1%;
+}
+
+.select-room {
+	padding: 1em;
+	border: none;
+	margin: 5%;
+}
+
+.room-image {
+	width: 100%;
+}
+
+.room-details {
+	padding: 1em;
+	display: flex;
+	flex-direction: column;
+}
+
+.book-this-room {
+	display: flex;
+	margin: 5%;
+}
+.room-selection {
+	width: 50%;
+}
+
+.selected-room-image {
+	width: 100%;
+	box-shadow: $boxShadow;
+}
+
+.room-details {
+	padding: 5%;
 }
 
 ol, li {
@@ -186,6 +229,23 @@ hr {
 	}
 }
 
+.book-now,
+.select-room {
+  cursor: pointer;
+  background-color: $gold;
+	color: $almostBlack;
+  border: none;
+	margin: 2%;
+	font-weight: 500;
+	letter-spacing: 1px;
+	font-family: $titleFont;
+
+  &:hover {
+		background-color: $paleGreen;
+    color: $offWhite;
+	}
+}
+
 .icon,
 .filter-icon {
 	padding: 5%;
@@ -193,6 +253,11 @@ hr {
 	&:hover {
 		transform: scale(1.2);
 	}
+}
+
+.select-room {
+	font-size: 1em;
+	margin: 5%;
 }
 
 .checked-icon {
@@ -226,26 +291,24 @@ select {
 	padding: 0;
 }
 
-.hide-text {
-	display: none;
-}
+// .dropdown {
+//   position: relative;
+//   display: inline-block;
+// }
 
-.recipe-icon:hover + .hide-text,
-.add-icon:hover + .hide-text {
-	@include flexbox(row, nowrap, normal, center, normal);
-}
+// .dropdown-content {
+//   display: none;
+//   position: absolute;
+//   background-color: #f9f9f9;
+//   min-width: 160px;
+//   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+//   padding: 12px 16px;
+//   z-index: 1;
+// }
 
-.return-button,
-.check-pantry-btn {
-	letter-spacing: 1px;
-	min-width: 10em;
-  min-height: 2em;
-	margin: 1em;
-}
-
-.search-icon {
-	display: inline-block;
-}
+// .dropdown:hover .dropdown-content {
+//   display: block;
+// }
 
 .search-form {
 	margin-top: 10%;
@@ -254,13 +317,21 @@ select {
 	background-color: $transparentTeal;
 }
 
+.login {
+	@include flexbox(column, wrap, normal, normal, normal);
+	padding: 10%;
+}
+
 .link-to-rooms {
 	color: transparent;
 }
 
 .search-button,
-.clear-button {
-  background-color: $gold;
+.clear-button, 
+.book-button,
+.return-button,
+.login-button {
+  background-color: $green;
   color: $offWhite;
 	border: none;
 	letter-spacing: 1px;
@@ -271,14 +342,13 @@ select {
 
 	&:hover {
 		cursor: pointer;
-		background-color: $green;
-		// transform: scale(1.1);
+		background-color: $gold;
 	}
 
-  &:disabled {
-		cursor: no-drop;
-		background-color: gray;
-	}
+  // &:disabled {
+	// 	cursor: no-drop;
+	// 	background-color: gray;
+	// }
 }
 
 .clear-button {
@@ -290,9 +360,13 @@ select {
 	}
 }
 
-.drop-down-arrow {
-	line-height: 4em;
-	color: $offWhite;
+.filtered-results {
+	display: grid;
+	padding: 1em;
+	grid-template-columns: 33% 33% 33%;
+	// grid-template-columns: repeat(3, 1fr);
+	gap: 2em;
+	margin: 5%;
 }
 
 .hidden {
@@ -309,11 +383,10 @@ select {
 @media only screen and (max-width: 1068px) {
 	// @media (min-width: 1025px) and (max-width: 1280px) {
 		nav {
-			// @include flexbox(row, wrap, normal, center, normal);
 			@include flexbox(row, wrap, normal, flex-end, normal);
 		}
 	
-		.room-cards {
+		.filtered-results {
 			grid-template-columns: 33% 33% 33%;
 		}
 	}
@@ -338,7 +411,7 @@ select {
 			margin: none;
 		}
 	
-		.room-cards {
+		.filtered-results {
 			grid-template-columns: 50% 50%;
 		}
 	}
@@ -358,10 +431,10 @@ select {
 		}
 	
 		.menu {
-			margin: none;
+			margin: 0;
 		}
 	
-		.room-cards {
+		.filtered-results {
 			grid-template-columns: 50% 50%;
 		}
 	}
@@ -390,20 +463,31 @@ select {
     }
 	
 		.menu {
-			padding: 0;
+			padding: 1%;
 			margin: 0;
 			max-height: 2em;
 		}
 	
-		.book-now {
-			display: none;
-		}
+		// .book-now {
+		// 	display: none;
+		// }
 	
 		.search-wrapper {
 			@include flexbox(column, nowrap, normal, center, center);
 		}
 	
-		.room-cards {
+		.filtered-results {
 			grid-template-columns: 100%;
 		}
 	}
+
+	/****************** KEYFRAMES *****************/
+
+@keyframes fadeInAnimation {
+	0% {
+			opacity: 0;
+	}
+	100% {
+			opacity: 1;
+		}
+}

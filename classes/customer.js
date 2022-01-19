@@ -3,7 +3,7 @@ class Customer {
     this.id = customer.id;
     this.name = customer.name;
     this.totalSpent = 0;
-    this.allBookings = null;
+    this.bookings = null;
     this.pastBookings = null;
     this.upcomingBookings = null;
     this.currentBookings = null;
@@ -11,7 +11,7 @@ class Customer {
 
   listAllUserBookings(hotel) {
     this.bookings = hotel.bookings.filter(booking => this.id === booking.userID);
-    return this.bookings; 
+    return this.bookings;
   }
 
   listPastBookings(hotel, currentDate) {
@@ -30,8 +30,9 @@ class Customer {
   }
 
   addTotalSpent(hotel) {
-    this.totalSpent = this.bookings.reduce((total, booking) => {
-      hotel.rooms.find(room => {
+    let bookings = this.listAllUserBookings(hotel);
+    this.totalSpent = bookings.reduce((total, booking) => {
+      hotel.rooms.forEach(room => {
         if (room.number === booking.roomNumber) {
           total += room.costPerNight;
         }
