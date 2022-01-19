@@ -85,11 +85,16 @@ const domUpdates = {
     domUpdates.hide([logOutBtn, reservationsBtn]);
   },
 
-  displayUserDashboard(customer) {
+  displayUserDashboard(customer, hotel) {
     domUpdates.hide([heroLogo, selectedRoom, noRoomsMessage, confirmationMessage])
     domUpdates.show([userMessage])
     userName.innerText = currentUserName;
+    console.log('this is my hote>>>>>>', hotel)
+    console.log('this is my customer>>>>>>>', customer)
+
+    customer.addTotalSpent(hotel);
     totalSpent.innerText = customer.totalSpent;
+    console.log('total $$$$$$$', customer.totalSpent)
   },
 
   displayUserBookings(customer, hotel) {

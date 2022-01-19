@@ -68,14 +68,13 @@ const loadCustomerDashboard = () => {
   console.log('can I access the hotel? >>>', hotel)
   console.log('can I access the customer? >>>', customer)
   console.log('current date >>>>', currentDate)
+  
 
   currentUserName = hotel.currentCustomerFirstName;
-  domUpdates.displayUserDashboard(customer, currentDate);
+  domUpdates.displayUserDashboard(customer, hotel);
 }
 
 const getAllUserBookings = () => {
-  // const allBookings = customer.listAllUserBookings(hotel);
-  // console.log(allBookings);
   domUpdates.displayUserBookings(customer, hotel);
 }
 
@@ -85,7 +84,7 @@ const getAllUserBookings = () => {
 window.addEventListener('load', loadData);
 
 //test button
-bookNow.addEventListener('click', getAllUserBookings);
+bookNow.addEventListener('click', loadCustomerDashboard);
 
 /*************** EXPORTS ***************/
 
