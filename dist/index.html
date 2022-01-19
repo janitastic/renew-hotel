@@ -21,7 +21,6 @@
           <a class="menu" id="logIn">Login</a>
           <a class="menu" id="logOut">Log Out</a>
           <a href="#dateInput" class="menu book-now" id="bookNow">Book Now</a>
-          <!-- <button class="book-now" id="bookNow">Book Now</button> -->
         </nav>
       </header>
       <section class="hero-message">
@@ -35,14 +34,15 @@
         <h3>Make a Reservation</h3>
         <!-- <a class="link-to-rooms" href="#filterRooms" tabindex="-1"> -->
           <!-- search form here -->
-          <form class="search-wrapper" id="searchDate">
+          <a href="#filteredResults">
+            <form class="search-wrapper" id="searchDate">
               <label for="dateInput">
                 <p class="example-text">Check In</p>
-                <input class="date-input" id="dateInput" type="date" min="">
+                <input class="date-input" id="dateInput" type="date">
               </label>
               <button class="search-button" type="submit" id="dateSearch">Search</button>
-          </form>
-          <form class="search-wrapper" id="searchRooms">
+            </form>
+            <form class="search-wrapper" id="searchRooms">
               <label for="typeInput">
                 <p class="example-text">Room Type</p>
                 <select class="input" id="typeInput" placeholder="make a selection" name="room options">
@@ -54,12 +54,12 @@
               </label>
               <button class="search-button" type="submit" id="typeSearch">Filter</button>
               <button class="clear-button" id="clear">Clear Search</button>
-          </form>
-        <!-- </a> -->
+            </form>
+          </a>
       </section>
     </article>
     <article class="bookings" id="userDashboard" tabindex="0">
-      <section class="message">
+      <section class="message" id="loyaltyMessage">
         <h4>Thank you for being Dew Breeze Luxury Resorts Loyalty Member!</h4>
         <p>You have spent on $<span id="totalSpent"></span> bookings.</p>
       </section>

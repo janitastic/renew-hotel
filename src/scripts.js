@@ -34,13 +34,15 @@ const roomSearchBtn = document.getElementById('typeSearch');
 const clearBtn = document.getElementById('clear');
 
 /*************** GLOBAL VARIABLES ***************/
-let currentDate = new Date().toJSON().slice(0, 10);
+let todaysDate = new Date().toJSON().slice(0, 10);
+let currentDate = todaysDate.split("-").join("/");
+const minDate = document.getElementById('dateInput').setAttribute("min", todaysDate);
 let hotel, customer, roomsData, bookingsData, customersData, customerData;
 let currentCustomerId = 18;//currently global
 let currentUser;
 let currentUserId;
 let currentUserName, currentTotalSpent, currentUserBookings;
-let selectedDate, selectedRoomType;
+let dateSelection, selectedDate, selectedRoomType;
 
 
 ///Random User (delete later)
@@ -80,10 +82,12 @@ const instantiateClasses = (data) => {
 const loadCustomerDashboard = () => {
   domUpdates.displayUserDashboard(customer, hotel);
   domUpdates.displayUpcomingStays(hotel, currentDate);
+  console.log(currentDate);
 }
 
 const selectDate = () => {
-  selectedDate = dateInput.value;
+  dateSelection = dateInput.value;
+  selectedDate = dateSelection.split("-").join("/");
 }
 
 const selectRoomType = () => {
@@ -101,8 +105,6 @@ const loadAvailableBookings = (event) => {
   console.log('selected date', selectedDate);
   domUpdates.displaySearchResults();
   domUpdates.displaySearchByDate(selectedDate);
-  // const filterRooms = hotel.filterRoomsByDate(selectedDate);
-  // console.log('filteredRooms', filterRooms)
 }
 
 const filterRoomsByType = (event) => {

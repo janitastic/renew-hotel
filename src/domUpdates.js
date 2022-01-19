@@ -11,7 +11,6 @@ import {hotel, customer, roomsData, bookingsData, customersData, customerData, c
 
 ////TEST BUTTON
 const bookNow = document.getElementById('bookNow');
-
 // ---- MENU BUTTONS ---- //
 const homeBtn = document.getElementById('home');
 const reservationsBtn = document.getElementById('reservations');
@@ -30,6 +29,8 @@ const upcomingView = document.getElementById('upcomingView');
 const pastView = document.getElementById('pastView');
 const roomsView = document.getElementById('roomsView');
 const filteredResults = document.getElementById('filteredResults');
+const loyaltyMessage = document.getElementById('loyaltyMessage');
+const reservationsTitle = document.getElementById('upcoming');
 const noRoomsMessage = document.getElementById('noRoomsMessage');
 const confirmationMessage = document.getElementById('confirmationMessage');
 const loginView = document.getElementById('loginView');
@@ -74,8 +75,8 @@ const domUpdates = {
     //add innerHTML display here
   },
 
-  loadLandingPage() {//happens before login on loadData
-    this.hide([logOutBtn, reservationsBtn]);
+  loadLandingPage() {//before login
+    this.hide([logOutBtn, reservationsBtn, userDashboard, roomsView]);
     this.show([heroLogo]);
   },
 
@@ -105,8 +106,8 @@ const domUpdates = {
   },
 
   displaySearchResults() {
-    this.hide([userDashboard, selectedRoom, noRoomsMessage, confirmationMessage])
-    this.show([reservationsBtn, filteredResults])
+    this.hide([userDashboard, selectedRoom, noRoomsMessage, confirmationMessage, loyaltyMessage, reservationsTitle])
+    this.show([userDashboard, filteredResults, roomsView])
   },
 
   displaySearchByDate(selectedDate) {
