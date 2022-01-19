@@ -112,10 +112,12 @@ const bookARoom = (event) => {
     }
     postBooking(newBooking)
     .then(response => {
-      onStart(currentUserId)
       domUpdates.confirmBooking()
+      console.log(response)
+      console.log(newBooking)
     })
-    .catch(error => console.log(error));//need a function here
+    .catch(error => console.log(error));
+    
 }
 
 const getUserId =() => {
@@ -150,4 +152,4 @@ filteredResults.addEventListener('click', bookARoom);
 
 export {currentUserId, loadData, currentUserName, currentDate};
 
-export {hotel, customer, roomsData, bookingsData, customersData, customerData};
+export {hotel, customer, roomsData, bookingsData, customersData, customerData, fetchAllData};

@@ -70,7 +70,7 @@ const domUpdates = {
   },
 
   loadLogInPage() {
-    this.hide([bookNow, searchForm, userDashboard, roomsView])
+    this.hide([bookNow, searchForm, userDashboard, roomsView, reservationsBtn])
   },
 
   loadLandingPage() {
@@ -110,6 +110,7 @@ const domUpdates = {
 
   displaySearchByDate(selectedDate) {
     const filterRooms = hotel.filterRoomsByDate(selectedDate);
+    console.log(filterRooms)
     this.show([resultsMessage]);
     this.hide([reservationsBtn]);
     resultCount.innerText = filterRooms.length;
@@ -133,7 +134,9 @@ const domUpdates = {
 
   displayFilteredSearch(selectedRoomType) {
     const filteredType = hotel.filterAvailableRoomsByType(selectedRoomType);
+    console.log(filteredType)
     this.show([resultsMessage]);
+    this.hide([reservationsBtn]);
     resultCount.innerText = filteredType.length;
     filteredResults.innerHTML = '';
     filteredType.forEach(room => {
@@ -148,7 +151,7 @@ const domUpdates = {
             <h3 class="card-text" id="roomType">${room.roomType}</h3>
             <p class="card-text">Beds: <span class="card-text" id="typeOfBed">${room.numBeds} ${room.bedSize}</span></p>
             <p class="card-text" id="costPerNight">$${room.costPerNight} per night</p>
-            <button class="select-room" id="selectRoom">Book Room</button>
+            <button class="select-room" id="${room.number}">Book Room</button>
           </div>
         </article>`
     });

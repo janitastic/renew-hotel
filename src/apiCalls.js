@@ -61,7 +61,7 @@ const postBooking = (newBooking) => {
 
 const checkForErrors = (response) => {
   if (!response.ok) {
-    throw new Error('Status: ${response.status} StatusText: ${response.status.text}')
+    throw new Error(`Status: ${response.status} StatusText: ${response.status.text}`)
   } else if (response.ok) {
     fetchAllData();
     // display message on dom
