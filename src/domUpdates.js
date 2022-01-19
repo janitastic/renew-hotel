@@ -70,7 +70,7 @@ const domUpdates = {
   },
 
   loadLogInPage() {
-    this.hide([bookNow, searchForm, userDashboard, roomsView, reservationsBtn])
+    this.hide([bookNow, searchForm, userDashboard, roomsView, reservationsBtn, confirmationMessage]);
   },
 
   loadLandingPage() {

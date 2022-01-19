@@ -7,7 +7,6 @@ import domUpdates from './domUpdates.js';
 const fetchCustomers = () => {
   return fetch(customers)
     .then(response => response.json())
-    // .then(data => console.log('customers data >>>>', data))
     .catch(error => {
       console.log(error)
       checkForErrors(response)
@@ -54,9 +53,6 @@ const postBooking = (newBooking) => {
   })
 }
 
-// postBooking(newBooking);
-
-
 /*************** ERROR HANDLING ***************/
 
 const checkForErrors = (response) => {
@@ -73,9 +69,6 @@ const checkForErrors = (response) => {
 const customers = 'http://localhost:3001/api/v1/customers';
 const bookings = 'http://localhost:3001/api/v1/bookings';
 const rooms = 'http://localhost:3001/api/v1/rooms';
-
-
-// const newBooking = { 'userID': 18, 'date': '2021/01/20', 'roomNumber': 5 }
 
 
 export {fetchCustomers, fetchBookings, fetchRooms, fetchSingleCustomer, postBooking};
