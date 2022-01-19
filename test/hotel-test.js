@@ -62,6 +62,14 @@ describe('Hotel', () => {
     expect(hotel.currentCustomerFirstName).to.deep.equal('Leatha');
   });
 
+  // it('Should be able to calculate the total amount each customer has spent', () => {
+  //   const totalSpent = hotel.calculateCustomerSpending(1);
+  //   // customer1.addTotalSpent(hotel);
+
+  //   expect(totalSpent).to.be.a('number');
+  //   expect(customer1.totalSpent).to.deep.equal(172.09);
+  // });
+
   it('Should be able to filter room availability by date', () => {
     const selectedDate = '2022/01/10';
 

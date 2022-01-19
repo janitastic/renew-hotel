@@ -9,7 +9,7 @@ import {customersData} from '../sample-data/sampleCustomers';
 import {bookingsData} from '../sample-data/sampleBookings';
 import {roomsData} from '../sample-data/sampleRooms';
 
-describe('Customer', () => {
+describe.only('Customer', () => {
   let customer1, customer2, hotel;
 
   beforeEach(() => {

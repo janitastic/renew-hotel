@@ -23,10 +23,11 @@ import './images/suite.png';
 /*************** GLOBAL VARIABLES ***************/
 let currentDate = new Date().toJSON().slice(0, 10);
 let hotel, customer, roomsData, bookingsData, customersData, customerData;
-let currentCustomerId = 18;//currently global
+let currentCustomerId = 20;//currently global
 let currentUser;
 let currentUserId;
 let currentUserName;
+let currentTotalSpent;
 
 ///Random User (delete later)
 const getRandomIndex = (array) => {
@@ -63,13 +64,13 @@ const instantiateClasses = (data) => {
 
 
 const loadCustomerDashboard = () => {
-  console.log('can access >>>>', currentCustomerId)
+  console.log('can access current id>>>>', currentCustomerId)
   console.log('can I access the hotel? >>>', hotel)
+  console.log('can I access the customer? >>>', customer)
+  console.log('current date >>>>', currentDate)
 
   currentUserName = hotel.currentCustomerFirstName;
-  domUpdates.displayUserDashboard();
-
-  console.log(customer, 'here!!!')
+  domUpdates.displayUserDashboard(customer, currentDate);
 }
 
 
@@ -83,4 +84,6 @@ bookNow.addEventListener('click', loadCustomerDashboard);
 
 /*************** EXPORTS ***************/
 
-export {currentCustomerId, loadData, currentUser, currentUserName};
+export {currentCustomerId, loadData, currentUserName, currentTotalSpent};
+
+export {hotel, customer, roomsData, bookingsData, customersData, customerData};

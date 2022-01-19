@@ -1,11 +1,11 @@
 /********************* VARIABLE IMPORTS ******************/
-import {currentUserName} from './scripts';
+import {currentUser, currentUserName} from './scripts';
 import Hotel from '../classes/Hotel';
 import Customer from '../classes/Customer';
 import Room from '../classes/Room';
 import Booking from '../classes/Booking';
 
-let hotel, roomsData, bookingsData, customersData, customer;
+import {hotel, customer, roomsData, bookingsData, customersData, customerData, currentTotalSpent} from './scripts';
 
 /********************* QUERY SELECTORS ******************/
 
@@ -85,11 +85,11 @@ const domUpdates = {
     domUpdates.hide([logOutBtn, reservationsBtn]);
   },
 
-  displayUserDashboard() {
+  displayUserDashboard(customer, currentDate) {
     domUpdates.hide([heroLogo])
     domUpdates.show([userMessage])
     userName.innerText = currentUserName;
-    // totalSpent.innerText = 
+    totalSpent.innerText = customer.totalSpent;
   }
 }
 
