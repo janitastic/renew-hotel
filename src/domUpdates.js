@@ -9,19 +9,15 @@ import {hotel, customer, roomsData, bookingsData, customersData, customerData, c
 
 /********************* QUERY SELECTORS ******************/
 
-////TEST BUTTON
-const bookNow = document.getElementById('bookNow');
-// ---- MENU BUTTONS ---- //
-const homeBtn = document.getElementById('home');
-const reservationsBtn = document.getElementById('reservations');
-const logInBtn = document.getElementById('logIn');//goes to dashboard
-const logOutBtn = document.getElementById('logOut');//goes home
-
 // ---- HERO ---- //
 const userMessage = document.getElementById('userMessage');//greeting
 const heroMessage = document.getElementById('heroMessage');
-const heroLogo = document.getElementById('heroLogo');//hide on login
 const userName = document.getElementById('userName');
+
+// ---- MENU BUTTONS ---- //
+const reservationsBtn = document.getElementById('reservations');
+const logInBtn = document.getElementById('logInForm');
+const bookRoomBtn = document.getElementById('selectRoom');
 
 // ---- SECTIONS & DISPLAYS ---- //
 const userDashboard = document.getElementById('userDashboard');
@@ -71,25 +67,18 @@ const domUpdates = {
 
   displayError(error) {
     console.log('need to display error on page', error)
-    //add innerHTML display here
   },
 
   loadLogInPage() {
-    this.hide([heroMessage, reservationsBtn, logOutBtn, bookNow, searchForm, userDashboard, roomsView])
+    this.hide([bookNow, searchForm, userDashboard, roomsView])
   },
 
-  logOut() {
-
-  },
-
-  loadLandingPage() {//before login
-    this.hide([logOutBtn, reservationsBtn, userDashboard, roomsView]);
-    this.show([heroLogo]);
+  loadLandingPage() {
+    this.hide([userDashboard, roomsView, loginView, resultsMessage, confirmationMessage, filteredResults]);
+    this.show([userMessage, searchForm, reservationsBtn, userDashboard, roomsView]);
   },
 
   displayUserDashboard(customer, hotel) {
-    this.hide([heroLogo, confirmationMessage, filteredResults]);
-    this.show([userMessage, reservationsBtn, userDashboard, roomsView]);
     const fullName = customer.name;
     const [first, last] = fullName.split(' ');
     userName.innerText = first;
@@ -122,6 +111,7 @@ const domUpdates = {
   displaySearchByDate(selectedDate) {
     const filterRooms = hotel.filterRoomsByDate(selectedDate);
     this.show([resultsMessage]);
+    this.hide([reservationsBtn]);
     resultCount.innerText = filterRooms.length;
     filterRooms.forEach(room => {
       return filteredResults.innerHTML += `
@@ -139,7 +129,6 @@ const domUpdates = {
           </div>
         </article>`
     });
-    // document.getElementById('filteredResults')
   },
 
   displayFilteredSearch(selectedRoomType) {

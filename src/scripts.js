@@ -8,7 +8,6 @@ import Room from '../classes/Room';
 import Booking from '../classes/Booking';
 
 /*************** IMAGE IMPORTS ***************/
-import './images/hero.png';
 import './images/dew-breeze-suites-logo.png';
 import './images/dew-breeze-header-logo.png';
 import './images/dew-breeze-favicon.png';
@@ -19,8 +18,7 @@ import './images/suite.png';
 
 // ---- MENU BUTTONS ---- //
 const reservationsBtn = document.getElementById('reservations');
-const logInBtn = document.getElementById('logInForm')
-const logOutBtn = document.getElementById('logOut');//goes home
+const logInBtn = document.getElementById('logInForm');
 const bookRoomBtn = document.getElementById('selectRoom');
 
 // ---- SEARCH INPUTS & BUTTONS ---- //
@@ -50,7 +48,6 @@ const loadData = () => {
   .then(data => instantiateClasses(data))
   .then(data => loadCustomerDashboard())
   .then(data => domUpdates.loadLandingPage())
-  
 };
 
 const fetchAllData = () => {
@@ -74,7 +71,6 @@ const instantiateClasses = (data) => {
 
 
 const loadCustomerDashboard = () => {
-  // userName.innerText = hotel.getCurrentCustomer(customer.id)
   domUpdates.displayUserDashboard(customer, hotel);
   domUpdates.displayUpcomingStays(hotel, currentDate);
 }
@@ -142,12 +138,12 @@ const login = (event) => {
 
 /**************** EVENT LISTENERS ****************/
 
-// window.addEventListener('load', () => {domUpdates.loadLogInPage()});
+window.addEventListener('load', () => {domUpdates.loadLogInPage()});
 searchDate.addEventListener('submit', loadAvailableBookings);
 searchRooms.addEventListener('submit', filterRoomsByType);
 clearBtn.addEventListener('click', resetSearch);
 logInBtn.addEventListener('submit', login);
-filteredResults.addEventListener('click', bookARoom)
+filteredResults.addEventListener('click', bookARoom);
 
 
 /*************** EXPORTS ***************/
