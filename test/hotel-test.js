@@ -62,24 +62,6 @@ describe('Hotel', () => {
     expect(hotel.currentCustomerFirstName).to.deep.equal('Leatha');
   });
 
-  // it('Should be able to calculate the total amount each customer has spent', () => {
-  //   const totalSpent = hotel.calculateCustomerSpending(1);
-  //   // customer1.addTotalSpent(hotel);
-
-  //   expect(totalSpent).to.be.a('number');
-  //   expect(customer1.totalSpent).to.deep.equal(172.09);
-  // });
-
-  it('Should be able to filter room availability by date', () => {
-    const selectedDate = '2022/01/10';
-
-    const availableRooms = hotel.filterRoomsByDate(selectedDate);  
-
-    expect(selectedDate).to.be.a.dateString();
-    expect(availableRooms).to.be.an('array');
-    expect(availableRooms.length).to.deep.equal(24);
-  });
-
   it('Should be able to filter the list of rooms by their room type', () => {
     const residential = 'residential suite';
     const single = 'single room';
