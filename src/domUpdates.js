@@ -5,7 +5,7 @@ import Customer from '../classes/Customer';
 import Room from '../classes/Room';
 import Booking from '../classes/Booking';
 
-import {hotel, customer, roomsData, bookingsData, customersData, customerData, currentTotalSpent} from './scripts';
+import {hotel, customer, roomsData, bookingsData, customersData, customerData, currentDate} from './scripts';
 
 /********************* QUERY SELECTORS ******************/
 
@@ -83,15 +83,19 @@ const domUpdates = {
 
   loadLandingPage() {//happens before login on loadData
     this.hide([logOutBtn, reservationsBtn]);
+    this.show([heroLogo]);
   },
 
-  displayUserDashboard(customer, hotel) {
+  displayUserDashboard(customer, hotel, currentDate) {
     this.hide([heroLogo, selectedRoom, noRoomsMessage, confirmationMessage])
     this.show([userMessage])
     userName.innerText = hotel.currentCustomerFirstName;
+    totalSpent.innerText = customer.addTotalSpent(hotel);
+  },
 
-    customer.addTotalSpent(hotel);
-    totalSpent.innerText = customer.totalSpent;
+  displayUpcomingStays(hotel, currentDate) {
+    const upcomingBookings = customer.listUpcomingBookings(hotel, currentDate);
+    console.log(upcomingBookings);
   },
 
   displayUserBookings(customer, hotel) {

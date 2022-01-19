@@ -70,23 +70,25 @@ const instantiateClasses = (data) => {
 
 const loadCustomerDashboard = () => {
   domUpdates.displayUserDashboard(customer, hotel);
+  domUpdates.displayUpcomingStays(hotel, currentDate)
 }
 
-const getAllUserBookings = () => {
-  domUpdates.displayUserBookings(customer, hotel);
-}
+// const getAllUserBookings = () => {
+//   domUpdates.displayUserBookings(customer, hotel);
+// }
 
 /**************** EVENT LISTENERS ****************/
 
 // window.addEventListener('load', loadPage);
 window.addEventListener('load', loadData);
-logInBtn.addEventListener('click', loadCustomerDashboard);
+homeBtn.addEventListener('click', loadCustomerDashboard);
+// logInBtn.addEventListener('click', loadCustomerDashboard);
 
 //test button
 // bookNow.addEventListener('click', loadCustomerDashboard);
 
 /*************** EXPORTS ***************/
 
-export {currentCustomerId, loadData, currentUserName, currentTotalSpent};
+export {currentCustomerId, loadData, currentUserName, currentDate};
 
 export {hotel, customer, roomsData, bookingsData, customersData, customerData};
