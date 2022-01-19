@@ -86,7 +86,7 @@ const domUpdates = {
   },
 
   displayUserDashboard(customer, currentDate) {
-    domUpdates.hide([heroLogo])
+    domUpdates.hide([heroLogo, selectedRoom, noRoomsMessage, confirmationMessage])
     domUpdates.show([userMessage])
     userName.innerText = currentUserName;
     totalSpent.innerText = customer.totalSpent;
