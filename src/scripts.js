@@ -118,8 +118,6 @@ const filterRoomsByType = (event) => {
   event.preventDefault();
   selectRoomType();
   domUpdates.displayFilteredSearch(selectedRoomType);
-  // const filteredType = hotel.filterAvailableRoomsByType(selectedRoomType);
-  // console.log('filtered by type', filteredType)
 }
 
 const resetSearch = () => {

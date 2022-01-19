@@ -33,6 +33,8 @@ const loyaltyMessage = document.getElementById('loyaltyMessage');
 const reservationsTitle = document.getElementById('upcoming');
 const noRoomsMessage = document.getElementById('noRoomsMessage');
 const confirmationMessage = document.getElementById('confirmationMessage');
+const resultsMessage = document.getElementById('resultsMessage');
+const resultCount = document.getElementById('resultCount');
 const loginView = document.getElementById('loginView');
 
 // ---- DASHBOARD CARDS SECTION ---- //
@@ -76,7 +78,7 @@ const domUpdates = {
   },
 
   loadLandingPage() {//before login
-    this.hide([logOutBtn, reservationsBtn, userDashboard, roomsView]);
+    this.hide([logOutBtn, reservationsBtn, userDashboard, roomsView, noRoomsMessage]);
     this.show([heroLogo]);
   },
 
@@ -113,6 +115,13 @@ const domUpdates = {
   displaySearchByDate(selectedDate) {
     const filterRooms = hotel.filterRoomsByDate(selectedDate);
     console.log('roomsByDate', filterRooms)
+    if (!filterRooms.length) {
+      this.show([noRoomsMessage]);
+      this.hide([resultsMessage]);
+    } 
+    this.show([resultsMessage]);
+    this.hide([noRoomsMessage]);
+    resultCount.innerText = filterRooms.length;
     filterRooms.forEach(room => {
       return filteredResults.innerHTML += `
       <article class="room-card" id="${room.number}">
@@ -134,6 +143,13 @@ const domUpdates = {
   displayFilteredSearch(selectedRoomType) {
     const filteredType = hotel.filterAvailableRoomsByType(selectedRoomType);
     console.log(filteredType)
+    if (!filteredType.length) {
+      this.show([noRoomsMessage]);
+      this.hide([resultsMessage]);
+    } 
+    this.show([resultsMessage]);
+    this.hide([noRoomsMessage]);
+    resultCount.innerText = filteredType.length;
     filteredResults.innerHTML = '';
     filteredType.forEach(room => {
       return filteredResults.innerHTML += `
