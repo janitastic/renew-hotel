@@ -110,7 +110,6 @@ const domUpdates = {
 
   displaySearchByDate(selectedDate) {
     const filterRooms = hotel.filterRoomsByDate(selectedDate);
-    console.log(filterRooms)
     this.show([resultsMessage]);
     this.hide([reservationsBtn]);
     resultCount.innerText = filterRooms.length;
@@ -134,7 +133,6 @@ const domUpdates = {
 
   displayFilteredSearch(selectedRoomType) {
     const filteredType = hotel.filterAvailableRoomsByType(selectedRoomType);
-    console.log(filteredType)
     this.show([resultsMessage]);
     this.hide([reservationsBtn]);
     resultCount.innerText = filteredType.length;

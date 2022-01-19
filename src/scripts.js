@@ -113,8 +113,6 @@ const bookARoom = (event) => {
     postBooking(newBooking)
     .then(response => {
       domUpdates.confirmBooking()
-      console.log(response)
-      console.log(newBooking)
     })
     .catch(error => console.log(error));
     
